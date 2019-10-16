@@ -1,30 +1,30 @@
 # SITE CONFIGURATION
-baseurl: "/Type-on-Strap"
-url: "https://sylhare.github.io"
-title: Type on Strap # site's title
-description: "A website with blog posts and pages" # used by search engines
+baseurl: #"/Type-on-Strap"
+url: "https://projetokube-documentacao.github.io"
+title: Projeto Kube # site's title
+description: "Computação em nuvem, Devops e educação" # used by search engines
 
 defaults:
   - scope:
       path: "" # an empty string here means all necessary files are in the project
     values:
-      image: assets/img/triangle.png # seo tag
+      image: assets/img/projetokube.png # seo tag
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
   # Meta
-  avatar: assets/img/triangle.png
+  avatar: assets/img/projetokube.png
   color_image: /assets/img/lineart.png # In post when you set color
   favicon: assets/favicon.ico
 
   # Header and footer text
-  header_text: Change header text in <code>_config.yml</code>
+  header_text: Computação em nuvem, Devops e educação
   header_feature_image: assets/img/pexels/triangular.jpeg
   footer_text: >
-    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+    Powered by <a href="https://jekyllrb.com/">Jekyll</a> com o tema <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
   # Blog
-  excerpt: true # Or "truncate" (first 250 characters), "false" to disable
+  excerpt: truncate # true Or "truncate" (first 250 characters), "false" to disable
 
   # Icons
   rss: true  # Make sure you created a feed.xml with feed.xml layout
@@ -35,7 +35,7 @@ theme_settings:
   facebook:
   flickr:
   gitlab:
-  github: "sylhare"
+  github: "CBSIIFSLagarto/projetokube-documentacao"
   instagram:
   keybase:
   linkedin:  # Full URL
@@ -53,7 +53,7 @@ theme_settings:
 
   # Sharing options
   share_buttons:
-    facebook: true
+    facebook: false
     twitter: true
     tumblr:
     pinterest:
@@ -76,10 +76,10 @@ theme_settings:
   str_email: "Email"
   str_tweet: "Tweet"
   str_pin_it: "Pin it"
-  str_next_post: "Next post"
-  str_previous_post: "Previous post"
-  str_next_page: "Next"
-  str_previous_page: "Prev"
+  str_next_post: "Próximo post"
+  str_previous_post: "Post anterior"
+  str_next_page: "Próximo"
+  str_previous_page: "Anterior"
   str_javascript_required_disqus: "Please enable JavaScript to view comments."
 
   # Post navigation
@@ -89,11 +89,16 @@ theme_settings:
   # Open the "_sass > base" folder, and open "_variables.scss"
 
 # PAGINATION
-paginate: 5
+paginate: 10
 paginate_path: "blog/page:num"
 
 # AUTHORS
 authors:
+  frchico: # author-id
+    name: Francisco Rodrigues
+    avatar: "assets/img/avatars/mhagnumdw_avatar.jpg"
+    url: https://github.com/frchico
+  
   mhagnumdw: # author-id
     name: MhagnumDw
     avatar: "assets/img/avatars/mhagnumdw_avatar.jpg"
@@ -108,6 +113,10 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:name
+  projetos:
+    output: true
+    permalink: /:collection/:name
+
 
 # BUILD SETTINGS
 markdown: kramdown
