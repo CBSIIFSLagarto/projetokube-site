@@ -4,7 +4,32 @@ frchico: # author-id
   name: Francisco Rodrigues
   avatar: "assets/img/avatars/mhagnumdw_avatar.jpg"
   url: https://github.com/frchico
-
+  github: frchico
+alexchaves:
+  name: Alex Santos Chaves
+  avatar: 
+  url:
+  github: alex-chaves
+jean:
+  name: Jean Carlos M. Oliveira
+  avatar: 
+  url: 
+  github: jean9826
+franciscojsc:
+  name: Francisco Junio Santos Chaves 
+  avatar: 
+  url: 
+  github: franciscojsc
+gabriel:
+  name: José Gabriel da Costa Santos  
+  avatar: 
+  url: 
+  github: jgcs
+reinan:
+  name: Reinan Gabriel dos Santos Souza 
+  avatar: 
+  url: 
+  github: reinanhs
 mhagnumdw: # author-id
   name: MhagnumDw
   avatar: "assets/img/avatars/mhagnumdw_avatar.jpg"
