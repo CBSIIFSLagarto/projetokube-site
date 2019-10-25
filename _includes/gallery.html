@@ -13,11 +13,41 @@ html { overflow-y: scroll; }
 {% for image in site.static_files %}
   {% if image.path contains include.gallery_path %}
     {% unless image.path contains '.md' %}
-        <img src="{{ image.path | relative_url }}" alt="" class="grid-item" style="padding: 0;">
+        <img src="{{ image.path | relative_url }}" data-index="{{ forloop.index0 }}" alt="" class="grid-item" style="padding: 0;">
     {% endunless %}  
   {% endif %}
 {% endfor %}
 </div> 
 
+<div class="img-swiper modal" style="display: none;">
+  <div class="img-wrapper transition">
+    <img src="https://i.loli.net/2018/11/10/5be6852cdb002.jpeg" alt="" draggable="false" class="img img-fluid">
+  </div>
+  <div class="btns">
+    <div class="btn-prev disable">
+      <i class="fa fa-arrow-left icon" aria-hidden="true"></i>
+    </div>
+    <div class="btn-next">
+      <i class="fa fa-arrow-right icon" aria-hidden="true"></i>
+    </div>
+    <div class="btn-close">
+      <i class="fa fa-times icon" aria-hidden="true"></i>
+    </div>
+    <div class="toolbar-btns">
+      <div class="toobar-btn toolbar-btn__zoomin">
+        <i class="fa fa-search-plus icon" aria-hidden="true"></i>
+      </div>
+      <div class="toobar-btn toolbar-btn__zoomout">
+        <i class="fa fa-search-minus icon" aria-hidden="true"></i>
+      </div>
+      <div class="toobar-btn toolbar-btn__rotate">
+        <i class="fa fa-undo icon" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+  <div class="pagination-total">1/5</div>
+</div>
+
 <script src="{{ "/assets/js/vendor/imagesloaded.min.js" | relative_url }}" type="text/javascript"></script>
 <script src="{{ "/assets/js/vendor/masonry.pkgd.min.js" | relative_url }}" type="text/javascript"></script>
+<script src="{{ "/assets/js/partials/gallery.js" | relative_url }}" type="text/javascript"></script>

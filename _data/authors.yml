@@ -2,34 +2,46 @@
 
 frchico: # author-id
   name: Francisco Rodrigues
-  avatar: "assets/img/avatars/mhagnumdw_avatar.jpg"
+  type: Coordenador
   url: https://github.com/frchico
   github: frchico
+alfredo:
+  name: Alfredo Vieira
+  type: Professor
+rubens:
+  name: Rubens Matos
+  type: Professor
 alexchaves:
   name: Alex Santos Chaves
-  avatar: 
+  type: Estudante
   url:
   github: alex-chaves
 jean:
   name: Jean Carlos M. Oliveira
-  avatar: 
+  type: Estudante
   url: 
   github: jean9826
 franciscojsc:
-  name: Francisco Junio Santos Chaves 
-  avatar: 
+  name: Francisco Junio Santos Chaves
+  type: Estudante - Bolsista
   url: 
   github: franciscojsc
 gabriel:
-  name: José Gabriel da Costa Santos  
-  avatar: 
+  name: José Gabriel da Costa Santos
+  type: Estudante  
   url: 
   github: jgcs
 reinan:
-  name: Reinan Gabriel dos Santos Souza 
-  avatar: 
+  name: Reinan Gabriel dos Santos Souza
+  type: Estudante
+  description: "Lamborghini Mercy <br>Your chick she so thirsty <br>I'm in that two seat Lambo" 
   url: 
   github: reinanhs
+  social:
+    facebook: reinangabriel96
+    twitter: ReinanGabriel9
+    instagram: reinanhs
+  content: "Lamborghini Mercy Your chick she so thirsty I'm in that two seat Lambo"
 mhagnumdw: # author-id
   name: MhagnumDw
   avatar: "assets/img/avatars/mhagnumdw_avatar.jpg"
