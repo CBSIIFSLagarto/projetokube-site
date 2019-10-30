@@ -14,8 +14,11 @@ rubens:
 alexchaves:
   name: Alex Santos Chaves
   type: Estudante
+  description: "Discente em Sistemas de Informação, sou apaixonado por natureza e  tecnologia, compartilhando conhecimento e aprendendo ao longo da vida."
   url:
-  github: alex-chaves
+  social:
+    github: alex-chaves
+    instagram: alexschaves
 jean:
   name: Jean Carlos M. Oliveira
   type: Estudante
