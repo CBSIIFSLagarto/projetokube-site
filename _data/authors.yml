@@ -4,6 +4,11 @@ frchico: # author-id
   name: Francisco Rodrigues
   type: Coordenador
   url: https://github.com/frchico
+  content: "- Mestre em Sistemas e Computação com graduação em Sistemas de Informações. <br>- Atualmente sou professor no Instituto Federal de Sergipe(IFS) pertencente ao curso de sistemas de informação no Campus Lagarto em Sergipe." 
+  url: http://demo.franciscorodrigues.com.br  
+  social:
+    twitter: frchico
+  description: "Um caba cheio de ideias \\o/"
   github: frchico
 alfredo:
   name: Alfredo Vieira
