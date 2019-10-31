@@ -33,8 +33,13 @@ jean:
 franciscojsc:
   name: Francisco Junio Santos Chaves
   type: Estudante - Bolsista
-  url: 
+  description: "Estudante de TI, apaixonado por tecnologia!"
+  url: https://franciscochaves.com
   github: franciscojsc
+  social:
+    twitter: fr_develop
+    instagram: francisco.jschaves
+  content: "Estudante cada dia mais apaixonado por tecnologia. Sempre em busca de conhecimento."
 gabriel:
   name: José Gabriel da Costa Santos
   type: Estudante  
