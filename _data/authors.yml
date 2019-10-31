@@ -53,14 +53,13 @@ gabriel:
 reinan:
   name: Reinan Gabriel dos Santos Souza
   type: Estudante
-  description: "Lamborghini Mercy <br>Your chick she so thirsty <br>I'm in that two seat Lambo" 
-  url: 
+  description: "Olá meu nome é Reinan Gabriel, sou discente em Sistemas de Informação pelo Instituto Federal de Sergipe." 
   github: reinanhs
   social:
     facebook: reinangabriel96
     twitter: ReinanGabriel9
     instagram: reinanhs
-  content: "Lamborghini Mercy Your chick she so thirsty I'm in that two seat Lambo"
+  content: "Olá meu nome é <b>Reinan Gabriel</b>, sou discente em Sistemas de Informação pelo <b>Instituto Federal de Sergipe</b>. <br>Minha paixão é por tecnologia e sempre dedico meu tempo livre a me aventurar por conta entre novas tecnologias"
 mhagnumdw: # author-id
   name: MhagnumDw
   avatar: "assets/img/avatars/mhagnumdw_avatar.jpg"
