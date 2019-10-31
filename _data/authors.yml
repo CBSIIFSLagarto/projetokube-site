@@ -21,6 +21,11 @@ jean:
   type: Estudante
   url: 
   github: jean9826
+  social:
+    facebook: JeanCarlos9826
+    twitter: Jean13bo
+    instagram: jean13bo
+  content: "Lamborghini Mercy Your chick she so thirsty I'm in that two seat Lambo"
 franciscojsc:
   name: Francisco Junio Santos Chaves
   type: Estudante - Bolsista
@@ -50,3 +55,4 @@ sylhare:
   name: Sylhare
   avatar: "assets/img/avatars/sylhare_avatar.png"
   url: "https://github.com/sylhare"
+
