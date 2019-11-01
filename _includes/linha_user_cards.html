@@ -3,8 +3,8 @@
 	<div class="row">		
 		{% for user in dados %}			
 			<div class="col-md-4 col-sm-6">
-				{{user.name}}
-			</div>       
+				{% include user_card.html user=user %}
+			</div>        
 		{% endfor %}
 	</div>
 </div>

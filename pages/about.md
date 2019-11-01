@@ -19,6 +19,8 @@ A equipe é composta por alunos e professores do curso de sistemas de informaç�
 
 
 {% assign dados = site.data.authors | where_exp:"user",  "page.grupoProfessor contains user.type"  | sort: "name"  %}
-{% include linha_user_cards.html dados2=dados titulo="Professores" %}
+{% include linha_user_cards.html  titulo="Professores" %}
 
+
+{% assign dados = site.data.authors | where_exp:"user",  "page.grupoAluno contains user.type"  | sort: "name"  %}
 {% include linha_user_cards.html dados2=dados titulo="Alunos" %}
