@@ -48,7 +48,12 @@ franciscojsc:
 gabriel:
   name: José Gabriel da Costa Santos
   type: Estudante  
+  description: fascinado pelo mundo da tecnologia e estou a cada dia em busca de mais conhecimento
+  content:  estudante de BSI cada dia mais apaixonado pelo mundo das tecnologias uma das principais coisas que chamou a minha atenção foi o mundo dos jogos
   url: 
+  social:
+    facebook: scbiel
+    instagram : gabrielcs4412
   github: jgcs
 reinan:
   name: Reinan Gabriel dos Santos Souza
