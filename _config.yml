@@ -1,7 +1,7 @@
-date: 2019-10-30 10:51:37 UTC
+# date: 2019-10-30 10:51:37 UTC
 # SITE CONFIGURATION
 baseurl: #"/Type-on-Strap"
-default_locale: "pt-BR"
+# default_locale: "pt-BR"
 
 url: "https://projetokube-documentacao.github.io"
 title: Projeto Kube # site's title
@@ -130,7 +130,7 @@ plugins:
 exclude: [".jekyll-cache", "Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", ".idea", "vendor/*",
           "LICENSE", "README.md", "screenshot.png", "assets/package.json", "assets/node_modules", "assets/gulpfile.js"]
 
-keep_files: [assets/img]
+# keep_files: [assets/img]
 
 feed:
   path: atom.xml
@@ -143,7 +143,7 @@ feed:
 # remote_theme: sylhare/Type-on-Strap # If using as a remote_theme in github
 
 search:
-  noResultText: 'Nenhum resultado encontrado.'
+  noResultText: "Nenhum resultado encontrado."
   resultLimite: 10
 
   
