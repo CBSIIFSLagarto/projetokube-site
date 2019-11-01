@@ -130,7 +130,7 @@ plugins:
 exclude: [".jekyll-cache", "Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", ".idea", "vendor/*",
           "LICENSE", "README.md", "screenshot.png", "assets/package.json", "assets/node_modules", "assets/gulpfile.js"]
 
-keep_files: [assets/img]
+#keep_files: [assets/img]
 
 feed:
   path: atom.xml
@@ -158,6 +158,6 @@ search:
 #   profile: false
 #   startings: [html, head, body]
 
-relatedPosts:
-  maxRelated: 4
-  minCommonTags: 2
+# relatedPosts:
+#   maxRelated: 4
+#   minCommonTags: 2
