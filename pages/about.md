@@ -12,8 +12,6 @@ tags: [About, Archive]
 A equipe é composta por alunos e professores do curso de sistemas de informação do [IFS](https://www.ifs.edu.br/") Campus Lagarto.
 
 
-{% assign dados = site.data.authors | where_exp:"user",  "user.type == 'Coordenador' or  user.type == 'Professor'"  | sort: "name"  %}
-{% include linha_user_cards.html dados=dados titulo="Professores" %}
+{% include linha_user_cards.html titulo="Professores" %}
 
-{% assign dados = site.data.authors | where_exp:"user",  "user.type contains 'Estudante'" | sort: "name" %}
-{% include linha_user_cards.html dados=dados titulo="Alunos" %}
+{% include linha_user_cards.html  titulo="Alunos" %}
