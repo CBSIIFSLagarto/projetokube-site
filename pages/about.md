@@ -7,6 +7,13 @@ feature-img-credits: '<a style="background-color:black;color:white;text-decorati
 tags: [About, Archive]
 ---
 
-<h1>A Equipe</h1>
+# A Equipe
 
-<p>A equipe é composta por alunos e professores do curso de sistemas de informação do <a href="https://www.ifs.edu.br/">IFS</a> Campus Lagarto.</p>
+A equipe é composta por alunos e professores do curso de sistemas de informação do [IFS](https://www.ifs.edu.br/") Campus Lagarto.
+
+
+{% assign dados = site.data.authors | where_exp:"user",  "user.type == 'Coordenador' or  user.type == 'Professor'"  | sort: "name"  %}
+{% include linha_user_cards.html dados=dados titulo="Professores" %}
+
+{% assign dados = site.data.authors | where_exp:"user",  "user.type contains 'Estudante'" | sort: "name" %}
+{% include linha_user_cards.html dados=dados titulo="Alunos" %}
