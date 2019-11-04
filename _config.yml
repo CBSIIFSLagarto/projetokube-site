@@ -1,5 +1,6 @@
 # date: 2019-10-30 10:51:37 UTC
 # SITE CONFIGURATION
+encoding: UTF-8
 baseurl: #"/Type-on-Strap"
 # default_locale: "pt-BR"
 
@@ -132,6 +133,7 @@ exclude: [".jekyll-cache", "Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "
 
 # keep_files: [assets/img]
 
+
 feed:
   path: atom.xml
 #  collections:
@@ -145,19 +147,4 @@ feed:
 search:
   noResultText: "Nenhum resultado encontrado."
   resultLimite: 10
-
   
-
-compress_html:
-  clippings: all
-  comments: ["<!--", "-->"]
-  endings: all
-  ignore:
-    envs: [local]
-  blanklines: false
-  profile: false
-  startings: [html, head, body]
-
-relatedPosts:
-  maxRelated: 4
-  minCommonTags: 2
