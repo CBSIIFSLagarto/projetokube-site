@@ -16,10 +16,15 @@ feature-img: "assets/img/pexels/desk-messy.jpeg"
 #image: "assets/img/thumbnails/desk-messy.jpg" #seo tag
 
 author-id: sylhare
+image_sliders:
+  - slider1
+
 ---
 
 
-# O Projeto Kube	
+{% include slider.html selector="slider1" %}
+
+# O Projeto Kube
 
 ![Image do projeto]({{ "assets/img/logoprojeto-FundoBranco.png?style=centerme" | relative_url }})
 
