@@ -13,8 +13,8 @@
   <script src="{{ "/assets/js/slider/iis-bullet-nav.js" | relative_url }}"></script>
   <script src="{{ "/assets/js/slider/iis-captions.js" | relative_url }}"></script>
   <script>
-  {% for selector in iis_slider_array -%}
-	{% if selector.selector %}
+  {% for selector in iis_slider_array -%}	
+	{% if selector.selector  %}
 		{%- assign slider = selector  -%}
 	{% else %}
 		{%- assign slider = site.data.sliders | where:"selector",selector | first -%}
