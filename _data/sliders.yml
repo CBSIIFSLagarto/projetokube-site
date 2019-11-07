@@ -56,3 +56,32 @@
   settings:
     height: "'auto'"
     disableNav: true
+
+
+
+# -----------------------------
+- selector: denis
+  bullets: true
+  captions: true
+  images:
+    - data-src: /assets/img/projetos/denis/cluster1.jpg
+      title: Frente do cluster Denis
+    - data-src: /assets/img/projetos/denis/cluster2.jpg
+      title: Frente do cluster Denis
+    - data-src: /assets/img/projetos/denis/cluster3.jpg
+      title: Frente do cluster Denis
+    - data-src: /assets/img/projetos/denis/cluster-fundo1.jpg
+      title: Conexões (fundo da máquina).
+    - data-src: /assets/img/projetos/denis/cluster-fundo2.jpg
+      title: Conexões (fundo da máquina).
+    - data-src: /assets/img/projetos/denis/rack-rede1.jpg
+      title: Switch e patch painel
+    - data-src: /assets/img/projetos/denis/rack-rede2.jpg
+      title: Switch e patch painel
+    - data-src: /assets/img/projetos/denis/rack-rede3.jpg
+      title: Switch e patch painel          
+    - data-src: /assets/img/projetos/denis/rack-rede4.jpg
+      title: Switch e patch painel      
+  settings:
+    height: 400
+    effect: "'fade'"
