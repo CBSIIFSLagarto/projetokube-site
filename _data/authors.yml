@@ -16,6 +16,7 @@ alfredo:
 rubens:
   name: "Rubens Matos"
   type: Professor
+  github: rubensmatosjr
 will:
   name: "Wilhelm Rodrigues"
   type: Professor
