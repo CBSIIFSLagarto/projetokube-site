@@ -16,6 +16,9 @@ alfredo:
 rubens:
   name: "Rubens Matos"
   type: Professor
+will:
+  name: "Wilhelm Rodrigues"
+  type: Professor
 alexchaves:
   name: "Alex Santos Chaves"
   type: Estudante
