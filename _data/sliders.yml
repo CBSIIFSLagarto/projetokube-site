@@ -58,7 +58,23 @@
     disableNav: true
 
 
-
+- selector: AngryPirdsDesenho
+  bullets: true
+  captions: true
+  images:
+  - data-src: /assets/img/projetos/AngryPirds/1.jpg
+    title: "Visão geral do rack"
+  - data-src: /assets/img/projetos/AngryPirds/2.jpg
+    title: "Visão geral do rack"
+  - data-src: /assets/img/projetos/AngryPirds/3.jpg
+    title: "Fundo do rack"
+  - data-src: /assets/img/projetos/AngryPirds/4.jpg
+    title: "Vista lateral do rack"
+  - data-src: /assets/img/projetos/AngryPirds/5.jpg
+    title: "Vista superior	"
+  settings:
+    height: "450"
+    effect: "'fade'"
 # -----------------------------
 - selector: denis
   bullets: true
