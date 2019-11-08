@@ -2,10 +2,10 @@
 # SITE CONFIGURATION
 encoding: UTF-8
 baseurl: #"/Type-on-Strap"
-locale : "pt-BR"
+# locale : "pt-BR"
 # default_locale: "pt-BR"
 
-url: "https://projetokube-documentacao.github.io"
+url: "https://projetokube-site.github.io"
 title: Projeto Kube # site's title
 description: "Computação em nuvem, Devops e educação" # used by search engines
 
@@ -44,7 +44,7 @@ theme_settings:
   facebook:
   flickr:
   gitlab:
-  github: "CBSIIFSLagarto/projetokube-documentacao"
+  github: "CBSIIFSLagarto/projetokube-site"
   instagram:
   keybase:
   linkedin:  # Full URL
@@ -105,12 +105,12 @@ paginate_path: "blog/page:num"
 
 # PORTFOLIO
 collections:
-  # portfolio:
-  #  output: true
-  #  permalink: /:collection/:name
   projetos:
     output: true
     permalink: /:collection/:name
+  # portfolio:
+  #  output: true
+  #  permalink: /:collection/:name
 
 
 # BUILD SETTINGS
@@ -143,7 +143,7 @@ plugins:
   # - jekyll-relative-links # https://github.com/benbalter/jekyll-relative-links
   - jekyll-sitemap # https://github.com/jekyll/jekyll-sitemap
   - jemoji
-exclude: [".jekyll-cache", "Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", ".idea", "vendor/*",
+exclude: [".jekyll-cache", "Gemfile", "Gemfile*.lock", "type-on-strap.gemspec", "*.gem", ".idea", "vendor/*", "__portfolio/*",
           "LICENSE", "README.md", "screenshot.png", "assets/package.json", "assets/node_modules", "assets/gulpfile.js"]
 
 # keep_files: [assets/img]
