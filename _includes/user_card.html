@@ -2,11 +2,11 @@
 	<div class="card">
 		<div class="front">
 			<div class="cover">
-				<img src="{{ '/assets/img/pexels/computer.jpeg' | relative_url }}"/>
+				<img src="{{ '/assets/img/pexels/computer.jpeg' | absolute_url }}"/>
 			</div>
 			<div class="user">
 				{% if user.avatar %}
-				<img class="img-circle" src="{{ user.avatar | relative_url }}"/>
+				<img class="img-circle" src="{{ user.avatar | absolute_url }}"/>
 				{% elsif user.github %}
 				<img class="img-circle" src="https://avatars3.githubusercontent.com/{{ user.github }}?v=3&amp;s=273"/>
 				{% else %}

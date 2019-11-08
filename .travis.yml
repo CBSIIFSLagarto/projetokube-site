@@ -7,8 +7,13 @@ before_install:
   - gem install bundler
 script:
   - JEKYLL_ENV=production bundle exec jekyll build --destination site
+branches:
+  only:
+    - gh-pages
+    - master
+    - /^v.*$/
 deploy:
-  provider: pages
+  provider: rubygems
   local-dir: ./site
   email: reinangabriel1520@gmail.com
   name: Deployment Bot
