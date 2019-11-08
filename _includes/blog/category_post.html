@@ -1,0 +1,86 @@
+<div class="section section-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- row -->
+                <div class="row">
+                    {% for category in site.categories %}
+                    {% assign title = category[0] %}
+                    <div class="col-md-12">
+                        <div class="section-title">
+                            <h2 class="title">{{ title }}</h2>
+                        </div>
+                    </div>
+
+                    <!-- post -->
+                    {% for post in site.categories[title] %}
+                    <div class="col-md-6">{%- include blog/post-thumb.html post=post -%}</div>
+                    {% endfor %}
+                    <!-- /post -->
+
+                    {% endfor %}
+                </div>
+                <!-- /row -->
+            </div>
+            <div class="col-md-4">
+                <!-- social widget -->
+                <div class="aside-widget">
+                    <div class="section-title">
+                        <h2 class="title">Mídia social</h2>
+                    </div>
+                    <div class="social-widget">
+                        <ul>
+                            <li>
+                                <a href="https://www.facebook.com/{{ site.social.facebook }}" target="_blank" class="social-facebook">
+                                    <i class="fa fa-facebook"></i>
+                                    <span>Curta nossa página</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.twitter.com/{{ site.social.twitter }}" target="_blank" class="social-twitter">
+                                    <i class="fa fa-twitter"></i>
+                                    <span>Siga-me <br>no twitter</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.google.com/search?&q=projetokube-site&oq=projetokube-site" target="_blank" class="social-google-plus">
+                                    <i class="fa fa-google"></i>
+                                    <span>Resultados de busca</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /social widget -->
+
+                <!-- category widget -->
+                <div class="aside-widget">
+                    <div class="section-title">
+                        <h2 class="title">Categorias</h2>
+                    </div>
+                    <div class="category-widget">
+                        <ul>
+                            {% for category in site.categories %}
+                            {% assign title = category[0] %}
+                                <li><a href="#">{{ title }} <span>{{ site.categories[title].size }}</span></a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <!-- /category widget -->
+
+                <!-- post widget -->
+                <div class="aside-widget">
+                    <div class="section-title">
+                        <h2 class="title">Postagens recentes</h2>
+                    </div>
+                    <!-- post -->
+                    {% for post in site.posts limit:10 %}
+                        {%- include blog/post-thumb.html post=post type='post-widget' -%}
+                    {% endfor %}
+                </div>
+                <!-- /post widget -->
+            </div>
+        </div>
+    </div>
+</div>

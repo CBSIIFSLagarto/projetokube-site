@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Acesso ao laboratório de pesquisa
-tags: [acesso, laboratório pesquisa]
-category: Informação
+title: Execução de containers Docker com Raspberry Pi
+tags: [raspberry, docker]
+category: Linux
 author-id: frchico
-feature-img: assets/img/blog/laboratorio2.jpg
+feature-img: assets/img/blog/raspberry.jpg
 excerpt_separator: <!--more-->
 ---
 

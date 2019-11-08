@@ -1,0 +1,25 @@
+<div class="section section-blog">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div id="hot-post" class="row hot-post">
+
+
+            {% for post in site.posts limit:1 %}
+            <div class="col-md-8 hot-post-left">
+                {%- include blog/post-thumb.html post=post type='post-thumb' -%}
+            </div>
+            {% endfor %}
+
+            <div class="col-md-4 hot-post-right">
+                {% for post in site.posts limit:3 %}
+                    {%- if forloop.index != 1 -%}
+                        {%- include blog/post-thumb.html post=post type='post-thumb' -%}
+                    {%- endif -%}
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+    <!-- /container -->
+</div>
