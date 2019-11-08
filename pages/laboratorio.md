@@ -1,5 +1,6 @@
 ---
 layout: page
+date: November 2019
 title: Laboratório
 fullTitle: Laboratório de Pesquisa
 
@@ -28,13 +29,17 @@ Além do laboratório de pesquisa, é possível utilizar a infraestrutura do cur
 {% include slider.html selector="lab" %}
 
 
-
 # Equipamentos disponíveis
 
-- 7 máquinas para uso em pesquisa compartilhadas com os alunos de SI;
-- 1 máquina exclusiva para conexão com os servidores existentes no laboratório
-- Cluster [*Denis*](../_projetos/denis.md);
+- Dez (10) máquinas para uso em pesquisa compartilhadas com os alunos de SI;
+- Uma (1) máquina exclusiva para conexão com os servidores existentes no laboratório
+- Cluster [*Denis*](../_projetos/9999-11-05-denis);
 - Raspberrys PI 3 B+;
-- Mini-rack _[Angry *Pirdis*](../_projetos/cake.md)_ com Raspberry PI 3 B+;
+- Mini-rack _[Angry *Pirdis*](../_projetos/2019-11-05-angrypirds)_ com Raspberry PI 3 B+;
 - Impressora 3D.
+
+
+## Localização
+
+O [laboratório de pesquisa](laboratorio.md) está localizado no bloco da [CBSI do Campus Lagarto do Instituto Federal de Sergipe](http://www.ifs.edu.br/lagarto), na cidade de Lagarto/SE (no centro sul de Sergipe).
 
