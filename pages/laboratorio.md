@@ -33,9 +33,9 @@ Além do laboratório de pesquisa, é possível utilizar a infraestrutura do cur
 
 - Dez (10) máquinas para uso em pesquisa compartilhadas com os alunos de SI;
 - Uma (1) máquina exclusiva para conexão com os servidores existentes no laboratório
-- Cluster [*Denis*](../_projetos/9999-11-05-denis);
+- Cluster [*Denis*](../projetos/9999-11-05-denis);
 - Raspberrys PI 3 B+;
-- Mini-rack _[Angry *Pirdis*](../_projetos/2019-11-05-angrypirds)_ com Raspberry PI 3 B+;
+- Mini-rack [_Angry *Pirdis*_](../projetos/2019-11-05-angrypirds) com Raspberry PI 3 B+;
 - Impressora 3D.
 
 
