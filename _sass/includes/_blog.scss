@@ -43,7 +43,7 @@
 
 .section-blog a:hover,
 .section-blog a:focus {
-  color: #ee4266;
+  color: #337ab7;
   text-decoration: none;
   outline: none;
 }
@@ -106,10 +106,10 @@
 }
 
 .primary-button {
-  background-color: #ee4266;
+  background-color: #337ab7;
   color: #fff;
-  -webkit-box-shadow: 0px 0px 0px 2px #ee4266 inset;
-  box-shadow: 0px 0px 0px 2px #ee4266 inset;
+  -webkit-box-shadow: 0px 0px 0px 2px #337ab7 inset;
+  box-shadow: 0px 0px 0px 2px #337ab7 inset;
 }
 
 .secondary-button {
@@ -122,7 +122,7 @@
 .primary-button:hover,
 .primary-button:focus {
   background-color: transparent;
-  color: #ee4266;
+  color: #337ab7;
 }
 
 .secondary-button:hover,
@@ -237,10 +237,14 @@
 }
 
 .post-category a {
-  color: #ee4266;
+  color: #337ab7;
   font-weight: 700;
   font-size: 12px;
   text-transform: uppercase;
+}
+
+.post-category a:hover{
+  color: #000 !important;
 }
 
 .post-category a:after {
@@ -270,7 +274,7 @@
 
 .post-meta li a:hover,
 .post-meta li a:focus {
-  color: #ee4266;
+  color: #337ab7;
 }
 
 .post-meta li:after {
@@ -346,7 +350,7 @@
 
 .post.post-thumb .post-title a:hover,
 .post.post-thumb .post-title a:focus {
-  color: #ee4266;
+  color: #337ab7 !important;
 }
 
 .post.post-thumb .post-meta li {
@@ -359,7 +363,7 @@
 
 .post.post-thumb .post-meta li a:hover,
 .post.post-thumb .post-meta li a:focus {
-  color: #ee4266;
+  color: #337ab7 !important;
 }
 
 /*----------------------------*\
@@ -437,7 +441,7 @@
 
 .page-header .post-meta li a:hover,
 .page-header .post-meta li a:focus {
-  color: #ee4266;
+  color: #337ab7;
 }
 
 .post-share a {
@@ -454,6 +458,7 @@
 
 .post-share a:hover {
   opacity: 0.9;
+  color: #fff;
 }
 
 .post-share a i {
@@ -500,6 +505,10 @@
 
 .post-tags ul li:last-child:after {
   display: none;
+}
+
+.post-tags a:hover{
+  color: #fff;
 }
 
 /*----------------------------*\
@@ -591,7 +600,7 @@
 
 .page-header .author .author-social li a:hover,
 .page-header .author .author-social li a:focus {
-  color: #ee4266;
+  color: #337ab7;
 }
 
 /*----------------------------*\
@@ -658,11 +667,11 @@
 }
 
 .post-comments .media.media-author .media-heading h4 {
-  color: #ee4266;
+  color: #337ab7;
 }
 
 .post-comments .media.media-author .media-left:after {
-  background-color: #ee4266;
+  background-color: #337ab7;
 }
 
 /*=========================================================
@@ -810,7 +819,7 @@
 .tags-widget ul li a:hover,
 .tags-widget ul li a:focus {
   color: #fff !important;
-  background-color: #ee4266;
+  background-color: #337ab7;
 }
 
 /*----------------------------*\

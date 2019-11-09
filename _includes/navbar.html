@@ -25,6 +25,7 @@
         {% assign name_page = "" %}
 
         {% for page in site.pages %}
+            {%- if page.visible == null or page.visible == true -%}
             {% unless page.title == null or page.hide or name_page contains page.title %}
             <li class="separator"> | </li> 
             <li>
@@ -34,6 +35,7 @@
                 </a>
             </li>
             {% endunless %}
+            {%- endif -%}
             {% assign name_page = page.title | append: name_page %}
         {% endfor %}
     </ul>

@@ -18,6 +18,11 @@ defaults:
       path: "assets/**/*.pdf"
     values:
       sitemap: false
+  - scope:
+      path: ""
+      type: category
+    values:
+      layout: "category"
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -103,16 +108,19 @@ theme_settings:
   # Open the "_sass > base" folder, and open "_variables.scss"
 
 # PAGINATION
-paginate: 10
+paginate: 6
 paginate_path: "blog/page:num"
 
 
+permalink: /blog/:categories/:year/:month/:day/:title:output_ext
 
 # PORTFOLIO
 collections:
   projetos:
     output: true
     permalink: /:collection/:name
+  category:
+    output: true
 
 # BUILD SETTINGS
 markdown: kramdown

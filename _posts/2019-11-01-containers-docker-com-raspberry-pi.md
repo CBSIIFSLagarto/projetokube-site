@@ -2,7 +2,7 @@
 layout: post
 title: Execução de containers Docker com Raspberry Pi
 tags: [raspberry, docker]
-category: Linux
+category: [ linux ]
 author-id: frchico
 feature-img: assets/img/blog/raspberry.jpg
 excerpt_separator: <!--more-->
