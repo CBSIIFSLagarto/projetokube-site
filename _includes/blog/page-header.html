@@ -13,6 +13,11 @@
         <div class="row">
             <div class="col-md-offset-1 col-md-10 text-center">
                 <h1 class="text-uppercase">{{ include.title }}</h1>
+                {%- if include.credits -%}
+                <ul class="post-meta">
+                    <li>{{ include.credits }}</li>
+                </ul>
+                {%- endif -%}
             </div>
         </div>
         {%- elsif include.type == 'post' -%}
@@ -28,6 +33,7 @@
                     <li><a href="{{ 'equipe' | absolute_url }}#{{ include.page.author-id }}">{{ include.page.author-id }}</a>
                     </li>
                     <li>{% include blog/data-ptBR.html date=include.page.date %}</li>
+                    {%- if include.credits -%}<li>Direitos autorais da imagem de fundo {{ include.credits }}</li>{%- endif -%}
                 </ul>
             </div>
         </div>
