@@ -11,10 +11,10 @@ layout: default
                 <!-- post share -->
                 <div class="section-row">
                     <div class="post-share">
-                        <a href="#" class="social-facebook"><i class="fa fa-facebook"></i><span>Compartilhar</span></a>
-                        <a href="#" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
-                        <a href="#" class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a>
-                        <a href="#"><i class="fa fa-envelope"></i><span>Email</span></a>
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}&quote={{ page.title | url_encode | strip_html | truncate: '45' | escape }}" class="social-facebook"><i class="fa fa-facebook"></i><span>Compartilhar</span></a>
+                        <a target="_blank" href="https://twitter.com/intent/tweet?source=http://{{ page.url | absolute_url }}&text={{ page.title | url_encode | strip_html | truncate: '45' | escape }}: http://{{ page.url | absolute_url }}" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
+                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http://{{ page.url | absolute_url }}&media={{ page.feature-img | absolute_url }}&description={{ page.content| url_encode | strip_html | truncate: '100' | escape }}" class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a>
+                        <a target="_blank" href="mailto:?subject={{ page.title | strip_html | truncate: '45' | escape }}&body={{ page.content | strip_html | truncate: '280' | escape }}:http://{{ page.url | absolute_url }}"><i class="fa fa-envelope"></i><span>Email</span></a>
                     </div>
                 </div>
                 <!-- /post share -->
