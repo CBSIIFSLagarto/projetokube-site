@@ -5,7 +5,7 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-lg-8 col-md-12">
                 {%- if include.data.category == 'all' -%}
                     {%- assign variable = site.posts -%}
                 {%- else -%}
@@ -19,7 +19,7 @@
                 <div class="row">
                     {% for post in variable limit:4 %}
                         {%- if forloop.index != 1 -%}
-                            <div class="col-md-6">    
+                            <div class="col-lg-6 col-md-12">    
                                 {%- include blog/post-thumb.html post=post -%}
                             </div>
                         {%- endif -%}
@@ -33,7 +33,7 @@
                 {% endfor %}
             </div>
 
-            <div class="col-md-4">{%- include blog/submenu-ads.html -%}</div>
+            <div class="col-lg-4 col-md-12">{%- include blog/submenu-ads.html -%}</div>
         </div>
         <!-- /row -->
     </div>

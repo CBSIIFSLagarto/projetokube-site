@@ -7,7 +7,7 @@
             <a href="{{ 'category' | absolute_url }}/{{ include.post.category | first }}">{{ include.post.category | first }}</a>
         </div>
         {%- if include.type == 'post-thumb' -%}
-        <h3 class="post-title title-lg"><a href="{{ include.post.url }}">{{ include.post.title | strip_html | truncate: '80' | escape }}</a></h3>
+        <h3 class="post-title {{ include.title }}"><a href="{{ include.post.url }}">{{ include.post.title | strip_html | truncate: '80' | escape }}</a></h3>
         {%- elsif include.type == 'post-widget' -%}
         <h3 class="post-title"><a href="{{ include.post.url }}">{{ include.post.title | strip_html | truncate: '60' | escape }}</a></h3>
         {%- elsif include.type == 'post-sm' -%}

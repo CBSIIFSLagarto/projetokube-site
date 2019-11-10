@@ -374,6 +374,11 @@
   color: #337ab7 !important;
 }
 
+@media only screen and (min-width: 1200px){
+  .hot-post-left .post.post-thumb .post-img img{
+    height: 418px !important;
+  }
+}
 /*----------------------------*\
       post small
   \*----------------------------*/
@@ -886,4 +891,36 @@
 
 .social-instagram {
   background: #d341b2 !important;
+}
+/*=========================================================
+	RESPONSIVE
+===========================================================*/
+@media only screen and (max-width: 901px) {
+  .page-header h1 {
+    font-size: 32.437px;
+  }
+  .post-nav .prev-post {
+    float: none;
+    width: 100%;
+    margin-bottom: 15px;
+    padding-right: 0px;
+  }
+  .post-nav .prev-post:last-child {
+    margin-bottom: 0px;
+  }
+  .post-nav .next-post {
+    float: none;
+    width: 100%;
+  }
+  .post-nav .next-post {
+    float: none;
+    width: 100%;
+    padding-left: 0px;
+    text-align: left;
+  }
+  .post-nav .next-post .post-img {
+    margin-right: 15px;
+    float: left;
+    margin-left: 0px;
+  }
 }

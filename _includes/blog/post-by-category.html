@@ -2,7 +2,7 @@
 <div class="section section-blog">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-lg-8 col-md-12">
                 <!-- row -->
                 <div class="row">
 
@@ -17,7 +17,7 @@
                     <!-- post -->
                     {% for post in site.posts limit:6 %}
                     {%- if forloop.rindex > 3 -%}
-                    <div class="col-md-6">{%- include blog/post-thumb.html post=post -%}</div>
+                    <div class="col-md-6 col-sm-12">{%- include blog/post-thumb.html post=post -%}</div>
                     {%- endif -%}
                     <!-- /post -->
                     {% endfor %}
@@ -41,14 +41,14 @@
 
                     <!-- post -->
                     {% for post in site.categories[title] limit:6 %}
-                    <div class="col-md-6">{%- include blog/post-thumb.html post=post -%}</div>
+                    <div class="col-md-6 col-sm-12">{%- include blog/post-thumb.html post=post -%}</div>
                     {% endfor %}
                     <!-- /post -->
                     {% endfor %}
                 </div>
                 <!-- /row -->
             </div>
-            <div class="col-md-4">{%- include blog/submenu-ads.html -%}</div>
+            <div class="col-lg-4 col-md-12">{%- include blog/submenu-ads.html -%}</div>
         </div>
     </div>
 </div>
