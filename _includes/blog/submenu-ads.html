@@ -39,7 +39,7 @@
         <ul>
             {% for category in site.categories %}
             {% assign title = category[0] %}
-            <li><a href="#">{{ title }} <span>{{ site.categories[title].size }}</span></a></li>
+            <li><a href="{{ 'category' | absolute_url }}/{{ title }}">{{ title }} <span>{{ site.categories[title].size }}</span></a></li>
             {% endfor %}
         </ul>
     </div>
