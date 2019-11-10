@@ -1,38 +1,7 @@
 ---
 layout: default
 ---
-<style>
-    .site-header {
-        float: initial !important;
-    }
-</style>
-<section class="section-blog">
-    <!--  PAGE HEADER  -->
-    <div id="post-header" class="page-header">
-        <div class="page-header-bg"
-            style="background-image: url('{{ page.feature-img  | absolute_url }}'); background-position: 0% 0%;"
-            data-stellar-background-ratio="0.5"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10">
-                    <div class="post-category">
-                        <a
-                            href="{{ 'blog/categoria/' | absolute_url }}{{ page.category | first }}">{{ page.category | first }}</a>
-                    </div>
-                    <h1>{{ page.title }}</h1>
-                    <ul class="post-meta">
-                        <li><a href="{{ 'blog/author/' | absolute_url }}{{ page.author-id }}">{{ page.author-id }}</a>
-                        </li>
-                        <li>{% include blog/data_ptBR.html date=page.date %}</li>
-                        <li><i class="fa fa-comments"></i> 3</li>
-                        <li><i class="fa fa-eye"></i> 807</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+{%- include blog/page-header.html type="post" image=page.feature-img title=page.title page=page -%}
 <div class="section section-blog">
     <!-- container -->
     <div class="container">
@@ -113,12 +82,12 @@ layout: default
                 <div class="section-row">
                     <div class="section-title">
                         <h3 class="title">Sobre <a
-                                href="{{ 'blog/author/' | absolute_url }}{{ page.author-id }}">{{ site.data.authors[page.author-id].name }}</a>
+                                href="{{ 'equipe' | absolute_url }}#{{ page.author-id }}">{{ site.data.authors[page.author-id].name }}</a>
                         </h3>
                     </div>
                     <div class="author media">
                         <div class="media-left">
-                            <a href="{{ 'blog/author/' | absolute_url }}{{ page.author-id }}">
+                            <a href="{{ 'equipe' | absolute_url }}#{{ page.author-id }}">
                                 {% if site.data.authors[page.author-id].avatar %}
                                 <img class="author-img media-object" src="{{ site.data.authors[page.author-id].avatar | absolute_url }}" />
                                 {% elsif site.data.authors[page.author-id].github %}
@@ -172,11 +141,18 @@ layout: default
                     <div class="section-title">
                         <h3 class="title">Comentários</h3>
                     </div>
-                    <div class="post-comments"></div>
+                    <div class="post-comments">
+                        <!-- Disqus -->
+                        {% if site.theme_settings.disqus_shortname %}
+                        <div class="comments">
+                        {% include disqus.html %}
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
                 <!-- /post comments -->
             </div>
-            <div class="col-md-4">{%- include blog/blogSubMenu.html -%}</div>
+            <div class="col-md-4">{%- include blog/submenu-ads.html -%}</div>
         </div>
         <!-- /row -->
     </div>

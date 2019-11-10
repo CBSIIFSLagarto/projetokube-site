@@ -1,0 +1,54 @@
+<!-- Página responsável por fazer a listagem de publicações por categoria -->
+<div class="section section-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- row -->
+                <div class="row">
+
+                    <!-- Últimas publicações -->
+                    {%- if site.posts.size > 2 -%}
+                    <div class="col-md-12">
+                        <div class="section-title">
+                            <h2 class="title">Últimas publicações</h2>
+                        </div>
+                    </div>
+                    
+                    <!-- post -->
+                    {% for post in site.posts limit:6 %}
+                    {%- if forloop.rindex > 3 -%}
+                    <div class="col-md-6">{%- include blog/post-thumb.html post=post -%}</div>
+                    {%- endif -%}
+                    <!-- /post -->
+                    {% endfor %}
+
+                    <div class="col-md-12">
+                        <div class="section-row loadmore text-center">
+                            <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes" class="primary-button">Carregar todas as publicações</a>
+                        </div>
+                    </div>
+
+                    {%- endif -%}
+
+                    <!-- Categorys -->
+                    {% for category in site.categories %}
+                    {% assign title = category[0] %}
+                    <div class="col-md-12">
+                        <div class="section-title">
+                            <h2 class="title">{{ title }}</h2>
+                        </div>
+                    </div>
+
+                    <!-- post -->
+                    {% for post in site.categories[title] limit:6 %}
+                    <div class="col-md-6">{%- include blog/post-thumb.html post=post -%}</div>
+                    {% endfor %}
+                    <!-- /post -->
+                    {% endfor %}
+                </div>
+                <!-- /row -->
+            </div>
+            <div class="col-md-4">{%- include blog/submenu-ads.html -%}</div>
+        </div>
+    </div>
+</div>

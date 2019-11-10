@@ -1,10 +1,10 @@
 ---
-layout: post
-title: Execução de containers Docker com Raspberry Pi
-tags: [raspberry, docker]
-category: [ linux ]
-author-id: frchico
-feature-img: assets/img/blog/raspberry.jpg
+layout: post-blog
+title:  'No final das contas: o que é o Docker e como ele funciona?'
+tags: [docker, devops]
+category: [ devops ]
+author-id: reinan
+feature-img: assets/img/blog/docker.jpg
 excerpt_separator: <!--more-->
 ---
 

@@ -3,8 +3,8 @@ layout: default
 date: November 2019
 title: Blog
 permalink: /blog/
-tags: [equipe, professor, aluno, pesquisador, como participar]
+tags: [blog, notícias, tutoriais, artigos]
 ---
 
-{% include blog/blog_news.html %}
-{% include blog/category_post.html %}
+{% include blog/page-main.html %}
+{% include blog/post-by-category.html %}

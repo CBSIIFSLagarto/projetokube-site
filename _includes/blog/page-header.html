@@ -1,0 +1,34 @@
+<style>.site-header { float: initial !important; }</style>
+<!--  PAGE HEADER  -->
+<div class="page-header">
+    <div class="page-header-bg"
+    {%- if include.type == 'category' -%}
+        style="background-image: url('{{ include.image | absolute_url }}'); background-position: 0px -71px;"
+    {%- elsif include.type == 'post' -%}
+        style="background-image: url('{{ include.image  | absolute_url }}'); background-position: 0% 0%;"
+    {%- endif -%}
+        data-stellar-background-ratio="0.5"></div>
+    <div class="container">
+        {%- if include.type == 'category' -%}
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 text-center">
+                <h1 class="text-uppercase">{{ include.title }}</h1>
+            </div>
+        </div>
+        {%- elsif include.type == 'post' -%}
+        <div class="row">
+            <div class="col-md-10">
+                <div class="post-category">
+                    <a href="{{ 'category' | absolute_url }}/{{ include.page.category | first }}">{{ include.page.category | first }}</a>
+                </div>
+                <h1>{{ include.page.title }}</h1>
+                <ul class="post-meta">
+                    <li><a href="{{ 'equipe' | absolute_url }}#{{ include.page.author-id }}">{{ include.page.author-id }}</a>
+                    </li>
+                    <li>{% include blog/data-ptBR.html date=include.page.date %}</li>
+                </ul>
+            </div>
+        </div>
+        {%- endif -%}
+    </div>
+</div>

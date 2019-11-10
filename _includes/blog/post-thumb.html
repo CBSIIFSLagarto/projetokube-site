@@ -1,9 +1,10 @@
+<!-- Página responsável por mostrar os cards das publicações -->
 <!-- post -->
 <div class="post {{ include.type }}">
     <a class="post-img" href="{{ include.post.url }}"><img src="{{ include.post.feature-img | relative_url }}" alt=""></a>
     <div class="post-body">
         <div class="post-category">
-            <a href="{{ 'blog/categoria/' | absolute_url }}{{ page.category | first }}">{{ include.post.category | first }}</a>
+            <a href="{{ 'category' | absolute_url }}/{{ include.post.category | first }}">{{ include.post.category | first }}</a>
         </div>
         {%- if include.type == 'post-thumb' -%}
         <h3 class="post-title title-lg"><a href="{{ include.post.url }}">{{ include.post.title | strip_html | truncate: '80' | escape }}</a></h3>
@@ -15,11 +16,11 @@
         <h3 class="post-title"><a href="{{ include.post.url }}">{{ include.post.title | strip_html | truncate: '70' | escape }}</a></h3>
         {%- endif -%}
         {%- if include.type != 'post-widget' -%}
-        <ul class="post-meta">
-            <li><a href="{{ 'blog/author/' | absolute_url }}{{ page.author-id }}">{{ include.post.author-id }}</a></li>
+        <ul class="post-meta">  
+            <li><a href="{{ 'equipe' | absolute_url }}#{{ include.post.author-id }}">{{ include.post.author-id }}</a></li>
             {%- assign datePost = include.post.date -%}
             {%- if include.type != 'post-sm' -%}
-            <li>{% include blog/data_ptBR.html  date=datePost %}</li>
+            <li>{% include blog/data-ptBR.html  date=datePost %}</li>
             {%- endif -%}
         </ul>
         {%- endif -%}

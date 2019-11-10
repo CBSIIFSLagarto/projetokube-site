@@ -1,5 +1,5 @@
 ---
-layout: postBlog
+layout: post-blog
 title: Acesso ao laboratório de pesquisa
 tags: [acesso, laboratório pesquisa]
 category: [ acesso, laboratorio ]
