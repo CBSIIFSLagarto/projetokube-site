@@ -79,46 +79,48 @@ layout: default
                 <!-- /post nav  -->
 
                 <!-- post author -->
+                {%- for author in page.author-id -%}
                 <div class="section-row">
                     <div class="section-title">
                         <h3 class="title">Sobre <a
-                                href="{{ 'equipe' | absolute_url }}#{{ page.author-id }}">{{ site.data.authors[page.author-id].name }}</a>
+                                href="{{ 'equipe' | absolute_url }}#{{ author }}">{{ site.data.authors[author].name }}</a>
                         </h3>
                     </div>
                     <div class="author media">
                         <div class="media-left">
-                            <a href="{{ 'equipe' | absolute_url }}#{{ page.author-id }}">
-                                {% if site.data.authors[page.author-id].avatar %}
-                                <img class="author-img media-object" src="{{ site.data.authors[page.author-id].avatar | absolute_url }}" />
-                                {% elsif site.data.authors[page.author-id].github %}
+                            <a href="{{ 'equipe' | absolute_url }}#{{ author }}">
+                                {% if site.data.authors[author].avatar %}
+                                <img class="author-img media-object" src="{{ site.data.authors[author].avatar | absolute_url }}" />
+                                {% elsif site.data.authors[author].github %}
                                 <img class="author-img media-object"
-                                    src="https://avatars3.githubusercontent.com/{{ site.data.authors[page.author-id].github }}?v=3&amp;s=273" />
+                                    src="https://avatars3.githubusercontent.com/{{ site.data.authors[author].github }}?v=3&amp;s=273" />
                                 {% else %}
                                 <img class="author-img media-object"
-                                    src="https://ui-avatars.com/api/?name={{ site.data.authors[page.author-id].name | uri_escape  }}?size=273" />
+                                    src="https://ui-avatars.com/api/?name={{ site.data.authors[author].name | uri_escape  }}?size=273" />
                                 {% endif %}
                             </a>
                         </div>
                         <div class="media-body">
-                            <p>{{ site.data.authors[page.author-id].content }}</p>
+                            <p>{{ site.data.authors[author].content }}</p>
                             <ul class="author-social">
-                                {% if site.data.authors[page.author-id].social.facebook %}
-                                <li><a target="_blank" href="http://fb.com/{{ site.data.authors[page.author-id].social.facebook }}"><i class="fa fa-facebook fa-fw"></i></a></li>
+                                {% if site.data.authors[author].social.facebook %}
+                                <li><a target="_blank" href="http://fb.com/{{ site.data.authors[author].social.facebook }}"><i class="fa fa-facebook fa-fw"></i></a></li>
                                 {% endif %}
-                                {% if site.data.authors[page.author-id].github %}
-                                <li><a target="_blank" href="http://github.com/{{ site.data.authors[page.author-id].github }}"><i class="fa fa-github fa-fw"></i></a></li>
+                                {% if site.data.authors[author].github %}
+                                <li><a target="_blank" href="http://github.com/{{ site.data.authors[author].github }}"><i class="fa fa-github fa-fw"></i></a></li>
                                 {% endif %}
-                                {% if site.data.authors[page.author-id].social.twitter %}
-                                <li><a target="_blank" href="https://twitter.com/{{ site.data.authors[page.author-id].social.twitter }}"><i class="fa fa-twitter fa-fw"></i></a></li>
+                                {% if site.data.authors[author].social.twitter %}
+                                <li><a target="_blank" href="https://twitter.com/{{ site.data.authors[author].social.twitter }}"><i class="fa fa-twitter fa-fw"></i></a></li>
                                 {% endif %}
-                                {% if site.data.authors[page.author-id].social.instagram %}
-                                <li><a target="_blank" href="https://instagram.com/{{ site.data.authors[page.author-id].social.instagram }}"><i class="fa fa-instagram fa-fw"></i></a></li>
+                                {% if site.data.authors[author].social.instagram %}
+                                <li><a target="_blank" href="https://instagram.com/{{ site.data.authors[author].social.instagram }}"><i class="fa fa-instagram fa-fw"></i></a></li>
                                 {% endif %}
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!-- /post author -->
+                {%- endfor -%}
 
                 <!-- /related post -->
                 <div>

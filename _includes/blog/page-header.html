@@ -30,7 +30,9 @@
                 </div>
                 <h1>{{ include.page.title }}</h1>
                 <ul class="post-meta">
-                    <li><a href="{{ 'equipe' | absolute_url }}#{{ include.page.author-id }}">{{ include.page.author-id }}</a>
+                    {%- for author in include.page.author-id -%}
+                    <li><a href="{{ 'equipe' | absolute_url }}#{{ author }}">{{ author }}</a>
+                    {%- endfor -%}
                     </li>
                     <li>{% include blog/data-ptBR.html date=include.page.date %}</li>
                     {%- if include.credits -%}<li>Direitos autorais da imagem de fundo {{ include.credits }}</li>{%- endif -%}
