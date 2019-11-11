@@ -1,24 +1,19 @@
 language: ruby
 rvm:
-  - 2.6.5
-
+ - 2.6.5
+cache: bundler
 before_install:
   - gem update --system
   - gem install bundler
 script:
-  - bundle install
-  - bundle exec jekyll build
-notifications:
-  email: false
-branches:
-  only:
-    - gh-pages
-    - master
-    - /^v.*$/
-
-env:
-  global:
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-sudo: false
-
-
+  - JEKYLL_ENV=production bundle exec jekyll build --destination site
+deploy:
+  provider: pages
+  local-dir: ./site
+  email: reinangabriel1520@gmail.com
+  name: Deployment Bot
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master

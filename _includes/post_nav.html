@@ -1,7 +1,7 @@
 <div id="post-nav">
     {% if page.next.url %}
     <div id="previous-post">
-        <a alt="{{ page.next.title }}" href="{{ page.next.url | relative_url }}">
+        <a alt="{{ page.next.title }}" href="{{ page.next.url | absolute_url }}">
             <p>{{ site.theme_settings.str_previous_post }}</p>
             {{ page.next.title }}
         </a>
@@ -10,7 +10,7 @@
 
     {% if page.previous.url %}
     <div id="next-post">
-        <a alt="{{ page.previous.title }}" href="{{ page.previous.url | relative_url }}">
+        <a alt="{{ page.previous.title }}" href="{{ page.previous.url | absolute_url }}">
             <p>{{ site.theme_settings.str_next_post }}</p>
             {{ page.previous.title }}
         </a>

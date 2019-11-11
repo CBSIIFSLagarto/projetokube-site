@@ -11,9 +11,9 @@
 {% endif %}
 
 <div class="post-info">
-  {%- if render_url -%}<a href="{{ author_url | relative_url }}" target="_blank">{%- endif -%}
+  {%- if render_url -%}<a href="{{ author_url | absolute_url }}" target="_blank">{%- endif -%}
     {% if avatar %}
-      <img src="{{ avatar | relative_url }}">
+      <img src="{{ avatar | absolute_url }}">
     {% endif %}
     <p class="meta">
       {% if author_name %}{{ author_name }} - {% endif %}{{ date | date: "%B %-d, %Y" }}

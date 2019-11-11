@@ -3,15 +3,15 @@
     <div class="post-teaser">
         {% if post.thumbnail %}
         <div class="post-img">
-            <a aria-label="{{ post.title }}" href="{{ post.url | relative_url }}">
-                <img alt="{{ post.title }}" src="{{ post.thumbnail | relative_url }}">
+            <a aria-label="{{ post.title }}" href="{{ post.url | absolute_url }}">
+                <img alt="{{ post.title }}" src="{{ post.thumbnail | absolute_url }}">
             </a>
         </div>
         {% endif %}
         <span>
           <header>
             <h1>
-              <a aria-label="{{ post.title }}" class="post-link" href="{{ post.url | relative_url }}">
+              <a aria-label="{{ post.title }}" class="post-link" href="{{ post.url | absolute_url }}">
                 {{ post.title }}
               </a>
             </h1>
