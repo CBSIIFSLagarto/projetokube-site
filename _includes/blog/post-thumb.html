@@ -1,10 +1,20 @@
 <!-- Página responsável por mostrar os cards das publicações -->
 <!-- post -->
 <div class="post {{ include.type }}">
-    <a class="post-img" href="{{ include.post.url | absolute_url }}"><img src="{{ include.post.feature-img | absolute_url }}" alt=""></a>
+    <a class="post-img" href="{{ include.post.url | absolute_url }}">
+        {%- if include.post.feature-img -%}
+        <img src="{{ include.post.feature-img | absolute_url }}" alt="">
+        {%- else -%}
+        <div class="no-image"></div>
+        {%- endif -%}
+    </a>
     <div class="post-body">
         <div class="post-category">
+            {%- if include.post.category | first -%}
             <a href="{{ 'category' | absolute_url }}/{{ include.post.category | first }}">{{ include.post.category | first }}</a>
+            {%- else -%}
+            <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes">Genérico</a>
+            {%- endif -%}
         </div>
         {%- if include.type == 'post-thumb' -%}
         <h3 class="post-title {{ include.title }}"><a href="{{ include.post.url | absolute_url }}">{{ include.post.title | strip_html | truncate: '80' | escape }}</a></h3>
