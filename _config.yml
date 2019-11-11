@@ -117,6 +117,8 @@ permalink: /blog/:categories/:year/:month/:day/:title:output_ext
 
 # PORTFOLIO
 collections:
+  posts:
+    output: true
   projetos:
     output: true
     permalink: /:collection/:name
