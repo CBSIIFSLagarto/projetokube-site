@@ -10,9 +10,9 @@ image_sliders:
   bullets: true
   captions: true
   images:
-    - data-src: /assets/img/lab/1.jpg
+    - data-src: "/assets/img/lab/1.jpg"
       title: "Visão geral do laboratório"
-    - data-src: /assets/img/lab/2.jpg
+    - data-src: "/assets/img/lab/2.jpg"
       title: "Recurso - Impressora 3D"
   settings:
     maxHeight: 300
