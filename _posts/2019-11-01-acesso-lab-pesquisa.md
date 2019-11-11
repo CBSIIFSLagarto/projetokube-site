@@ -1,10 +1,10 @@
 ---
-layout: post-blog
+layout: post
 title: Acesso ao laboratório de pesquisa
 tags: [acesso, laboratório pesquisa]
 category: [ acesso, laboratorio ]
 author-id: frchico
-feature-img: assets/img/blog/laboratorio2.jpg
+feature-img: assets/img/lab/1.jpg
 excerpt_separator: <!--more-->
 ---
 
