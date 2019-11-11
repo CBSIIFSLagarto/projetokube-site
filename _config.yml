@@ -19,6 +19,11 @@ defaults:
       path: "assets/**/*.pdf"
     values:
       sitemap: false
+  - scope:
+      path: ""
+      type: category
+    values:
+      layout: "category"
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -35,6 +40,11 @@ theme_settings:
 
   # Blog
   excerpt: truncate # true Or "truncate" (first 250 characters), "false" to disable
+
+  # Social
+  social:
+    facebook:
+    twitter:
 
   # Icons
   rss: true  # Make sure you created a feed.xml with feed.xml layout
@@ -63,7 +73,7 @@ theme_settings:
 
   # Sharing options
   share_buttons:
-    facebook: false
+    facebook: true
     twitter: true
     tumblr:
     pinterest:
@@ -75,7 +85,7 @@ theme_settings:
 
   # Scripts / Features 
   google_analytics: # Tracking ID, e.g. "UA-000000-01"
-  disqus_shortname:
+  disqus_shortname: 'projeto-kube'
   katex: true # Enable if using math markup
 
   # Localization strings
@@ -99,16 +109,19 @@ theme_settings:
   # Open the "_sass > base" folder, and open "_variables.scss"
 
 # PAGINATION
-paginate: 10
+paginate: 6
 paginate_path: "blog/page:num"
 
 
+permalink: /blog/:categories/:year/:month/:day/:title:output_ext
 
 # PORTFOLIO
 collections:
   projetos:
     output: true
     permalink: /:collection/:name
+  category:
+    output: true
 
 # BUILD SETTINGS
 markdown: kramdown

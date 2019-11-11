@@ -1,0 +1,158 @@
+---
+layout: default
+---
+{%- include blog/page-header.html type="post" image=page.feature-img title=page.title page=page credits=page.feature-img-credit -%}
+<div class="section section-blog">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <!-- post share -->
+                <div class="section-row">
+                    <div class="post-share">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}&quote={{ page.title | url_encode | strip_html | truncate: '45' | escape }}" class="social-facebook"><i class="fa fa-facebook"></i><span>Compartilhar</span></a>
+                        <a target="_blank" href="https://twitter.com/intent/tweet?source=http://{{ page.url | absolute_url }}&text={{ page.title | url_encode | strip_html | truncate: '45' | escape }}: http://{{ page.url | absolute_url }}" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
+                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http://{{ page.url | absolute_url }}&media={{ page.feature-img | absolute_url }}&description={{ page.content| url_encode | strip_html | truncate: '100' | escape }}" class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a>
+                        <a target="_blank" href="mailto:?subject={{ page.title | strip_html | truncate: '45' | escape }}&body={{ page.content | strip_html | truncate: '280' | escape }}:http://{{ page.url | absolute_url }}"><i class="fa fa-envelope"></i><span>Email</span></a>
+                    </div>
+                </div>
+                <!-- /post share -->
+
+                <!-- post content -->
+                <div class="section-row">{{ content }}</div>
+                <!-- /post content -->
+
+                <!-- post tags -->
+                <div class="section-row">
+                    <div class="post-tags">
+                        <!-- Tag list -->
+                        {% capture tag_list %}{{ page.tags | join: "|"}}{% endcapture %}
+                        {% include tags_list.html tags=tag_list %}
+                    </div>
+                </div>
+                <!-- /post tags -->
+
+                <!-- post nav -->
+                <div class="section-row">
+
+                    {% assign cat = page.category %}
+
+                    {% for post in site.categories[cat] %}
+                    {% if post.url == page.url %}
+                    {% assign post_index0 = forloop.index0 %}
+                    {% assign post_index1 = forloop.index %}
+                    {% endif %}
+                    {% endfor %}
+
+                    {% for post in site.categories[cat] %}
+                    {% if post_index0 == forloop.index %}
+                    {% assign next_post = post %}
+                    {% endif %}
+                    {% if post_index1 == forloop.index0 %}
+                    {% assign prev_post = post %}
+                    {% endif %}
+                    {% endfor %}
+
+
+                    <div class="post-nav">
+                        {% if prev_post %}
+                        <div class="prev-post">
+                            <a class="post-img" href="{{ prev_post.url }}"><img src="{{ prev_post.feature-img }}"
+                                    alt="{{ prev_post.content | strip_html | truncate: '20' | escape }}"></a>
+                            <h3 class="post-title"><a href="{{ prev_post.url }}">{{ prev_post.title }}</a>
+                            </h3>
+                            <span>Postagem anterior</span>
+                        </div>
+                        {% endif %}
+
+                        {% if next_post %}
+                        <div class="next-post">
+                            <a class="post-img" href="{{ next_post.url }}"><img src="{{ next_post.feature-img }}"
+                                    alt="{{ next_post.content | strip_html | truncate: '20' | escape }}"></a>
+                            <h3 class="post-title"><a href="{{ next_post.url }}">{{ next_post.title }}</a></h3>
+                            <span>Próximo post</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- /post nav  -->
+
+                <!-- post author -->
+                <div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Sobre <a
+                                href="{{ 'equipe' | absolute_url }}#{{ page.author-id }}">{{ site.data.authors[page.author-id].name }}</a>
+                        </h3>
+                    </div>
+                    <div class="author media">
+                        <div class="media-left">
+                            <a href="{{ 'equipe' | absolute_url }}#{{ page.author-id }}">
+                                {% if site.data.authors[page.author-id].avatar %}
+                                <img class="author-img media-object" src="{{ site.data.authors[page.author-id].avatar | absolute_url }}" />
+                                {% elsif site.data.authors[page.author-id].github %}
+                                <img class="author-img media-object"
+                                    src="https://avatars3.githubusercontent.com/{{ site.data.authors[page.author-id].github }}?v=3&amp;s=273" />
+                                {% else %}
+                                <img class="author-img media-object"
+                                    src="https://ui-avatars.com/api/?name={{ site.data.authors[page.author-id].name | uri_escape  }}?size=273" />
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>{{ site.data.authors[page.author-id].content }}</p>
+                            <ul class="author-social">
+                                {% if site.data.authors[page.author-id].social.facebook %}
+                                <li><a target="_blank" href="http://fb.com/{{ site.data.authors[page.author-id].social.facebook }}"><i class="fa fa-facebook fa-fw"></i></a></li>
+                                {% endif %}
+                                {% if site.data.authors[page.author-id].github %}
+                                <li><a target="_blank" href="http://github.com/{{ site.data.authors[page.author-id].github }}"><i class="fa fa-github fa-fw"></i></a></li>
+                                {% endif %}
+                                {% if site.data.authors[page.author-id].social.twitter %}
+                                <li><a target="_blank" href="https://twitter.com/{{ site.data.authors[page.author-id].social.twitter }}"><i class="fa fa-twitter fa-fw"></i></a></li>
+                                {% endif %}
+                                {% if site.data.authors[page.author-id].social.instagram %}
+                                <li><a target="_blank" href="https://instagram.com/{{ site.data.authors[page.author-id].social.instagram }}"><i class="fa fa-instagram fa-fw"></i></a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post author -->
+
+                <!-- /related post -->
+                <div>
+                    <div class="section-title">
+                        <h3 class="title">Posts Relacionados</h3>
+                    </div>
+                    <div class="row">
+                        <!-- post -->
+                        {%- assign variable = page.category | first -%}
+                        {% for post in site.categories[variable] limit:6 %}
+                        <div class="col-md-4">{%- include blog/post-thumb.html post=post type='post-sm' -%}</div>
+                        {% endfor %}
+                        <!-- /post -->
+                    </div>
+                </div>
+                <!-- /related post -->
+
+                <!-- post comments -->
+                <div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Comentários</h3>
+                    </div>
+                    <div class="post-comments">
+                        <!-- Disqus -->
+                        {% if site.theme_settings.disqus_shortname %}
+                        {% include disqus.html %}
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- /post comments -->
+            </div>
+            <div class="col-lg-4 col-md-12">{%- include blog/submenu-ads.html -%}</div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
