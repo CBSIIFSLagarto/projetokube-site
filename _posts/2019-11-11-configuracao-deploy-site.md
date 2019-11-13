@@ -16,6 +16,8 @@ excerpt_separator: <!--more-->
 
 1. É necessário instalar o [Jekyll](https://jekyllrb.com/docs/installation/): `gem install jekyll`, Verifique [#1](https://github.com/Sylhare/Type-on-Strap/issues/1) se você tiver algum um problema. 
 
+1. Também é necessário instalar o Bundle `gem install bundle`
+
 1. Instale as dependências do projeto `bundle install`
 
 1. Personalize o projeto ou ajude a resolver os [problemas](https://github.com/CBSIIFSLagarto/projetokube-site/issues).
@@ -53,13 +55,11 @@ Aqui estão os principais arquivos do projeto
 ## Configurações do projeto
 Abra o arquivo `_config.yml` em um editor de texto para alterar a maioria das configurações do blog.
 
-Se uma variável neste documento estiver marcada como "opcional", desative o recurso removendo todo o texto da variável.
-
 ### Configuração do site
 
 Configure o Jekyll como seu próprio blog ou com um subcaminho no `_config.yml`:
 
-A *baseurl* significa que o seu projeto está em uma sub pasta, exemplo esse web site não está configurado diretamente para ficar hospedado em `CBSIIFSLagarto.github.io`. Então temos que especificar que a *URL* vai ser complementada com `projetokube-site` porque esse é o nome do projeto que está no [Github](https://github.com/CBSIIFSLagarto/projetokube-site). Então o resultado sera `CBSIIFSLagarto.github.io/projetokube-site`
+A *baseurl* significa que o seu projeto está em uma sub pasta, exemplo esse site não está configurado diretamente para ficar hospedado em `CBSIIFSLagarto.github.io`. Então temos que especificar que a *URL* vai ser complementada com `projetokube-site` porque esse é o nome do projeto que está no [Github](https://github.com/CBSIIFSLagarto/projetokube-site). Então o resultado sera `CBSIIFSLagarto.github.io/projetokube-site`
 
 ```yml
   baseurl: ""
@@ -105,8 +105,30 @@ excerpt_separator: <!--more-->
 ---
 
 algum texto de exemplo
-<! - mais ->
 ... restante do texto não mostrado no trecho ...
+```
+### Comentários
+
+Os comentários que usamos nas publicações do blog do site são gerados por uma API [Disqus](http://disqus.com/), ele nada mais é do que uma plataforma que ajuda a aumentar o envolvimento nos seus sites. Ele permite de forma relativamente fácil que pessoas comentem no seu blog.
+
+Além de oferecer um desempenho superior quando comparado ao outros sistemas, o **Disqus** garante outras vantagens para os nossos leitores. Uma delas é a possibilidade de cadastro por meio das redes sociais, como Facebook e Twitter. Porém, aqueles que preferirem também pode se registrar diretamente por meio do site do Disqus.
+
+Para ativar essa funcionalidade crie uma conta e coloque o seu identficador aqui:
+
+```yml 
+disqus_shortname: 'projeto-kube'
+```
+
+## GitHub
+
+Antes de enviar o site para o Github é sempre bom baixar as atualizações do projeto [original](https://github.com/CBSIIFSLagarto/projetokube-site) para que assim o nosso também sembre fique atualizado.
+
+Caso você tenha dúvidas com comandos em Git [veja essa publicação]({{ '/blog/git/2019/11/08/o-que-e-o-git.html' | absolute_url }})
+
+```sh
+git remote add upstream https://github.com/CBSIIFSLagarto/projetokube-site.git
+git fetch upstream
+git merge upstream/master
 ```
 
 ### Documentação oficial
@@ -129,7 +151,7 @@ layout: post-blog
 
 ## Configurando o Travis CI para criar e implantar o site
 
-Devemos criar uma conta no Travis CI para sincronizar nosso repositório GitHub com o Travis  <!--more-->, então temos que procurar o repositório no Travis e depois clicar com o botão direito para ativar esse repositório.
+Devemos criar uma conta no Travis CI para sincronizar nosso repositório GitHub com o Travis, então temos que procurar o repositório no Travis e depois clicar com o botão direito para ativar esse repositório.
 
 ![Projeto](https://miro.medium.com/max/1675/1*BwypOVhSR_DcGHRjrZI7BA.png)
 
@@ -148,3 +170,8 @@ Houve um problema com a **URL** porque na compilação com a opção `relative_u
 e substituir quando for compilado pelo travis-ci. 
 
 Isso não é bem um erro mais eu penso que não é a melhor forma. Porém, foi a única maneira que encontrei para corrigir o erro que não estava carregando os **CSS** e **JS**.
+
+## Links e considerações
+
+- [Colocando um site no ar com Jekyll: usando o terminal](https://jtemporal.com/do-tema-ao-ar/)
+- [Tecmundo: Explicando um pouco sobre o disqus](https://www.tecmundo.com.br/institucional/104360-novidade-comentarios-tecmundo-testando-o-disqus.htm)
