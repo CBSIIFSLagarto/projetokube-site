@@ -3,7 +3,7 @@ layout: post-blog
 title:  'Instalação do Script do Raspberry no Windows'
 tags: [docker, devops, raspberry, windows]
 category: [ devops ]
-author-id: reinan
+author-id: [ frchico, reinan ]
 feature-img: assets/img/blog/raspberry-2.jpg
 excerpt_separator: <!--more-->
 ---

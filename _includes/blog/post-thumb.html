@@ -27,7 +27,10 @@
         {%- endif -%}
         {%- if include.type != 'post-widget' -%}
         <ul class="post-meta">  
-            <li><a href="{{ 'equipe' | absolute_url }}#{{ include.post.author-id }}">{{ include.post.author-id }}</a></li>
+            <li>
+                <a href="{{ 'equipe' | absolute_url }}#{{ include.post.author-id | first }}">{{ include.post.author-id | first }} </a>
+                {%- if include.post.author-id.size > 1 -%} e outros {%- endif -%}
+            </li>
             {%- assign datePost = include.post.date -%}
             {%- if include.type != 'post-sm' -%}
             <li>{% include blog/data-ptBR.html  date=datePost %}</li>

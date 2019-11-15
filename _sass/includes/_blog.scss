@@ -47,6 +47,10 @@
   text-decoration: none;
   outline: none;
 }
+
+.post-content a{
+  color: #264a90;
+}
 /*----------------------------*\
 	section
 \*----------------------------*/
@@ -943,3 +947,9 @@
   .post.post-thumb .post-img .no-image { height: 343px; }
   .hot-post-right .post.post-thumb .post-img .no-image { height: 165px; }
 }
+
+// Configurações de estilo da publicação
+.highlighter-rouge .highlight .highlight code { color: #fff; }
+.language-bash.highlighter-rouge .highlight .c {color: #6DAD6E; }
+.language-md.highlighter-rouge .highlight .pi {color: #fff; }
+
