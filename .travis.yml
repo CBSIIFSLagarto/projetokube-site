@@ -8,26 +8,14 @@ before_install:
   - gem install bundler
 script:
   - JEKYLL_ENV=production bundle exec jekyll build --destination site
-#deploy:
-#  provider: pages
-#  local_dir: ./site
-#  email: reinangabriel1520@gmail.com
-#  name: Deployment Bot
-#  # skip_cleanup: true
-#  github-token: $GITHUB_TOKEN
-#  keep_history: true
-#  on:
-#    branch: source
-#target-branch: master
-
 deploy:
   provider: pages
   local_dir: ./site
-  all_branches: true
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+#  email: reinangabriel1520@gmail.com
+#  name: Deployment Bot
+  # skip_cleanup: true
+  github-token: $GITHUB_TOKEN
   keep_history: true
-  target_branch: teste
-  on:
-    repo: projetokube/projetokube.github.io
-    all_branches: true
+#  on:
+#    branch: source
+
