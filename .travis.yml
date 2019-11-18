@@ -30,6 +30,4 @@ deploy:
   target_branch: teste
   on:
     repo: projetokube/projetokube.github.io
-    branches:    # ← new!
-      only:      # ← new!
-        - master # ← new!
+    all_branches: true
