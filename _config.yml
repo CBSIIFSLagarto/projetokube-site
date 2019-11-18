@@ -1,10 +1,12 @@
 # date: 2019-10-30 10:51:37 UTC
 # SITE CONFIGURATION
-encoding: UTF-8
-baseurl: #"/Type-on-Strap"
+encoding: utf-8
+#baseurl: "projetokube-site"
+# locale : "pt-BR"
 # default_locale: "pt-BR"
 
-url: "https://projetokube-documentacao.github.io"
+url: "https://cbsiifslagarto.github.io/projetokube-site"
+
 title: Projeto Kube # site's title
 description: "Computação em nuvem, Devops e educação" # used by search engines
 
@@ -17,6 +19,11 @@ defaults:
       path: "assets/**/*.pdf"
     values:
       sitemap: false
+  - scope:
+      path: ""
+      type: category
+    values:
+      layout: "category"
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -34,6 +41,11 @@ theme_settings:
   # Blog
   excerpt: truncate # true Or "truncate" (first 250 characters), "false" to disable
 
+  # Social
+  social:
+    facebook:
+    twitter:
+
   # Icons
   rss: true  # Make sure you created a feed.xml with feed.xml layout
   email_address: # Full email address, e.g. "sam@example.com"
@@ -43,7 +55,7 @@ theme_settings:
   facebook:
   flickr:
   gitlab:
-  github: "CBSIIFSLagarto/projetokube-documentacao"
+  github: "CBSIIFSLagarto/projetokube-site"
   instagram:
   keybase:
   linkedin:  # Full URL
@@ -61,7 +73,7 @@ theme_settings:
 
   # Sharing options
   share_buttons:
-    facebook: false
+    facebook: true
     twitter: true
     tumblr:
     pinterest:
@@ -73,7 +85,7 @@ theme_settings:
 
   # Scripts / Features 
   google_analytics: # Tracking ID, e.g. "UA-000000-01"
-  disqus_shortname:
+  disqus_shortname: 'projeto-kube'
   katex: true # Enable if using math markup
 
   # Localization strings
@@ -97,24 +109,39 @@ theme_settings:
   # Open the "_sass > base" folder, and open "_variables.scss"
 
 # PAGINATION
-paginate: 10
+paginate: 6
 paginate_path: "blog/page:num"
 
 
+permalink: /blog/:categories/:year/:month/:day/:title:output_ext
 
 # PORTFOLIO
 collections:
-  portfolio:
+  posts:
     output: true
-    permalink: /:collection/:name
   projetos:
     output: true
     permalink: /:collection/:name
-
+  category:
+    output: true
 
 # BUILD SETTINGS
 markdown: kramdown
 highlighter: rouge
+
+
+# Markdown Processing
+# kramdown:
+#  input: GFM
+#  hard_wrap: false
+#  auto_ids: true
+#  footnote_nr: 1
+#  entity_output: as_char
+#  toc_levels: 1..6
+#  smart_quotes: lsquo,rsquo,ldquo,rdquo
+#  enable_coderay: false
+
+
 sass:
   sass_dir: _sass
   style: :compressed
@@ -128,7 +155,7 @@ plugins:
   # - jekyll-relative-links # https://github.com/benbalter/jekyll-relative-links
   - jekyll-sitemap # https://github.com/jekyll/jekyll-sitemap
   - jemoji
-exclude: [".jekyll-cache", "Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", ".idea", "vendor/*",
+exclude: [".jekyll-cache", "Gemfile", "Gemfile*.lock", "type-on-strap.gemspec", "*.gem", ".idea", "vendor/*", "__portfolio/*",
           "LICENSE", "README.md", "screenshot.png", "assets/package.json", "assets/node_modules", "assets/gulpfile.js"]
 
 # keep_files: [assets/img]

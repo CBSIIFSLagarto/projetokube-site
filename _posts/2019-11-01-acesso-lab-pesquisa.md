@@ -2,8 +2,9 @@
 layout: post
 title: Acesso ao laboratório de pesquisa
 tags: [acesso, laboratório pesquisa]
-author-id: frchico
-# feature-img: assets/img/pexels/story.jpeg
+category: [ acesso, laboratorio ]
+author-id: [ frchico ]
+feature-img: assets/img/lab/1.jpg
 excerpt_separator: <!--more-->
 ---
 

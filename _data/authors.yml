@@ -16,6 +16,10 @@ alfredo:
 rubens:
   name: "Rubens Matos"
   type: Professor
+  github: rubensmatosjr
+will:
+  name: "Wilhelm Rodrigues"
+  type: Professor
 alexchaves:
   name: "Alex Santos Chaves"
   type: Estudante
@@ -23,7 +27,7 @@ alexchaves:
   url:
   github: alex-chaves
   social:
-    instagram: alexschaves
+    instagram: alex.schaves
   content: "Sou apaixonado por natureza e tecnologia, gosto de compartilhar conhecimento e de aprender ao longo da vida."
 jean:
   name: "Jean Carlos M. Oliveira"

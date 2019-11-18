@@ -1,0 +1,103 @@
+- selector: slider1
+  bullets: false
+  captions: true
+  images:
+    - src: /assets/img/slider/1.jpg
+      alt: Minimum required attributes
+    - data-src: /assets/img/slider/2.jpg
+      alt: Use data-src for on-demand loading
+    - data-src: /assets/img/slider/3.jpg
+      data-src-2x: /assets/img/slider/3@2x.jpg
+      alt: Use data-src-2x for HiDPI devices
+    - src: /assets/img/slider/4.jpg
+      alt: Links work too
+      href: https://github.com/jekylltools/jekyll-ideal-image-slider-include
+  settings:
+    height: 400
+    initialHeight:
+    maxHeight:
+    interval:
+    transitionDuration:
+    effect:
+    disableNav:
+    keyboardNav:
+    previousNavSelector:
+    nextNavSelector:
+
+- selector: slider2
+  bullets: true
+  captions: true
+  images:
+    - src: /assets/img/slider/1.jpg
+      title: Balloons!
+      alt: This slider has caption titles
+    - data-src: /assets/img/slider/2.jpg
+      title: This slider uses the fade effect
+      alt: Instead of the default slide effect
+    - data-src: /assets/img/slider/3.jpg
+      data-src-2x: /assets/img/slider/3@2x.jpg
+    - src: /assets/img/slider/4.jpg
+      title: Last image had no caption!
+      alt: Also, this image has no link
+  settings:
+    height: "'auto'"
+    effect: "'fade'"
+
+- selector: slider3
+  images:
+    - src: /assets/img/slider/1.jpg
+      alt: image one
+    - src: /assets/img/slider/2.jpg
+      alt: image two
+    - src: /assets/img/slider/3.jpg
+      alt: image three
+    - src: /assets/img/slider/4.jpg
+      alt: image four
+  settings:
+    height: "'auto'"
+    disableNav: true
+
+
+- selector: AngryPirdsDesenho
+  bullets: true
+  captions: true
+  images:
+  - data-src: /assets/img/projetos/AngryPirds/1.jpg
+    title: "Visão geral do rack"
+  - data-src: /assets/img/projetos/AngryPirds/2.jpg
+    title: "Visão geral do rack"
+  - data-src: /assets/img/projetos/AngryPirds/3.jpg
+    title: "Fundo do rack"
+  - data-src: /assets/img/projetos/AngryPirds/4.jpg
+    title: "Vista lateral do rack"
+  - data-src: /assets/img/projetos/AngryPirds/5.jpg
+    title: "Vista superior	"
+  settings:
+    height: "450"
+    effect: "'fade'"
+# -----------------------------
+- selector: denis
+  bullets: true
+  captions: true
+  images:
+    - data-src: /assets/img/projetos/denis/cluster1.jpg
+      title: Frente do cluster Denis
+    - data-src: /assets/img/projetos/denis/cluster2.jpg
+      title: Frente do cluster Denis
+    - data-src: /assets/img/projetos/denis/cluster3.jpg
+      title: Frente do cluster Denis
+    - data-src: /assets/img/projetos/denis/cluster-fundo1.jpg
+      title: Conexões (fundo da máquina).
+    - data-src: /assets/img/projetos/denis/cluster-fundo2.jpg
+      title: Conexões (fundo da máquina).
+    - data-src: /assets/img/projetos/denis/rack-rede1.jpg
+      title: Switch e patch painel
+    - data-src: /assets/img/projetos/denis/rack-rede2.jpg
+      title: Switch e patch painel
+    - data-src: /assets/img/projetos/denis/rack-rede3.jpg
+      title: Switch e patch painel          
+    - data-src: /assets/img/projetos/denis/rack-rede4.jpg
+      title: Switch e patch painel      
+  settings:
+    height: 400
+    effect: "'fade'"

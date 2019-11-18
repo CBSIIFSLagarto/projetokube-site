@@ -1,0 +1,17 @@
+<!-- Jekyll Ideal Image Slider Include -->
+<!-- https://github.com/jekylltools/jekyll-ideal-image-slider-include -->
+<!-- v1.8 -->
+{% if include.selector != empty %}
+	{% for item in page.image_sliders %}
+		{% if item.selector %}
+			{% assign slider = item %}	
+		{% else %}
+			{% assign slider = site.data.sliders | where:"selector", include.selector | first %}
+		{% endif %}		
+  <div id="{{ slider.selector }}">
+  {% for image in slider.images -%}
+    {% if image.href -%}<a href="{{ image.href }}">{%- endif -%}<img height="300px" data-src="{{ image.data-src | absolute_url }}" data-src-2x="{{ image.data-src-2x | absolute_url }}" src="{{ image.src | absolute_url }}" title="{{ image.title }}" alt="{{ image.alt }}">{%- if image.href -%}</a>{% endif %}
+  {% endfor -%}
+  </div>
+	{% endfor %}
+{% endif %}
