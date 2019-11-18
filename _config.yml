@@ -175,3 +175,4 @@ search:
   noResultText: "Nenhum resultado encontrado."
   resultLimite: 10
   
+theme: jekyll-theme-cayman
