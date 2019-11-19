@@ -9,13 +9,20 @@ before_install:
 script:
   - JEKYLL_ENV=production bundle exec jekyll build --destination site
 deploy:
-  provider: pages
-  local_dir: ./site
-  email: reinangabriel1520@gmail.com
-  name: Deployment Bot
-  # skip_cleanup: true
-  github-token: $GITHUB_TOKEN
-  keep_history: true
-  on:
-    branch: source
-target-branch: master
+  - provider: pages
+    local_dir: ./site
+    # skip_cleanup: true
+    github-token: $GITHUB_TOKEN
+    keep_history: true
+    on:
+      branch: desenv
+    target-branch: master
+  - provider: site-oficial
+    edge: true
+    local_dir: ./site
+    github-token: $GITHUB_TOKEN
+    keep_history: true
+    repo: projetokube/projetokube.github.io
+    on:
+      branch: source
+    target-branch: master
