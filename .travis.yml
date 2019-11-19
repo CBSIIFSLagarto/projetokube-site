@@ -6,14 +6,33 @@ cache: bundler
 before_install:
   - gem update --system
   - gem install bundler
-script:
-  - JEKYLL_ENV=production bundle exec jekyll build --destination site
-deploy:
-  - provider: pages
-    local_dir: ./site
-    # skip_cleanup: true
-    github-token: $GITHUB_TOKEN
-    keep_history: true
-    on:
-      branch: master
-    target-branch: gh-pages
+
+jobs:
+  include:
+    - stage: Test
+      script:
+        - bundle exec jekyll build
+      deploy:
+        provider: pages-test
+        local_dir: ./_site
+        # skip_cleanup: true
+        github-token: $GITHUB_TOKEN
+        keep_history: true
+        on:
+          branch: desenv
+        target-branch: gh-pages
+
+
+    - stage: Github Release
+      script:
+        - JEKYLL_ENV=production bundle exec jekyll build --base $URL
+      deploy:
+        provider: pages
+        edge: true
+        local_dir: ./site
+        github-token: $GITHUB_TOKEN
+        keep_history: true
+        repo: $repo_deploy
+        on:
+          branch: $repo_deploy_branch
+        target-branch: $repo_deploy_target
