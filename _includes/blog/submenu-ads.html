@@ -36,10 +36,12 @@
         <h2 class="title">Categorias</h2>
     </div>
     <div class="category-widget">
-        <ul>
-            {% for category in site.categories %}
-            {% assign title = category[0] %}
-            <li><a href="{{ 'category' | absolute_url }}/{{ title }}">{{ title }} <span>{{ site.categories[title].size }}</span></a></li>
+        <ul>			
+			{% for category in site.categories %}			
+			{% assign title = category[0]  %}		
+			{% assign url = title | slugify: 'latin' %}
+
+            <li><a href="{{ 'category' | absolute_url }}/{{ url }}">{{ title }} <span>{{ site.categories[title].size }}</span></a></li>
             {% endfor %}
         </ul>
     </div>

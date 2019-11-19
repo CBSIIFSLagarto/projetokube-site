@@ -41,5 +41,5 @@ Além do laboratório de pesquisa, é possível utilizar a infraestrutura do cur
 
 ## Localização
 
-O [laboratório de pesquisa](laboratorio.md) está localizado no bloco da [CBSI do Campus Lagarto do Instituto Federal de Sergipe](http://www.ifs.edu.br/lagarto), na cidade de Lagarto/SE (no centro sul de Sergipe).
+O [laboratório de pesquisa](/laboratorio) está localizado no bloco da [CBSI do Campus Lagarto do Instituto Federal de Sergipe](http://www.ifs.edu.br/lagarto), na cidade de Lagarto/SE (no centro sul de Sergipe).
 
