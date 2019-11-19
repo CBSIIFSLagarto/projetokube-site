@@ -1,0 +1,42 @@
+<!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post {{ include.type }}">
+    <a class="post-img" href="{{ include.post.url | absolute_url }}">
+        {%- if include.post.feature-img -%}
+        <img src="{{ include.post.feature-img | absolute_url }}" alt="">
+        {%- else -%}
+        <div class="no-image"></div>
+        {%- endif -%}
+    </a>
+    <div class="post-body">
+        <div class="post-category">
+            {%- if include.post.category | first -%}
+            <a href="{{ 'category' | absolute_url }}/{{ include.post.category | first }}">{{ include.post.category | first }}</a>
+            {%- else -%}
+            <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes">Genérico</a>
+            {%- endif -%}
+        </div>
+        {%- if include.type == 'post-thumb' -%}
+        <h3 class="post-title {{ include.title }}"><a href="{{ include.post.url | absolute_url }}">{{ include.post.title | strip_html | truncate: '80' | escape }}</a></h3>
+        {%- elsif include.type == 'post-widget' -%}
+        <h3 class="post-title"><a href="{{ include.post.url | absolute_url }}">{{ include.post.title | strip_html | truncate: '60' | escape }}</a></h3>
+        {%- elsif include.type == 'post-sm' -%}
+        <h3 class="post-title title-sm"><a href="{{ include.post.url | absolute_url }}">{{ include.post.title | strip_html | truncate: '45' | escape }}</a></h3>
+        {%- else -%}
+        <h3 class="post-title"><a href="{{ include.post.url | absolute_url }}">{{ include.post.title | strip_html | truncate: '70' | escape }}</a></h3>
+        {%- endif -%}
+        {%- if include.type != 'post-widget' -%}
+        <ul class="post-meta">  
+            <li>
+                <a href="{{ 'equipe' | absolute_url }}#{{ include.post.author-id | first }}">{{ include.post.author-id | first }} </a>
+                {%- if include.post.author-id.size > 1 -%} e outros {%- endif -%}
+            </li>
+            {%- assign datePost = include.post.date -%}
+            {%- if include.type != 'post-sm' -%}
+            <li>{% include blog/data-ptBR.html  date=datePost %}</li>
+            {%- endif -%}
+        </ul>
+        {%- endif -%}
+    </div>
+</div>
+<!-- /post -->

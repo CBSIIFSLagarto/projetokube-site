@@ -1,0 +1,41 @@
+{%- include blog/page-header.html type="category" image=include.data.image title=include.data.title credits=include.data.image-credit -%}
+<!-- Section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                {%- if include.data.category == 'all' -%}
+                    {%- assign variable = site.posts -%}
+                {%- else -%}
+                    {%- assign variable = site.categories[include.data.category] -%}
+                {%- endif -%}
+                
+                {% for post in variable limit:1 %}
+                    {%- include blog/post-thumb.html post=post type='post-thumb' -%}
+                {% endfor %}
+
+                <div class="row">
+                    {% for post in variable limit:4 %}
+                        {%- if forloop.index != 1 -%}
+                            <div class="col-lg-6 col-md-12">    
+                                {%- include blog/post-thumb.html post=post -%}
+                            </div>
+                        {%- endif -%}
+                    {% endfor %}
+                </div>
+
+                {% for post in variable %}
+                    {%- if forloop.index != 1 and forloop.index != 2 and forloop.index != 3 and forloop.index != 4 -%}
+                        {%- include blog/post-thumb.html post=post type='post-row' -%}
+                    {%- endif -%}
+                {% endfor %}
+            </div>
+
+            <div class="col-lg-4 col-md-12">{%- include blog/submenu-ads.html -%}</div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>

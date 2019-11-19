@@ -1,10 +1,10 @@
 ---
-layout: post
-title: Acesso ao laboratório de pesquisa
-tags: [acesso, laboratório pesquisa]
-category: [ acesso, laboratório ]
-author-id: frchico
-feature-img: assets/img/lab/1.jpg
+layout: post-blog
+title: Execução de containers Docker com Raspberry Pi
+tags: [raspberry, docker]
+category: [ linux ]
+author-id: [ frchico ]
+feature-img: assets/img/blog/raspberry.jpg
 excerpt_separator: <!--more-->
 ---
 

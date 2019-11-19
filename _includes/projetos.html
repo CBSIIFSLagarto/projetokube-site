@@ -3,13 +3,13 @@
 <div class="portfolio-grid">
     {% for item in site.projetos %}
     <div class="portfolio-cell">
-        <a href="{{ item.url | relative_url }}" class="portfolio-link" data-keyboard="true">
+        <a href="{{ item.url | absolute_url }}" class="portfolio-link" data-keyboard="true">
             <div class="caption" title="{{ item.title }}">
                 <div class="caption-content">
                     <i class="fa fa-search-plus fa-3x"></i>
                 </div>
             </div>
-            <img src="{{ item.img | relative_url }}" class="" alt="">
+            <img src="{{ item.img | absolute_url }}" class="" alt="">
         </a>
     </div>
     {% endfor %}

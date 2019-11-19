@@ -10,7 +10,7 @@
 		{% endif %}		
   <div id="{{ slider.selector }}">
   {% for image in slider.images -%}
-    {% if image.href -%}<a href="{{ image.href }}">{%- endif -%}<img height="300px" data-src="{{ image.data-src | relative_url }}" data-src-2x="{{ image.data-src-2x | relative_url }}" src="{{ image.src | relative_url }}" title="{{ image.title }}" alt="{{ image.alt }}">{%- if image.href -%}</a>{% endif %}
+    {% if image.href -%}<a href="{{ image.href }}">{%- endif -%}<img height="300px" data-src="{{ image.data-src | absolute_url }}" data-src-2x="{{ image.data-src-2x | absolute_url }}" src="{{ image.src | absolute_url }}" title="{{ image.title }}" alt="{{ image.alt }}">{%- if image.href -%}</a>{% endif %}
   {% endfor -%}
   </div>
 	{% endfor %}

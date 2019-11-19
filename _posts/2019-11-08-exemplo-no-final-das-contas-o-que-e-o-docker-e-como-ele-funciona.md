@@ -1,10 +1,10 @@
 ---
-layout: post
-title: Acesso ao laboratório de pesquisa
-tags: [acesso, laboratório pesquisa]
-category: [ acesso, laboratório ]
-author-id: frchico
-feature-img: assets/img/lab/1.jpg
+layout: post-blog
+title:  'No final das contas: o que é o Docker e como ele funciona?'
+tags: [docker, devops]
+category: [ devops ]
+author-id: [ frchico, reinan, gabriel ]
+feature-img: assets/img/blog/docker.jpg
 excerpt_separator: <!--more-->
 ---
 
