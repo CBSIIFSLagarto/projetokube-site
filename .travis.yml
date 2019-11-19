@@ -8,7 +8,7 @@ before_install:
   - gem install bundler
 branches:
   only:
-    - $repo_deploy_branch
+    - master
     - desenv
 stages:
   - name: Test
