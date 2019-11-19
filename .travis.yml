@@ -6,6 +6,10 @@ cache: bundler
 before_install:
   - gem update --system
   - gem install bundler
+branches:
+  only:
+    - $repo_deploy_branch
+    - desenv
 stages:
   - name: Test
     if: branch != master  
@@ -15,8 +19,12 @@ jobs:
   include:
     - stage: Test
       script:
-        - if ["$URL_TEST" != "#"]; then bundle exec jekyll build --baseurl $URL_TEST fi
-        - if ["$URL_TEST" == "#"]; then bundle exec jekyll build fi     
+        - if ["$URL_TEST" = "#"]; then 
+            bundle exec jekyll build --baseurl $URL_TEST;
+          fi
+        - if ["$URL_TEST" != "#"]; then 
+             bundle exec jekyll build;
+          fi
       deploy:
         provider: pages-test
         local_dir: ./_site
@@ -30,8 +38,12 @@ jobs:
         
     - stage: Deploy
       script:
-        - if ["$URL" != "#"]; then JEKYLL_ENV=production bundle exec jekyll build --baseurl $URL fi
-        - if ["$URL" == "#"]; then JEKYLL_ENV=production bundle exec jekyll build fi
+        - if ["$URL" != "#"]; then 
+            JEKYLL_ENV=production bundle exec jekyll build --baseurl $URL;
+          fi
+        - if ["$URL" = "#"]; then 
+            JEKYLL_ENV=production bundle exec jekyll build;
+          fi
       deploy:
         provider: pages
         edge: true
