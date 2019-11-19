@@ -6,7 +6,11 @@ cache: bundler
 before_install:
   - gem update --system
   - gem install bundler
-
+stages:
+  - name: Test
+    if: branch != master  
+  - name: Deploy
+    if: branch = master
 jobs:
   include:
     - stage: Test
@@ -23,13 +27,13 @@ jobs:
         target-branch: gh-pages
 
 
-    - stage: Github Release
+    - stage: Deploy
       script:
         - JEKYLL_ENV=production bundle exec jekyll build --base $URL
       deploy:
         provider: pages
         edge: true
-        local_dir: ./site
+        local_dir: ./_site
         github-token: $GITHUB_TOKEN
         keep_history: true
         repo: $repo_deploy
