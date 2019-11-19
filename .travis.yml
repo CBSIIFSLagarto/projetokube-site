@@ -19,7 +19,7 @@ jobs:
   include:
     - stage: Test
       script:
-        - bundle exec jekyll build --baseurl $URL_TEST;        
+        - bundle exec jekyll build --baseurl $URL_TEST
       deploy:
         provider: pages-test
         local_dir: ./_site
@@ -28,7 +28,7 @@ jobs:
         keep_history: true
         on:
           branch: desenv
-        target-branch: gh-pages
+        # target-branch: gh-pages
         
         
     - stage: Deploy
