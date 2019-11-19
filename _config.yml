@@ -5,7 +5,7 @@ encoding: utf-8
 # locale : "pt-BR"
 # default_locale: "pt-BR"
 
-url: "https://cbsiifslagarto.github.io/projetokube-site"
+# url: "https://cbsiifslagarto.github.io/projetokube-site"
 
 title: Projeto Kube # site's title
 description: "Computação em nuvem, Devops e educação" # used by search engines
