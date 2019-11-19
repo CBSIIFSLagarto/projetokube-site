@@ -15,14 +15,5 @@ deploy:
     github-token: $GITHUB_TOKEN
     keep_history: true
     on:
-      branch: desenv
-    target-branch: master
-  - provider: site-oficial
-    edge: true
-    local_dir: ./site
-    github-token: $GITHUB_TOKEN
-    keep_history: true
-    repo: projetokube/projetokube.github.io
-    on:
-      branch: source
-    target-branch: master
+      branch: master
+    target-branch: gh-pages
