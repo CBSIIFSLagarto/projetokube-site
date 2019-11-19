@@ -21,7 +21,7 @@ jobs:
       script:
         - bundle exec jekyll build --baseurl $URL_TEST
       deploy:
-        provider: pages-test
+        provider: pages
         local_dir: ./_site
         # skip_cleanup: true
         github-token: $GITHUB_TOKEN
