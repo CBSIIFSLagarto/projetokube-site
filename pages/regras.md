@@ -12,24 +12,38 @@ A) Nossa regra mais elementar é: leia todas as regras e orientações. Não ace
 
 B) O foco deste chat é falar dos temas que estamos pesquisando, a saber **DevOps e Orquestração de serviços/sistemas**. Bem como atividades gerais relacionadas ao curso de sistemas de informação.
 
-C) Para ter acesso ao laboratório de pesquisa é necessário realizar o [cadastro no sistema do laboratório](../_posts/2019-11-01-acesso-lab-pesquisa.mdsquisa.md).
+C) Para ter acesso ao laboratório de pesquisa é necessário realizar o [cadastro no sistema do laboratório]({% post_url 2019-11-01-acesso-lab-pesquisa %}).
 
 C) Não é permitido:
 
 🚫 chamar os admins do grupo em conversa privada;
+
 🚫 mensagens em caixa alta (texto escrito em letras maiúsculas);
-🚫 palavrões, termos pejorativos, ofensas, trollagem, perseguição pessoal ou desrespeito a membros do grupo;
+
+🚫 palavrões, termos pejorativos, ofensas, *trollagem,* perseguição pessoal ou desrespeito a membros do grupo;
+
 🚫 depreciar empresas de tecnologia, fabricantes ou profissionais da área;
+
 🚫 flood (envio massivo de mensagens e/ou mídias no chat);
+
 🚫 correntes, brincadeiras, pegadinhas, piadas ou jogos de qualquer natureza exceto a conteúdos relacionados a tecnologia;
+
 🚫 fotos ou vídeos com montagens que possam causar confusão em leigos;
+
 🚫 disseminação de hoax (boatos) sem a devida checagem dos fatos;
+
 🚫 material contendo sexo, nudez, sugestão ou apelo erótico;
+
 🚫 qualquer forma de discriminação ou preconceito social, racial, étnico ou sexual;
+
 🚫 apologia a drogas, violência ou atos ilícitos, incluindo pirataria de softwares;
+
 🚫 links para páginas com golpes (phishing) ou malwares (vírus);
+
 🚫 publicidade de terceiros;
+
 🚫 proselitismo religioso ou ideológico;
+
 🚫 propaganda, discussão e/ou referências de cunho político.
 
 
