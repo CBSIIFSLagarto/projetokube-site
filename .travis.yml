@@ -19,12 +19,7 @@ jobs:
   include:
     - stage: Test
       script:
-        - if ["$URL_TEST" = "#"]; then 
-            bundle exec jekyll build --baseurl $URL_TEST;
-          fi
-        - if ["$URL_TEST" != "#"]; then 
-             bundle exec jekyll build;
-          fi
+        - bundle exec jekyll build --baseurl $URL_TEST;        
       deploy:
         provider: pages-test
         local_dir: ./_site
@@ -38,12 +33,7 @@ jobs:
         
     - stage: Deploy
       script:
-        - if ["$URL" != "#"]; then 
-            JEKYLL_ENV=production bundle exec jekyll build --baseurl $URL;
-          fi
-        - if ["$URL" = "#"]; then 
-            JEKYLL_ENV=production bundle exec jekyll build;
-          fi
+        - JEKYLL_ENV=production bundle exec jekyll build
       deploy:
         provider: pages
         edge: true
