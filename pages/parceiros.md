@@ -33,6 +33,6 @@ A equipe é composta por alunos e professores do curso de sistemas de informaç�
 
 # IFS
 
-Saiba mais sobre o [IFS] em {% include youtube.html video_id=page.video_id %}
+Saiba mais sobre o [IFS] em {% include widget/youtube.html video_id=page.video_id %}
 
 [IFS]: https://www.ifs.edu.br
