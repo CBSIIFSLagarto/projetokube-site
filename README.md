@@ -1,5 +1,9 @@
 # Projeto Kube
-[![Build Status](https://travis-ci.org/ReinanHS/projetokube-site.svg?branch=master)](https://travis-ci.org/ReinanHS/projetokube-site)
+
+| Ambiente | Status |
+|:---------:|-------:|
+|Produção | [![Build Status](https://travis-ci.com/CBSIIFSLagarto/projetokube-site.svg?branch=master)](https://travis-ci.com/CBSIIFSLagarto/projetokube-site) |
+| Desenv | [![Build Status](https://travis-ci.com/CBSIIFSLagarto/projetokube-site.svg?branch=desenv)](https://travis-ci.com/CBSIIFSLagarto/projetokube-site) |
 
 # Type on Strap 
 
