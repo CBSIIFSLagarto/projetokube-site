@@ -19,3 +19,4 @@ group :jekyll_plugins do
 	gem 'jemoji', '~> 0.11.1'
 end
 
+gem 'jekyll-toc'

@@ -25,7 +25,7 @@
             <div class="col-md-10">
                 <div class="post-category">
                     {%- for item in include.page.category -%}
-                    <a href="{{ 'category' | absolute_url }}/{{ item }}">{{ item }}</a>
+                    <a href="{{ 'category' | absolute_url }}/{{ item | slugify: 'latin' }}">{{ item }}</a>
                     {%- endfor -%}
                 </div>
                 <h1>{{ include.page.title }}</h1>

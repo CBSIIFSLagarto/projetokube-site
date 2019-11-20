@@ -10,6 +10,9 @@ encoding: utf-8
 title: Projeto Kube # site's title
 description: "Computação em nuvem, Devops e educação" # used by search engines
 
+excerpt_separator: "\n\n"
+
+
 defaults:
   - scope:
       path: "" # an empty string here means all necessary files are in the project
@@ -155,6 +158,7 @@ plugins:
   # - jekyll-relative-links # https://github.com/benbalter/jekyll-relative-links
   - jekyll-sitemap # https://github.com/jekyll/jekyll-sitemap
   - jemoji
+  - jekyll-toc
 exclude: [".jekyll-cache", "Gemfile", "Gemfile*.lock", "type-on-strap.gemspec", "*.gem", ".idea", "vendor/*", "__portfolio/*",
           "LICENSE", "README.md", "screenshot.png", "assets/package.json", "assets/node_modules", "assets/gulpfile.js"]
 

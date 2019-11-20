@@ -1,3 +1,28 @@
+
+{% if page.toc %}
+	{% assign show_toc = page.toc %}
+{% else %}
+	{% assign show_toc = layout.toc %}
+{% endif %}
+
+{% assign show_social = page.show_social %}
+{% if show_social == nil %}
+	{% assign show_social = layout.show_social %}
+{% endif %}
+
+
+{% if show_toc %}
+<div class="aside-widget">
+	<div class="section-title">
+		<h2 class="title">TOC</h2>
+	</div>
+	<div class="widget">
+			{% toc %}
+    </div>
+</div>
+{% endif %}
+
+{% if show_social == true %}
 <!-- Página responsável pelos destaques e anúncios -->
 <!-- social widget -->
 <div class="aside-widget">
@@ -29,6 +54,8 @@
     </div>
 </div>
 <!-- /social widget -->
+
+{% endif %}
 
 <!-- category widget -->
 <div class="aside-widget">
