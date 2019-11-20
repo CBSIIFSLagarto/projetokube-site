@@ -57,7 +57,6 @@
     height: "'auto'"
     disableNav: true
 
-
 - selector: AngryPirdsDesenho
   bullets: true
   captions: true
@@ -75,7 +74,7 @@
   settings:
     height: "450"
     effect: "'fade'"
-# -----------------------------
+
 - selector: denis
   bullets: true
   captions: true
@@ -101,3 +100,16 @@
   settings:
     height: 400
     effect: "'fade'"
+
+- selector: agradecimentoIFS
+  bullets: true  
+  captions: true
+  images:
+    - src: http://www.ifs.edu.br/comunicacao/images/Imagens/Marcas/IFS_puro/Marca_IFS_vertical-01.jpg
+      alt: IFS
+      href: http://www.ifs.edu.br
+    - src: http://www.ifs.edu.br/images/Hotsites/propex/xbanner_capa3.jpg.pagespeed.ic.hoyVDcXBv3.jpg
+      alt: PROPEX/IFS
+      href: http://www.ifs.edu.br/propex
+  settings:
+    height: 400

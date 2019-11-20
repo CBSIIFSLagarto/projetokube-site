@@ -19,17 +19,17 @@ jobs:
   include:
     - stage: Test
       script:
-        - bundle exec jekyll build --baseurl $URL_TEST;        
+        - bundle exec jekyll build --baseurl $URL_TEST
       deploy:
-        provider: pages-test
+        provider: pages
+        edge: true
         local_dir: ./_site
         # skip_cleanup: true
         github-token: $GITHUB_TOKEN
-        keep_history: true
+        keep_history: false
         on:
           branch: desenv
         target-branch: gh-pages
-        
         
     - stage: Deploy
       script:
