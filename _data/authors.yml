@@ -69,6 +69,14 @@ reinan:
     twitter: ReinanGabriel9
     instagram: reinanhs
   content: "Olá meu nome é <b>Reinan Gabriel</b>, sou discente em Sistemas de Informação pelo <b>Instituto Federal de Sergipe</b>. <br>Minha paixão é por tecnologia e sempre dedico meu tempo livre a me aventurar por conta entre novas tecnologias"
+edvan: 
+  name: "Edvan de Matos Santos"
+  type: Estudante
+  github: edvansts
+  social:
+    instagram: edvansts
+    twitter: edvansts
+  description: "Sou discente em Sistemas de Informação pelo IFS."
 mhagnumdw: # author-id
   name: MhagnumDw
   avatar: "assets/img/avatars/mhagnumdw_avatar.jpg"
