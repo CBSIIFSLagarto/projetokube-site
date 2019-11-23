@@ -77,6 +77,15 @@ edvan:
     instagram: edvansts
     twitter: edvansts
   description: "Sou discente em Sistemas de Informação pelo IFS."
+gustavo:
+  name: "Gustavo Avila Gama"
+  type: Estudante
+  description: "Apaixonado por jogos"
+  url: https://github.com/GamaGustavo
+  social:
+    instagram: gustavo00vii
+  github: GamaGustavo
+  content: "Discente em Sistemas de Informação pelo Indtituto Federal de Sergipe"
 mhagnumdw: # author-id
   name: MhagnumDw
   avatar: "assets/img/avatars/mhagnumdw_avatar.jpg"
