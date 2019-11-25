@@ -2,6 +2,7 @@
 layout: default
 show_social: false
 toc: false
+
 ---
 {%- include blog/page-header.html type="post" image=page.feature-img title=page.title page=page credits=page.feature-img-credit -%}
 <div class="section section-blog">
@@ -19,8 +20,7 @@ toc: false
                         <a target="_blank" href="mailto:?subject={{ page.title | strip_html | truncate: '45' | escape }}&body={{ page.content | strip_html | truncate: '280' | escape }}:http://{{ page.url | absolute_url }}"><i class="fa fa-envelope"></i><span>Email</span></a>
                     </div>
                 </div>
-                <!-- /post share -->
-
+                <!-- /post share -->				
                 <!-- post content -->
                 <div class="section-row post-content">{{ content }}</div>
                 <!-- /post content -->

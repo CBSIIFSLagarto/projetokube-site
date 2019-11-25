@@ -2,8 +2,10 @@
 # SITE CONFIGURATION
 encoding: utf-8
 #baseurl: "projetokube-site"
-# locale : "pt-BR"
-# default_locale: "pt-BR"
+locale : ['en',"pt-BR"]
+# set your locale
+lang: "pt-BR"
+default_locale: "en"
 
 # url: "https://cbsiifslagarto.github.io/projetokube-site"
 
@@ -148,7 +150,8 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: :compressed
-plugins: 
+plugins:   
+  - jekyll-last-modified-at
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-feed
@@ -159,6 +162,8 @@ plugins:
   - jekyll-sitemap # https://github.com/jekyll/jekyll-sitemap
   - jemoji
   - jekyll-toc
+  - premonition
+  #- meu-jekyll-git-updated
 exclude: [".jekyll-cache", "Gemfile", "Gemfile*.lock", "type-on-strap.gemspec", "*.gem", ".idea", "vendor/*", "__portfolio/*",
           "LICENSE", "README.md", "screenshot.png", "assets/package.json", "assets/node_modules", "assets/gulpfile.js"]
 
