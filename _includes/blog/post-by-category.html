@@ -12,10 +12,12 @@
                         <div class="section-title">
                             <h2 class="title">Últimas publicações</h2>
                         </div>
-                    </div>
+					</div>
+					{% assign dados = site.posts | sort: 'last_modified_at' %}
+					{% assign dados = dados | reverse %}
                     
                     <!-- post -->
-                    {% for post in site.posts limit:6 %}
+                    {% for post in dados | limit: 6 %}
                     {%- if forloop.index > 3 -%}
                     <div class="col-md-6 col-sm-12">{%- include blog/post-thumb.html post=post -%}</div>
                     {%- endif -%}

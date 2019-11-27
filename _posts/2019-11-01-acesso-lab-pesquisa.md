@@ -1,11 +1,13 @@
 ---
-layout: post
+layout: post-blog
 title: Acesso ao laboratório de pesquisa
 tags: [acesso, laboratório pesquisa]
 category: [ acesso, laboratório ]
 author-id: frchico
 feature-img: assets/img/lab/1.jpg
 excerpt_separator: <!--more-->
+
+
 ---
 
 Para ter acesso ao laboratório de pesquisa é necessário fazer o cadastro no formulário eletrônico <!--more-->disponibilizado [aqui](https://forms.gle/DRYwnfGJ7pUeYNMB9) ou através do link encurtado http://abre.ai/labpesquisacbsicoinf.

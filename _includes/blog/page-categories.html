@@ -11,13 +11,16 @@
                 {%- else -%}
                     {%- assign variable = site.categories[include.data.category] -%}
                 {%- endif -%}
-                
+				
+				{% assign variable = variable | sort: 'last_modified_at' %}
+				{% assign variable = variable |  reverse  %}
+				
                 {% for post in variable limit:1 %}
                     {%- include blog/post-thumb.html post=post type='post-thumb' -%}
                 {% endfor %}
 
                 <div class="row">
-                    {% for post in variable limit:4 %}
+                    {% for post in variable limit:5 %}
                         {%- if forloop.index != 1 -%}
                             <div class="col-lg-6 col-md-12">    
                                 {%- include blog/post-thumb.html post=post -%}

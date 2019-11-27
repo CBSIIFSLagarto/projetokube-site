@@ -1,6 +1,7 @@
 ---
 layout: post-blog
 date: 11 November 2019
+#date: 2019-11-11T10:20:00Z
 title: Como implantar o site do Projeto Kube
 subtitle: Configurando o Travis CI para criar e implantar o site usando o github
 tags: [site, deploy, Travis CI, tutoriais]
@@ -9,7 +10,7 @@ author-id: [ reinan, frchico ]
 feature-img: assets/img/blog/github-projetokube-site.png
 excerpt_separator: <!--more-->
 
-show_social: false
+show_social: false 
 ---
 
 O site do {{ site.title }} foi desenvolvido com o [Jekyll] e está hospedado no [Github]. Entretanto, como utilizamos *plugins* que não são confiáveis para o [Github], é necessário fazer uso do [Travis] para realizar a compilação e instalação do site.
@@ -25,11 +26,11 @@ Neste post iremos abordar os seguintes tópicos:
 # Instalação
 
 
-2. Instale o [Jekyll](https://jekyllrb.com/docs/installation/): `gem install jekyll`;
+1. Instale o [Jekyll](https://jekyllrb.com/docs/installation/): `gem install jekyll`;
 
-3. Instale o bundle: `gem install bundle`
+2. Instale o bundle: `gem install bundle`
 
-1. Faça o fork e clone de [Projetokube-site](https://github.com/CBSIIFSLagarto/projetokube-site)
+3. Faça o fork e clone de [Projetokube-site](https://github.com/CBSIIFSLagarto/projetokube-site)
 
 	```
 	git clone https://github.com/{ Seu usuário do GitHub }/projetokube-site.git

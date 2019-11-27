@@ -33,8 +33,8 @@
                     {%- for author in include.page.author-id -%}
                     <li><a href="{{ 'equipe' | absolute_url }}#{{ author }}">{{ author }}</a>
                     {%- endfor -%}
-                    </li>
-                    <li>{% include blog/data-ptBR.html date=include.page.date %}</li>
+					</li>					
+                    <li>{% include blog/data-ptBR.html date=page.last_modified_at %}</li>
                     {%- if include.credits -%}<li>Direitos autorais da imagem de fundo {{ include.credits }}</li>{%- endif -%}
                 </ul>
             </div>
