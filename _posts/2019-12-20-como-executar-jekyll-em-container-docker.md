@@ -25,6 +25,11 @@ Crie a variável de ambiente com a versão do **Jekyll** escolhida:
 export JEKYLL_VERSION=3.8.6
 ```
 
+Para definir o horário do contêiner, crie uma variável de ambiente para configurar o [fuso horário](https://pt.wikipedia.org/wiki/Fuso_hor%C3%A1rio) de acordo com sua localização:
+```bash
+export TIMEZONE=America/Sao_Paulo
+```
+
 Crie um volume para o **bundle**:
 ```bash
 docker volume create banco-de-dados-bundle-jekyll
@@ -32,7 +37,7 @@ docker volume create banco-de-dados-bundle-jekyll
 
 Execute o contêiner para criar o projeto **my-blog**:
 ```bash
-docker run --rm  -it --volume="$PWD:/srv/jekyll" --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 jekyll/jekyll:$JEKYLL_VERSION jekyll new my-blog
+docker run --rm  -it --volume="$PWD:/srv/jekyll" --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle  -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 jekyll/jekyll:$JEKYLL_VERSION jekyll new my-blog
 ```
 
 Entre na pasta gerada:
@@ -88,12 +93,12 @@ plugins:
 
 Atualize o *site* com o comando abaixo:
 ```bash
-docker run --rm  -it --volume="$PWD:/srv/jekyll" --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 jekyll/jekyll:$JEKYLL_VERSION jekyll build
+docker run --rm  -it --volume="$PWD:/srv/jekyll" --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 jekyll/jekyll:$JEKYLL_VERSION jekyll build
 ```
 
 Execute o contêiner para iniciar o servidor na (URL) `http://localhost:4000`.
 ```bash
-docker run --rm  -it --volume="$PWD:/srv/jekyll" --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 -p 4000:4000 jekyll/jekyll:$JEKYLL_VERSION jekyll server
+docker run --rm  -it --volume="$PWD:/srv/jekyll" --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 -p 4000:4000 jekyll/jekyll:$JEKYLL_VERSION jekyll server
 ```
 
 Outros temas para utilizar com **Jekyll** pode ser encontrado [aqui](https://rubygems.org/search?utf8=%E2%9C%93&query=jekyll-theme).
@@ -105,3 +110,5 @@ Jekyll Docker. **GITHUB**. Disponível em: [https://github.com/envygeeks/jekyll-
 Quickstart. **JEKYLL**. Disponível em: [https://jekyllrb.com/docs](https://jekyllrb.com/docs). Acesso em: 31 out. 2019.  
 
 MATHEUS, Yuri. Criando volumes com Docker. **ALURA**, 19 set. 2018. Disponível em: [https://www.alura.com.br/artigos/criando-volumes-com-docker](https://www.alura.com.br/artigos/criando-volumes-com-docker).  Acesso em: 31 out. 2019.  
+
+Data e Hora do container. **ALURA**, 29 out. 2017. Disponível em: [https://cursos.alura.com.br/forum/topico-data-e-hora-do-container-48707](https://cursos.alura.com.br/forum/topico-data-e-hora-do-container-48707). Acesso em: 19 dez. 2019.
