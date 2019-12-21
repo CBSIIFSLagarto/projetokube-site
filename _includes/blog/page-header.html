@@ -3,9 +3,9 @@
 <div class="page-header">
     <div class="page-header-bg"
     {%- if include.type == 'category' -%}
-        style="background-image: url('{{ include.image | absolute_url }}'); background-position: 0px -71px;"
+        style="background-image: url('{{ include.image | absolute_url }}'); background-position: 0px -71px; background-size: 100% 100%;"
     {%- elsif include.type == 'post' -%}
-        style="background-image: url('{{ include.image  | absolute_url }}'); background-position: 0% 0%;"
+        style="background-image: url('{{ include.image  | absolute_url }}'); background-position: 0% 0%; background-size: 100% 100%;"
     {%- endif -%}
         data-stellar-background-ratio="0.5"></div>
     <div class="container">
