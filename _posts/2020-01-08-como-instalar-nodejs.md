@@ -4,7 +4,7 @@ title: Instalação do NodeJS
 tags: [tutoriais]
 category: [ tutoriais ]
 author-id: [ franciscojsc ]
-feature-img: assets/img/blog/install-nodejs.png
+feature-img: assets/img/blog/install-nodejs.jpg
 excerpt_separator: <!--more-->
 ---
 

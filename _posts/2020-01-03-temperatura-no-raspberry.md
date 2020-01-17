@@ -4,7 +4,7 @@ title: Coletando a temperatura no Raspberry PI 3
 tags: [raspberry]
 category: [ linux, tutoriais ]
 author-id: [ franciscojsc ]
-feature-img: assets/img/blog/temp-rasp.png
+feature-img: assets/img/blog/temp-rasp.jpg
 excerpt_separator: <!--more-->
 ---
 
