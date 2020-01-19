@@ -4,7 +4,7 @@ title: Execução do Jekyll em container Docker
 tags: [jekyll, docker]
 category: [ linux, tutoriais ]
 author-id: [ franciscojsc ]
-feature-img: assets/img/blog/docker-jekyll.png
+feature-img: assets/img/blog/docker-jekyll.jpg
 excerpt_separator: <!--more-->
 ---
 

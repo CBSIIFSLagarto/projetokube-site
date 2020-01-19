@@ -388,10 +388,10 @@
   color: #337ab7 !important;
 }
 
-@media only screen and (min-width: 1200px){
-  .hot-post-left .post.post-thumb .post-img img{
-    height: 418px !important;
-  }
+.col-lg-8.col-md-12.hot-post-left .post { height: 100%; }
+.col-lg-4.col-md-12.hot-post-right .post .post-img img {
+  max-width: 100% !important;
+  height: 235px;
 }
 /*----------------------------*\
       post small
