@@ -153,7 +153,7 @@ docker buildx build --platform linux/arm,linux/arm64,linux/amd64 -t franciscojsc
 ```
 As *images* criadas no Docker Hub:
 
-![Imagens criadas no Docker Hub]({{ 'assets/img/blog/tags-docker-my-site.png' | absolute_url }} "Imagens criadas no Docker Hub ")
+![Imagens criadas no Docker Hub]({{ 'assets/img/blog/tags-docker-my-site.jpg' | absolute_url }} "Imagens criadas no Docker Hub ")
 
 Execute o container:
 ```bash
