@@ -12,7 +12,7 @@ Olá pessoal, hoje vamos instalar o NodeJS, uma ferramenta que permitir executar
 
 Vamos ao [*site*](https://nodejs.org/en/) do NodeJS, clique na opção _Downloads_ e selecione a versão LTS (versão mais estável e com suporte) do NodeJS conforme o seu sistema operacional.
 
-![Opções de download do NodeJS]({{ 'assets/img/blog/download-nodejs.png' | absolute_url }} "Opções de download do NodeJS")
+![Opções de download do NodeJS]({{ 'assets/img/blog/download-nodejs.jpg' | absolute_url }} "Opções de download do NodeJS")
 
 Após a instalação, abra o seu terminal ou prompt de comando  e execute o comando a seguir para verificar se o NodeJS está instalado:
 ```bash
