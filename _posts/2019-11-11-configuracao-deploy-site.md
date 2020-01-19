@@ -7,7 +7,7 @@ subtitle: Configurando o Travis CI para criar e implantar o site usando o github
 tags: [site, deploy, Travis CI, tutoriais]
 category: [ tutoriais ]
 author-id: [ reinan, frchico ]
-feature-img: assets/img/blog/github-projetokube-site.png
+feature-img: assets/img/blog/github-projetokube-site.jpg
 excerpt_separator: <!--more-->
 
 show_social: false 

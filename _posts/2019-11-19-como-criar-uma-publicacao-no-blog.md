@@ -6,7 +6,7 @@ subtitle: Gerando conteúdo para o site
 tags: [site, tutoriais]
 category: [ tutoriais ]
 author-id: [ reinan, frchico ]
-feature-img: assets/img/blog/github-projetokube-site.png
+feature-img: assets/img/blog/github-projetokube-site.jpg
 excerpt_separator: <!--more-->
 
 show_social: false
