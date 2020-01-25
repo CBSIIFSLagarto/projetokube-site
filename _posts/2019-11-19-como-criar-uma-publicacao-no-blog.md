@@ -31,7 +31,7 @@ A inclusão de um item de blog no site é bastante simples. Para tanto faça:
 	subtitle: 'Configurando o Travis CI para criar e implantar o site usando o github' 
 	tags: [site, deploy, Travis CI] # Palavras chaves para a publicação
 	author-id: [ reinan ] # Nomes dos autores que está em _data/authors.yml
-	feature-img: assets/img/blog/github-projetokube-site.png # Imagem da publicação opcional
+	feature-img: assets/img/blog/github-projetokube-site.jpg # Imagem da publicação opcional
 	category: linux # Se for colocar uma categoria certifique se que ela também foi criada em _category ( A categoria é opcional )
 	excerpt_separator: <!--more-->
 	toc: true # ou false/remover a linha
