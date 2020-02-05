@@ -2,7 +2,7 @@
 layout: post-blog
 title: Acesso ao laboratório de pesquisa
 tags: [acesso, laboratório pesquisa]
-categories: [ acesso, laboratório ]
+categories: [ acesso, laboratorio ]
 author: frchico
 image: assets/img/lab/1.jpg
 date: 2019-11-01 14:15:16 -0300

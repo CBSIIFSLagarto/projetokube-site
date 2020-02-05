@@ -68,7 +68,7 @@
 			{% assign title = category[0]  %}		
 			{% assign url = title | slugify: 'latin' %}
 
-            <li><a href="{{ 'category' | absolute_url }}/{{ url }}">{{ title }} <span>{{ site.categories[title].size }}</span></a></li>
+            <li><a href="{{ 'blog/categoria' | absolute_url }}/{{ url }}">{{ title }} <span>{{ site.categories[title].size }}</span></a></li>
             {% endfor %}
         </ul>
     </div>

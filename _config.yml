@@ -24,11 +24,6 @@ defaults:
       path: "assets/**/*.pdf"
     values:
       sitemap: false
-  - scope:
-      path: ""
-      type: category
-    values:
-      layout: "category"
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -113,12 +108,18 @@ theme_settings:
   # Colours, typography and padding
   # Open the "_sass > base" folder, and open "_variables.scss"
 
+# Posts
+permalink: /blog/:categories/:year/:title-:month-:day:output_ext
 # PAGINATION
-paginate: 6
-paginate_path: "blog/page:num"
-
-
-permalink: /blog/:year/:month/:day/:title:output_ext
+pagination:
+  enabled: true
+  per_page: 6
+  offset: 2
+  permalink: '/pagina/:num/'
+  title: ':title - página :num de :max'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
 
 # PORTFOLIO
 collections:
@@ -150,9 +151,9 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: :compressed
+gems: [jekyll-paginate-v2]
 plugins:   
   - jekyll-last-modified-at
-  - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-feed
   - jekyll-avatar
@@ -164,6 +165,8 @@ plugins:
   - jekyll-toc
   - premonition
   #- meu-jekyll-git-updated
+plugins_dir:
+  - jekyll-paginate-v2
 exclude: [".jekyll-cache", "Gemfile", "Gemfile*.lock", "type-on-strap.gemspec", "*.gem", ".idea", "vendor/*", "__portfolio/*",
           "LICENSE", "README.md", "screenshot.png", "assets/package.json", "assets/node_modules", "assets/gulpfile.js"]
 
