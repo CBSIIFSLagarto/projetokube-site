@@ -2,9 +2,10 @@
 layout: post-blog
 title: Conteúdo para as férias
 tags: [estudo]
-category: [ estudo, devops ]
-author-id: frchico
-feature-img: assets/img/blog/trem.jpg
+categories: [ estudo, devops ]
+author: frchico
+image: assets/img/blog/trem.jpg
+date: 2019-12-17 22:12:17 -0300
 # excerpt_separator: <!--more-->
 
 ---

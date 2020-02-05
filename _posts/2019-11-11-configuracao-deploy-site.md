@@ -5,9 +5,10 @@ date: 11 November 2019
 title: Como implantar o site do Projeto Kube
 subtitle: Configurando o Travis CI para criar e implantar o site usando o github
 tags: [site, deploy, Travis CI, tutoriais]
-category: [ tutoriais ]
-author-id: [ reinan, frchico ]
-feature-img: assets/img/blog/github-projetokube-site.jpg
+categories: [ tutoriais ]
+author: [ reinan, frchico ]
+image: assets/img/blog/github-projetokube-site.jpg
+date: 2019-11-11 14:20:39 -0300
 excerpt_separator: <!--more-->
 
 show_social: false 

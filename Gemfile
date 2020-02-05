@@ -21,7 +21,6 @@ group :jekyll_plugins do
 	
 	gem 'jekyll-toc'
 	gem "premonition", "~> 2.0.0"
-	
 end
 
 # gem 'jekyll-git-updated'

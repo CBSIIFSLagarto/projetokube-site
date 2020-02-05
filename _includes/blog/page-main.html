@@ -13,10 +13,8 @@
             {% endfor %}
 
             <div class="col-lg-4 col-md-12 hot-post-right">
-                {% for post in site.posts | sort: 'last_modified_at'  | reverse  | limit:3  %}
-                    {%- if forloop.index != 1 -%}
-                        {%- include blog/post-thumb.html post=post type='post-thumb' -%}
-                    {%- endif -%}
+                {% for post in site.posts | sort: 'last_modified_at'  | reverse  | limit:3 | offset:1  %}
+                    {%- include blog/post-thumb.html post=post type='post-thumb' -%}
                 {% endfor %}
             </div>
 

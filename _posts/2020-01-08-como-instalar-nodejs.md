@@ -2,9 +2,10 @@
 layout: post-blog
 title: Instalação do NodeJS
 tags: [tutoriais]
-category: [ tutoriais ]
-author-id: [ franciscojsc ]
-feature-img: assets/img/blog/install-nodejs.jpg
+categories: [ tutoriais ]
+author: [ franciscojsc ]
+image: assets/img/blog/install-nodejs.jpg
+date: 2020-01-19 16:11:04 -0300
 excerpt_separator: <!--more-->
 ---
 

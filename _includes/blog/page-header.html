@@ -8,6 +8,7 @@
         style="background-image: url('{{ include.image  | absolute_url }}'); background-position: 0% 0%; background-size: 100% 100%;"
     {%- endif -%}
         data-stellar-background-ratio="0.5"></div>
+    <div class="page-header-bg-o"></div>
     <div class="container">
         {%- if include.type == 'category' -%}
         <div class="row">
@@ -23,20 +24,28 @@
         {%- elsif include.type == 'post' -%}
         <div class="row">
             <div class="col-md-10">
-                <div class="post-category">
-                    {%- for item in include.page.category -%}
-                    <a href="{{ 'category' | absolute_url }}/{{ item | slugify: 'latin' }}">{{ item }}</a>
-                    {%- endfor -%}
-                </div>
                 <h1>{{ include.page.title }}</h1>
                 <ul class="post-meta">
-                    {%- for author in include.page.author-id -%}
+                    {%- for author in include.page.author -%}
                     <li><a href="{{ 'equipe' | absolute_url }}#{{ author }}">{{ author }}</a>
                     {%- endfor -%}
 					</li>					
-                    <li>{% include blog/data-ptBR.html date=page.last_modified_at %}</li>
+                    <li>
+                        <time>{% include blog/data-ptBR.html date=page.date %}</time>
+                    </li>
+                    <li>
+                        <time>
+                            {% assign date_format = site.minima.date_format | default: "%d/%m/%y" %}
+                            <b>Editado</b> em {{ page.last_modified_at | date: date_format }}
+                        </time>
+                    </li>
                     {%- if include.credits -%}<li>Direitos autorais da imagem de fundo {{ include.credits }}</li>{%- endif -%}
                 </ul>
+                <div class="post-category">
+                    {%- for item in include.page.categories -%}
+                    <a class="btn btn-primary btn-sm m-2"  href="{{ 'category' | absolute_url }}/{{ item | slugify: 'latin' }}">{{ item | slugify: 'latin' }}</a>
+                    {%- endfor -%}
+                </div>
             </div>
         </div>
         {%- endif -%}
