@@ -6,5 +6,4 @@ permalink: /blog/
 tags: [blog, notícias, tutoriais, artigos]
 ---
 
-{% include blog/page-main.html %}
-{% include blog/post-by-category.html %}
+{% include blog/index.html %}
