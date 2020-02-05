@@ -8,7 +8,7 @@
         <div class="page-header-bg-o"></div>
 
         <div class="container">
-          <div class="carousel-caption text-left">
+          <div class="carousel-caption text-left p-3">
             <h1>{{ post.title | escape }}</h1>
             <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
             <p>
@@ -39,5 +39,42 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-12">
+        {% for post in site.posts %}
+        <article class="col-md-4 col-sm-12 post-card">
+          <a href="{{ post.url | absolute_url }}" class="post-link">
+            <div class="post-image" style="background-image: url('{{ post.image | relative_url }}')"></div>
+            {% assign author = post.author | first %}
+            {% assign verificarArray = author | size  %}
+            {% if verificarArray == 0 %}
+              {% assign author = post.author %}
+            {% endif %}
+            {% capture photo %}
+              {% if site.data.authors[author].avatar %}
+                {{ site.data.authors[author].avatar | absolute_url }}"
+              {% elsif site.data.authors[author].github %}
+                {{ 'https://avatars3.githubusercontent.com/'}}{{ site.data.authors[author].github }}{{'?v=3&amp;s=273' }}
+              {% else %}
+                {{ 'https://ui-avatars.com/api/?name='}}{{ site.data.authors[author].name | uri_escape  }}{{'?size=273' }}
+              {% endif %}
+            {% endcapture %}
+            {% assign imageUrl = photo | lstrip | rstrip %}
+            <div class="post-user" style="background-image: url('{{ imageUrl }}');"></div>
+            <div class="post-title-height">
+              <h5 class="post-title">
+                {{ post.title | strip_html | strip_newlines | truncate: 50 }}
+              </h5>
+            </div>
+            <time class="post-date">{% include blog/data-ptBR.html date=page.date %}</time>
+          </a>
+        </article>
+        {% endfor %}
+      </div>
+      <div class="col-lg-4 col-md-12 mt-3">{%- include blog/submenu-ads.html -%}</div>
+    </div>
   </div>
 </main>
