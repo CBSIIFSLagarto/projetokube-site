@@ -12,7 +12,6 @@ $().ready(function () {
   $('#myCarousel').carousel({
     interval: 4000
   });
-
 });
 
 function rotateCard(btn) {

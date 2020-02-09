@@ -11,9 +11,13 @@
     <div class="post-body">
         <div class="post-category">
             {%- if include.post.categories | first -%}
-            <a href="{{ 'category' | absolute_url }}/{{ include.post.categories | first }}">{{ include.post.categories | first }}</a>
+            <span class="badge badge-primary">
+                <a href="{{ 'category' | absolute_url }}/{{ include.post.categories | first }}">{{ include.post.categories | first }}</a>
+            </span>
             {%- else -%}
-            <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes">Genérico</a>
+            <span class="badge badge-secondary">
+                <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes">Genérico</a>
+            </span>
             {%- endif -%}
         </div>
         {%- if include.type == 'post-thumb' -%}
