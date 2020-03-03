@@ -2,9 +2,10 @@
 layout: post-blog
 title: Instalação do VNC Server no Raspberry PI 3
 tags: [raspberry]
-category: [ linux, tutoriais ]
-author-id: [ franciscojsc ]
-feature-img: assets/img/blog/install-vnc-raspberry.jpg
+categories: [ linux, tutoriais ]
+author: [ franciscojsc ]
+image: assets/img/blog/install-vnc-raspberry.jpg
+date: 2020-01-17 13:44:48 -0300
 excerpt_separator: <!--more-->
 ---
 

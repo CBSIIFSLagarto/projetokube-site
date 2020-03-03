@@ -17,10 +17,8 @@
 					{% assign dados = dados | reverse %}
                     
                     <!-- post -->
-                    {% for post in dados | limit: 6 %}
-                    {%- if forloop.index > 3 -%}
-                    <div class="col-md-6 col-sm-12">{%- include blog/post-thumb.html post=post -%}</div>
-                    {%- endif -%}
+                    {% for post in dados | limit: 6 | offset:3 %}
+                        <div class="col-md-6 col-sm-12">{%- include blog/post-thumb.html post=post -%}</div>
                     <!-- /post -->
                     {% endfor %}
 

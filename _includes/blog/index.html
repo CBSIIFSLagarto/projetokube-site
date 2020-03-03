@@ -1,14 +1,12 @@
----
-layout: default
----
 <main role="main">
+  {% if page.url != "/blog/" %}
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       {% for post in paginator.posts limit:4 %}
       <div class="carousel-item {% if forloop.index == 1 %}active{% endif %}">
 
         <div class="page-header-bg"
-          style="background-image: url('{{ post.image | relative_url }}'); background-position: 0% 0%; background-size: 100% 100%; height: 20em;">
+          style="background-image: url('{{ post.image | relative_url }}');">
         </div>
         <div class="page-header-bg-o"></div>
 
@@ -44,7 +42,10 @@ layout: default
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
+  </div>  
+  {% else %}
+    {% include blog/page-main.html %}
+  {% endif %}
 
   <div class="container">
     <div class="row">
@@ -75,7 +76,15 @@ layout: default
                   {{ post.title | strip_html | strip_newlines | truncate: 50 }}
                 </h5>
               </div>
-              <time class="post-date">{% include blog/data-ptBR.html date=page.date %}</time>
+
+              <div class="d-flex flex-wrap mt-2">
+                <time class="post-date">{% include blog/data-ptBR.html date=page.date %}</time>
+                <div class="post-categories">
+                  {% for categor in post.categories limit 2 %}
+                  <span class="badge badge-black">{{ categor | upcase   }}</span>
+                  {% endfor %}
+                </div>
+              </div>
             </a>
           </article>
           {% endfor %}

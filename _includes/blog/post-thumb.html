@@ -2,18 +2,22 @@
 <!-- post -->
 <div class="post {{ include.type }}">
     <a class="post-img" href="{{ include.post.url | absolute_url }}">
-        {%- if include.post.feature-img -%}
-        <img src="{{ include.post.feature-img | absolute_url }}" alt="">
+        {%- if include.post.image -%}
+        <img src="{{ include.post.image | absolute_url }}" alt="">
         {%- else -%}
         <div class="no-image"></div>
         {%- endif -%}
     </a>
     <div class="post-body">
         <div class="post-category">
-            {%- if include.post.category | first -%}
-            <a href="{{ 'category' | absolute_url }}/{{ include.post.category | first }}">{{ include.post.category | first }}</a>
+            {%- if include.post.categories | first -%}
+            <span class="badge badge-black">
+                <a href="{{ 'category' | absolute_url }}/{{ include.post.categories | first }}">{{ include.post.categories | first }}</a>
+            </span>
             {%- else -%}
-            <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes">Genérico</a>
+            <span class="badge badge-black">
+                <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes">Genérico</a>
+            </span>
             {%- endif -%}
         </div>
         {%- if include.type == 'post-thumb' -%}

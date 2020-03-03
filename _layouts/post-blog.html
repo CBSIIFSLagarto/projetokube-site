@@ -4,7 +4,7 @@ show_social: false
 toc: false
 
 ---
-{%- include blog/page-header.html type="post" image=page.feature-img title=page.title page=page credits=page.feature-img-credit -%}
+{%- include blog/page-header.html type="post" image=page.image title=page.title page=page credits=page.feature-img-credit -%}
 <div class="section section-blog">
     <!-- container -->
     <div class="container">
@@ -35,53 +35,8 @@ toc: false
                 </div>
                 <!-- /post tags -->
 
-                <!-- post nav -->
-                <div class="section-row">
-
-                    {% assign cat = page.category %}
-
-                    {% for post in site.categories[cat] %}
-                    {% if post.url == page.url %}
-                    {% assign post_index0 = forloop.index0 %}
-                    {% assign post_index1 = forloop.index %}
-                    {% endif %}
-                    {% endfor %}
-
-                    {% for post in site.categories[cat] %}
-                    {% if post_index0 == forloop.index %}
-                    {% assign next_post = post %}
-                    {% endif %}
-                    {% if post_index1 == forloop.index0 %}
-                    {% assign prev_post = post %}
-                    {% endif %}
-                    {% endfor %}
-
-
-                    <div class="post-nav">
-                        {% if prev_post %}
-                        <div class="prev-post">
-                            <a class="post-img" href="{{ prev_post.url }}"><img src="{{ prev_post.feature-img }}"
-                                    alt="{{ prev_post.content | strip_html | truncate: '20' | escape }}"></a>
-                            <h3 class="post-title"><a href="{{ prev_post.url }}">{{ prev_post.title }}</a>
-                            </h3>
-                            <span>Postagem anterior</span>
-                        </div>
-                        {% endif %}
-
-                        {% if next_post %}
-                        <div class="next-post">
-                            <a class="post-img" href="{{ next_post.url }}"><img src="{{ next_post.feature-img }}"
-                                    alt="{{ next_post.content | strip_html | truncate: '20' | escape }}"></a>
-                            <h3 class="post-title"><a href="{{ next_post.url }}">{{ next_post.title }}</a></h3>
-                            <span>Próximo post</span>
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-                <!-- /post nav  -->
-
                 <!-- post author -->
-                {%- for author in page.author-id -%}
+                {%- for author in page.author -%}
                 <div class="section-row">
                     <div class="section-title">
                         <h3 class="title">Sobre <a
@@ -131,7 +86,7 @@ toc: false
                     </div>
                     <div class="row">
                         <!-- post -->
-                        {%- assign variable = page.category | first -%}
+                        {%- assign variable = page.categories | first -%}
                         {% for post in site.categories[variable] limit:6 %}
                         <div class="col-md-4">{%- include blog/post-thumb.html post=post type='post-sm' -%}</div>
                         {% endfor %}

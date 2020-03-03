@@ -7,7 +7,6 @@ gem "jekyll-last-modified-at", group: :jekyll_plugins
 
 gem 'i18n'
 group :jekyll_plugins do
-	gem 'jekyll-paginate'
 	gem 'jekyll-seo-tag'
 	gem 'jekyll-feed'
 
@@ -21,7 +20,7 @@ group :jekyll_plugins do
 	
 	gem 'jekyll-toc'
 	gem "premonition", "~> 2.0.0"
-	
+	gem "jekyll-paginate-v2"
 end
 
 # gem 'jekyll-git-updated'
