@@ -2,9 +2,10 @@
 layout: post-blog
 title: Como criar uma instalação automática do Ubuntu ou por um servidor PXE  
 tags: [tutoriais, pxe, ubuntu]
-category: [ tutoriais ]
-author-id: [ reinan ]
-feature-img: assets/img/blog/install-ubuntu-instalacoes-autonomas.jpg
+categories: [ tutoriais ]
+author: [ reinan ]
+image: assets/img/blog/install-ubuntu-instalacoes-autonomas.jpg
+date: 2020-03-03 10:39:00 -0300
 excerpt_separator: <!--more-->
 ---
 
