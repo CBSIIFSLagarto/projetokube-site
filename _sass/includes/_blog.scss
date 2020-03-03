@@ -268,7 +268,12 @@
 }
 
 .post-category a:hover{
-  color: #000 !important;
+  color: #0078ae !important;
+}
+
+.badge-black {
+  color: #fff;
+  background-color:#000;
 }
 
 .post .post-meta {
@@ -1051,3 +1056,4 @@
 .posts-info {
   margin-bottom: 50px;
 }
+

@@ -11,11 +11,11 @@
     <div class="post-body">
         <div class="post-category">
             {%- if include.post.categories | first -%}
-            <span class="badge badge-primary">
+            <span class="badge badge-black">
                 <a href="{{ 'category' | absolute_url }}/{{ include.post.categories | first }}">{{ include.post.categories | first }}</a>
             </span>
             {%- else -%}
-            <span class="badge badge-secondary">
+            <span class="badge badge-black">
                 <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes">Genérico</a>
             </span>
             {%- endif -%}

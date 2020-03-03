@@ -21,7 +21,6 @@ tags: [index, sobre, kube]
 
 ---
 
-
 ![Image do projeto]({{ "assets/img/logoprojeto-FundoBranco.png?style=centerme" | absolute_url }})
 
 O **{{site.title}}**  nasceu em meados de 2015 enquanto @frchico realizava estudos sobre como o *Docker* poderia ser aplicado nos cursos de computação do [IFS](http://www.ifs.edu.br), Campus Lagarto. Hoje tem seu foco expandido e busca atacar as temáticas de computação em nuvem e *Devops* associadas com o ensino de computação. 
