@@ -1,31 +1,6 @@
-<script src="{{ '/assets/js/vendor/jquery-1.10.2.js' | absolute_url }}" type="text/javascript"></script>
-<script src="{{ '/assets/js/vendor/bootstrap.min.js' | absolute_url }}" type="text/javascript"></script>
-
-<!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
-<script defer=true src="{{ '/assets/js/main.min.js' | absolute_url }}"></script>
-
-<script type="text/javascript">
-    $().ready(function(){
-        $('[rel="tooltip"]').tooltip();
-
-        $('a.scroll-down').click(function(e){
-            e.preventDefault();
-            scroll_target = $(this).data('href');
-             $('html, body').animate({
-                 scrollTop: $(scroll_target).offset().top - 60
-             }, 1000);
-        });
-
-    });
-
-    function rotateCard(btn){
-        var $card = $(btn).closest('.card-container');
-        console.log($card);
-        if($card.hasClass('hover')){
-            $card.removeClass('hover');
-        } else {
-            $card.addClass('hover');
-        }
-	}
-</script>
+<script src="{{ 'assets/js/vendor/jquery-3.4.1.slim.min.js' | absolute_url}}"></script>
+<script src="{{ 'assets/js/vendor/popper.min.js' | absolute_url}}"></script>
+<script src="{{ 'assets/js/vendor/bootstrap.min.js' | absolute_url}}"></script>
+<script src="{{ 'assets/js/app.js' | absolute_url}}"></script>
+<script src="{{ 'assets/js/main.min.js' | absolute_url}}"></script>
 {% include slider_scripts.html %}

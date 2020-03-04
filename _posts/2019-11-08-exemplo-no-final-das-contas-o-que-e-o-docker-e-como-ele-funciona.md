@@ -2,9 +2,10 @@
 layout: post-blog
 title:  'No final das contas: o que é o Docker e como ele funciona?'
 tags: [docker, devops]
-category: [ devops ]
-author-id: [ frchico, reinan, gabriel ]
-feature-img: assets/img/blog/docker.jpg
+categories: [ devops ]
+author: [ frchico, reinan, gabriel ]
+image: assets/img/blog/docker.jpg
+date: 2019-11-11 14:15:16 -0300
 excerpt_separator: <!--more-->
 ---
 

@@ -4,9 +4,10 @@ date: 11 November 2019
 title: Como criar uma publicação no blog
 subtitle: Gerando conteúdo para o site
 tags: [site, tutoriais]
-category: [ tutoriais ]
-author-id: [ reinan, frchico ]
-feature-img: assets/img/blog/github-projetokube-site.jpg
+categories: [ tutoriais ]
+author: [ reinan, frchico ]
+image: assets/img/blog/github-projetokube-site.jpg
+date: 2020-01-19 16:11:04 -0300
 excerpt_separator: <!--more-->
 
 show_social: false

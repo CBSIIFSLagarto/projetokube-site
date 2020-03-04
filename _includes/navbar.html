@@ -1,4 +1,4 @@
-<header class="site-header">
+<header class="site-header border-bottom shadow-sm">
     <!-- Logo and title -->
 	<div class="branding">
         {% if site.theme_settings.avatar %}
@@ -22,6 +22,12 @@
 
     <!-- Menu -->
     <ul class="hide">
+        <li class="separator"> | </li> 
+        <li>
+            <a class="clear" aria-label="blog" title="blog" href="{{ '/blog/' | absolute_url }}">
+                Blog
+            </a>
+        </li>
         {% assign name_page = "" %}
 
         {% for page in site.pages %}

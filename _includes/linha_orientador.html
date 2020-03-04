@@ -1,0 +1,11 @@
+
+<h1>{{include.titulo}}</h1>	
+<div class="container">
+	<div class="row">	
+
+{% for user in dados %}			
+	{% include user_card_compact.html user=user %}
+{% endfor %}
+	</div>
+</div>
+

@@ -2,9 +2,10 @@
 layout: post-blog
 title: Execução do Jekyll em container Docker
 tags: [jekyll, docker]
-category: [ linux, tutoriais ]
-author-id: [ franciscojsc ]
-feature-img: assets/img/blog/docker-jekyll.jpg
+categories: [ linux, tutoriais ]
+author: [ franciscojsc ]
+image: assets/img/blog/docker-jekyll.jpg
+date: 2020-01-17 13:44:48 -0300
 excerpt_separator: <!--more-->
 ---
 

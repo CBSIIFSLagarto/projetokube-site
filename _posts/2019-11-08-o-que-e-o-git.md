@@ -2,9 +2,10 @@
 layout: post-blog
 title:  'O que é o git?'
 tags: [git, github]
-category: [ git ]
-author-id: [ gabriel ]
-feature-img: assets/img/blog/o-que-e-git-print-1.jpg
+categories: [ git ]
+author: [ gabriel ]
+image: assets/img/blog/o-que-e-git-print-1.jpg
+date: 2019-11-13 16:28:39 -0300
 feature-img-credit: '<a href="https://pixabay.com/pt/users/lmonk72-731125/" target="_blank">Lmonk72</a>'
 excerpt_separator: <!--more-->
 ---
