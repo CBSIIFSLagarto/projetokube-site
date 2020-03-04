@@ -1,6 +1,7 @@
 # AUTHORS
 
 frchico: # author-id
+  id: frchico
   name: "Francisco Rodrigues"
   type: Coordenador
   url: https://github.com/frchico
@@ -11,6 +12,7 @@ frchico: # author-id
   description: "Um caba cheio de ideias."
   github: frchico
 alfredo:
+  id: alfredo
   name: "Alfredo Vieira"
   type: Professor
 rubens:

@@ -1,0 +1,17 @@
+<div class="section-row">
+	<div class="author media">
+		<div class="media-left">
+			<a href="http://localhost:4000/equipe#{{user.id}}">
+				{% if user.avatar %}
+				<img class="author-img media-object" src="{{ user.avatar | absolute_url }}"/>
+				{% elsif user.github %}
+				<img class="author-img media-object" src="https://avatars3.githubusercontent.com/{{ user.github }}?v=3&amp;s=273"/>
+				{% else %}
+				<img class="author-img media-object" src="https://ui-avatars.com/api/?name={{ user.name | uri_escape  }}?size=273"/>
+				{% endif %}
+			</a>
+		</div>
+	</div>
+</div>
+
+
