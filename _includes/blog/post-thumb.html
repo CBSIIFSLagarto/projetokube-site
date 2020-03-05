@@ -1,46 +1,48 @@
 <!-- Página responsável por mostrar os cards das publicações -->
 <!-- post -->
-<div class="post {{ include.type }}">
-    <a class="post-img" href="{{ include.post.url | absolute_url }}">
-        {%- if include.post.image -%}
-        <img src="{{ include.post.image | absolute_url }}" alt="">
-        {%- else -%}
-        <div class="no-image"></div>
-        {%- endif -%}
-    </a>
-    <div class="post-body">
-        <div class="post-category">
-            {%- if include.post.categories | first -%}
-            <span class="badge badge-black">
-                <a href="{{ 'category' | absolute_url }}/{{ include.post.categories | first }}">{{ include.post.categories | first }}</a>
-            </span>
-            {%- else -%}
-            <span class="badge badge-black">
-                <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes">Genérico</a>
-            </span>
+{%- if include.type == 'post-thumb' -%}
+<a href="{{ include.post.url | absolute_url }}">
+    <div class="post post-thumb">
+        <div class="post-img" style="background-image: url('{{ include.post.image | absolute_url }}');"></div>
+        <div class="post-body">
+            {%- if include.disableTag != 'true' -%}
+            <div class="post-category">
+                {%- if include.post.categories | first -%}
+                <span class="badge badge-black">
+                    <a href="{{ 'category' | absolute_url }}/{{ include.post.categories | first }}">{{ include.post.categories | first }}</a>
+                </span>
+                {%- else -%}
+                <span class="badge badge-black">
+                    <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes">Genérico</a>
+                </span>
+                {%- endif -%}
+            </div>
             {%- endif -%}
+            <h3 class="post-title title-lg">
+                <a href="{{ include.post.url | absolute_url }}">
+                    {{ include.post.title | strip_html | truncate: '70' | escape }}
+                </a>
+            </h3>
+            <ul class="post-meta">  
+                <li>
+                    <a href="{{ 'equipe' | absolute_url }}#{{ include.post.author-id | first }}">{{ include.post.author-id | first }} </a>
+                    {%- if include.post.author-id.size > 1 -%} e outros {%- endif -%}
+                </li>
+                {%- assign datePost = include.post.date -%}
+                {%- if include.type != 'post-sm' -%}
+                <li>{% include blog/data-ptBR.html  date=datePost %}</li>
+                {%- endif -%}
+            </ul>
         </div>
-        {%- if include.type == 'post-thumb' -%}
-        <h3 class="post-title {{ include.title }}"><a href="{{ include.post.url | absolute_url }}">{{ include.post.title | strip_html | truncate: '80' | escape }}</a></h3>
-        {%- elsif include.type == 'post-widget' -%}
-        <h3 class="post-title"><a href="{{ include.post.url | absolute_url }}">{{ include.post.title | strip_html | truncate: '60' | escape }}</a></h3>
-        {%- elsif include.type == 'post-sm' -%}
-        <h3 class="post-title title-sm"><a href="{{ include.post.url | absolute_url }}">{{ include.post.title | strip_html | truncate: '45' | escape }}</a></h3>
-        {%- else -%}
-        <h3 class="post-title"><a href="{{ include.post.url | absolute_url }}">{{ include.post.title | strip_html | truncate: '70' | escape }}</a></h3>
-        {%- endif -%}
-        {%- if include.type != 'post-widget' -%}
-        <ul class="post-meta">  
-            <li>
-                <a href="{{ 'equipe' | absolute_url }}#{{ include.post.author-id | first }}">{{ include.post.author-id | first }} </a>
-                {%- if include.post.author-id.size > 1 -%} e outros {%- endif -%}
-            </li>
-            {%- assign datePost = include.post.date -%}
-            {%- if include.type != 'post-sm' -%}
-            <li>{% include blog/data-ptBR.html  date=datePost %}</li>
-            {%- endif -%}
-        </ul>
-        {%- endif -%}
     </div>
+</a>
+{%- elsif include.type == 'post-sm' -%}
+<div class="post post-widget">
+    <a class="post-img" href="http://localhost:4000/blog/tutoriais/2020/como-criar-uma-instalacao-automatica-do-ubuntu-server-03-03.html"><img src="http://localhost:4000/assets/img/blog/install-ubuntu-instalacoes-autonomas.jpg" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><span class="badge badge-black">
+                <a href="http://localhost:4000/category/tutoriais">tutoriais</a>
+            </span></div><h3 class="post-title"><a href="http://localhost:4000/blog/tutoriais/2020/como-criar-uma-instalacao-automatica-do-ubuntu-server-03-03.html">Como criar uma instalação automática do Ubuntu ou por um ...</a></h3></div>
 </div>
+{%- endif -%}
 <!-- /post -->

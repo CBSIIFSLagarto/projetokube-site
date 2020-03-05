@@ -59,9 +59,7 @@
 
 <!-- category widget -->
 <div class="aside-widget">
-    <div class="section-title">
-        <h2 class="title">Categorias</h2>
-    </div>
+    <h4 class="p-title"><b>Categorias</b></h4>
     <div class="category-widget">
         <ul>			
 			{% for category in site.categories %}			
@@ -77,9 +75,7 @@
 
 <!-- post widget -->
 <div class="aside-widget">
-    <div class="section-title">
-        <h2 class="title">Postagens recentes</h2>
-    </div>
+    <h4 class="p-title"><b>Postagens recentes</b></h4>
     <!-- post -->
     {% for post in site.posts limit:10 %}
     {%- include blog/post-thumb.html post=post type='post-widget' -%}

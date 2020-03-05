@@ -12,6 +12,24 @@ $().ready(function () {
   $('#myCarousel').carousel({
     interval: 4000
   });
+
+  function filterBlur(elem, valor){
+    $(elem).css('-webkit-filter','blur('+valor+'px)');
+    $(elem).css('filter','blur('+valor+'px)');
+    $(elem).css('-moz-filter', 'blur('+valor+'px)');
+    $(elem).css('-o-filter', 'blur('+valor+'px)');
+    $(elem).css('-ms-filter', 'blur('+valor+'px)');
+  }
+
+  $('.post.post-thumb .post-title a').hover(function(){
+    var result = $(this).parent().parent().parent().find('.post-img');
+    filterBlur(result[0], 2);
+  });
+
+  $('.post.post-thumb .post-title a').mouseout(function(){
+    var result = $(this).parent().parent().parent().find('.post-img');
+    filterBlur(result[0], 0);
+  });
 });
 
 function rotateCard(btn) {
