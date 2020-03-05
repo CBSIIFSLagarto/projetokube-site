@@ -431,6 +431,14 @@
   padding: 0;
 }
 
+.post.post-sm .post-img .post-bg {
+	height: 140px;
+	background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075) !important;
+}
+
 /*----------------------------*\
       post widget
   \*----------------------------*/

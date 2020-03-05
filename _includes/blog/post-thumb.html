@@ -37,12 +37,85 @@
     </div>
 </a>
 {%- elsif include.type == 'post-sm' -%}
-<div class="post post-widget">
-    <a class="post-img" href="http://localhost:4000/blog/tutoriais/2020/como-criar-uma-instalacao-automatica-do-ubuntu-server-03-03.html"><img src="http://localhost:4000/assets/img/blog/install-ubuntu-instalacoes-autonomas.jpg" alt=""></a>
+<div class="post post-sm">
+    <a class="post-img" href="{{ include.post.url | absolute_url }}">
+        <div class="post-bg" style="background-image: url('{{ include.post.image | absolute_url }}');"></div>
+    </a>
     <div class="post-body">
-        <div class="post-category"><span class="badge badge-black">
-                <a href="http://localhost:4000/category/tutoriais">tutoriais</a>
-            </span></div><h3 class="post-title"><a href="http://localhost:4000/blog/tutoriais/2020/como-criar-uma-instalacao-automatica-do-ubuntu-server-03-03.html">Como criar uma instalação automática do Ubuntu ou por um ...</a></h3></div>
+        <div class="post-category">
+            {%- if include.post.categories | first -%}
+            <span class="badge badge-black">
+                <a href="{{ 'category' | absolute_url }}/{{ include.post.categories | first }}">{{ include.post.categories | first }}</a>
+            </span>
+            {%- else -%}
+            <span class="badge badge-black">
+                <a href="{{ 'category' | absolute_url }}/todas-as-publicacoes">Genérico</a>
+            </span>
+            {%- endif -%}
+        </div>
+        <h3 class="post-title title-sm">
+            <a href="{{ include.post.url | absolute_url }}">
+                {{ include.post.title | strip_html | truncate: '70' | escape }}
+            </a>
+        </h3>
+        <ul class="post-meta">  
+            <li>
+                <a href="{{ 'equipe' | absolute_url }}#{{ include.post.author-id | first }}">{{ include.post.author-id | first }} </a>
+                {%- if include.post.author-id.size > 1 -%} e outros {%- endif -%}
+            </li>
+            {%- assign datePost = include.post.date -%}
+            {%- if include.type != 'post-sm' -%}
+            <li>{% include blog/data-ptBR.html  date=datePost %}</li>
+            {%- endif -%}
+        </ul>
+    </div>
 </div>
+{%- elsif include.type == 'post-widget' -%}
+<div class="post post-widget">
+    <a class="post-img" href="{{ include.post.url | absolute_url }}">
+        <img src="{{ include.post.image | absolute_url }}" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="{{ include.post.url | absolute_url }}">{{ include.post.title | strip_html | truncate: '70' | escape }}</a>
+        </h3>
+    </div>
+</div>
+{%- elsif include.type == 'post' -%}
+<article class="col-md-6 col-sm-12 post-card">
+<a href="{{ post.url | absolute_url }}" class="post-link">
+    <div class="post-image" style="background-image: url('{{ post.image | relative_url }}')"></div>
+    {% assign author = include.post.author | first %}
+    {% assign verificarArray = author | size  %}
+    {% if verificarArray == 0 %}
+    {% assign author = include.post.author %}
+    {% endif %}
+    {% capture photo %}
+    {% if site.data.authors[author].avatar %}
+    {{ site.data.authors[author].avatar | absolute_url }}"
+    {% elsif site.data.authors[author].github %}
+    {{ 'https://avatars3.githubusercontent.com/'}}{{ site.data.authors[author].github }}{{'?v=3&amp;s=273' }}
+    {% else %}
+    {{ 'https://ui-avatars.com/api/?name='}}{{ site.data.authors[author].name | uri_escape  }}{{'?size=273' }}
+    {% endif %}
+    {% endcapture %}
+    {% assign imageUrl = photo | lstrip | rstrip %}
+    <div class="post-user" style="background-image: url('{{ imageUrl }}');"></div>
+    <div class="post-title-height">
+    <h5 class="post-title">
+        {{ include.post.title | strip_html | strip_newlines | truncate: 50 }}
+    </h5>
+    </div>
+
+    <div class="d-flex flex-wrap mt-2">
+    <time class="post-date">{% include blog/data-ptBR.html date=page.date %}</time>
+    <div class="post-categories">
+        {% for categor in include.post.categories limit 2 %}
+        <span class="badge badge-black">{{ categor | upcase   }}</span>
+        {% endfor %}
+    </div>
+    </div>
+</a>
+</article>
 {%- endif -%}
 <!-- /post -->
