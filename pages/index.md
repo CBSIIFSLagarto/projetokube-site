@@ -53,4 +53,6 @@ Caso tenha interesse em participar do projeto das atividades, procure um membro 
   href="equipe"
 %}
 
-{% include home/home_map.html%}
+{% include home/parceiros_carousel.html %}
+
+{% include home/home_map.html %}
