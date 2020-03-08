@@ -3,6 +3,7 @@
   background: #6247ea;
   margin-top: -8px;
 }
+
 .home-banner-area .banner-inner {
   overflow: hidden;
   width   : 100%;
@@ -18,62 +19,68 @@
 }
 
 .home-banner-area .banner-inner .banner-content a:hover {
-  color: #fff;
+  color          : #fff;
   text-decoration: none;
-  cursor: pointer;
+  cursor         : pointer;
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
   .home-banner-area .banner-inner .banner-content h2 {
     text-align: center;
-    font-size: 36px;
+    font-size : 36px;
   }
 }
+
 // Área de informação
 .p_120 {
-  padding-top: 120px;
+  padding-top   : 120px;
   padding-bottom: 120px;
 }
+
 .main_title {
-  text-align: center;
+  text-align   : center;
   margin-bottom: 75px;
 }
 
 .info_item {
-  border: 1px solid #eeeeee;
-  border-radius: 10px;
-  padding: 60px 20px 60px 30px;
+  border            : 1px solid #eeeeee;
+  border-radius     : 10px;
+  padding           : 60px 20px 60px 30px;
   -webkit-transition: all 300ms linear 0s;
-  -o-transition: all 300ms linear 0s;
-  transition: all 300ms linear 0s;
+  -o-transition     : all 300ms linear 0s;
+  transition        : all 300ms linear 0s;
 }
 
 .info_item h4 {
-  color: #222222;
-  font-size: 20px;
-  font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  color        : #222222;
+  font-size    : 20px;
+  font-weight  : 500;
+  font-family  : "Roboto", sans-serif;
   margin-bottom: 25px;
-  text-align: center;
+  text-align   : center;
 }
 
 .info_item p {
   margin-bottom: 0px;
-  font-size: 14px;
-  font-weight: 300;
-  color:#777777;
-  line-height: 24px;
+  font-size    : 14px;
+  font-weight  : 300;
+  color        : #777777;
+  line-height  : 24px;
 }
+
 // Item área
 hr.divider {
   border-width: .2rem;
   border-color: #fff;
 }
+
 .btn-xl {
-  padding: 1.25rem 2.25rem;
-  font-size: .85rem;
-  font-weight: 700;
+  padding       : 1.25rem 2.25rem;
+  font-size     : .85rem;
+  font-weight   : 700;
   text-transform: uppercase;
-  border: none;
-  border-radius: 10rem;
+  border        : none;
+  border-radius : 10rem;
 }
+
+// Google Map

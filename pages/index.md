@@ -52,3 +52,5 @@ Caso tenha interesse em participar do projeto das atividades, procure um membro 
   btnTitle="Encontrar membros"
   href="equipe"
 %}
+
+{% include home/home_map.html%}
