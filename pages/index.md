@@ -23,7 +23,7 @@ Hoje tem seu foco expandido e busca atacar as temáticas de computação em nuve
   image=img 
 %}
 
-{% include home/info_area.html 
+{% include home/info_card.html 
   title="O que o Projeto Kube proporciona aos seus envolvidos?"
   subTitle="Veja abaixo os principais benefícios que você terá ao participar do projeto:" 
   
@@ -38,4 +38,17 @@ Hoje tem seu foco expandido e busca atacar as temáticas de computação em nuve
 
   itemTitle4="Constante atualização de conteúdos"
   itemDescription4="Seja por meio de pesquisa científica ou seja através da realização de minicursos."
+%}
+
+{% capture description %}
+O projeto é aberto e está disponível para todos que desejam conhecer e entrar na área, independente do nível de conhecimento, basta ter disposição.
+Caso tenha interesse em participar do projeto das atividades, procure um membro da equipe.
+{% endcapture %}
+{% assign descrit = description | markdownify %}
+
+{% include home/info_area.html 
+  title="Faça parte do time"
+  description=descrit
+  btnTitle="Encontrar membros"
+  href="equipe"
 %}

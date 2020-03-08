@@ -1,42 +1,12 @@
-<section class="info_area p_120">
+<section class="page-section bg-primary p-5">
   <div class="container">
-    <div class="main_title">
-      <h2>{{ include.title }}</h2>
-      <p>{{ include.subTitle }}</p>
-    </div>
-    <div class="row info_inner">
-      {% if include.itemTitle %}
-      <div class="col-lg-3 col-sm-6">
-        <div class="info_item">
-          <h4>{{ include.itemTitle }}</h4>
-          <p>{{ include.itemDescription }}</p>
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="text-white mt-0">{{ include.title }}</h2>
+        <hr class="divider light my-4">
+        <div class="text-white mb-4">{{ include.description }}</div>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="{{ include.href | relative_url }}">{{ include.btnTitle }}</a>
       </div>
-      {% endif %}
-      {% if include.itemTitle2 %}
-      <div class="col-lg-3 col-sm-6">
-        <div class="info_item">
-          <h4>{{ include.itemTitle2 }}</h4>
-          <p>{{ include.itemDescription2 }}</p>
-        </div>
-      </div>
-      {% endif %}
-      {% if include.itemTitle3 %}
-      <div class="col-lg-3 col-sm-6">
-        <div class="info_item">
-          <h4>{{ include.itemTitle3 }}</h4>
-          <p>{{ include.itemDescription3 }}</p>
-        </div>
-      </div>
-      {% endif %}
-      {% if include.itemTitle4 %}
-      <div class="col-lg-3 col-sm-6">
-        <div class="info_item">
-          <h4>{{ include.itemTitle4 }}</h4>
-          <p>{{ include.itemDescription4 }}</p>
-        </div>
-      </div>
-      {% endif %}
     </div>
   </div>
 </section>
