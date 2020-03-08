@@ -6,14 +6,14 @@
         <div id="hot-post" class="row hot-post">
 
 
-            {% for post in site.posts limit:1 %}
+            {% for post in paginator.posts limit:1 %}
             <div class="col-lg-8 col-md-12 hot-post-left">
                 {%- include blog/post-thumb.html post=post type='post-thumb' title='title-lg' -%}
             </div>
             {% endfor %}
 
             <div class="col-lg-4 col-md-12 hot-post-right">
-                {% for post in site.posts | sort: 'last_modified_at'  | reverse  | limit:2 | offset:1  %}
+                {% for post in paginator.posts | sort: 'last_modified_at'  | reverse  | limit:2 | offset:1  %}
                     {%- include blog/post-thumb.html post=post type='post-thumb' disableTag='true' -%}
                 {% endfor %}
             </div>
