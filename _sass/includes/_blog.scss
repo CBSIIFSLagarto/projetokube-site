@@ -51,6 +51,33 @@
 .post-content a{
   color: #264a90;
 }
+
+.p-title {
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.p-title::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 5px;
+  background: #000;
+  z-index: 1;
+}
+
+.p-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+}
 /*----------------------------*\
 	section
 \*----------------------------*/
@@ -217,6 +244,8 @@
 .post .post-img {
   display: block;
   overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075) !important;
 }
 
 .post-img > img {
@@ -370,7 +399,8 @@
 
 .post.post-thumb .post-title a:hover,
 .post.post-thumb .post-title a:focus {
-  color: #337ab7 !important;
+  color: #fff !important;
+  opacity: .8;
 }
 
 .post.post-thumb .post-meta li {
@@ -386,11 +416,13 @@
   color: #337ab7 !important;
 }
 
-.col-lg-8.col-md-12.hot-post-left .post { height: 100%; }
-.col-lg-4.col-md-12.hot-post-right .post .post-img img {
-  max-width: 100% !important;
-  height: 235px;
+.col-lg-8.col-md-12.hot-post-left .post .post-img{
+  height: 407px;
 }
+.col-lg-4.col-md-12.hot-post-right .post .post-img{
+  height: 200px;
+}
+
 /*----------------------------*\
       post small
   \*----------------------------*/
@@ -399,6 +431,14 @@
   margin: 15px 0px 0px;
   background: transparent;
   padding: 0;
+}
+
+.post.post-sm .post-img .post-bg {
+	height: 140px;
+	background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075) !important;
 }
 
 /*----------------------------*\
@@ -973,6 +1013,8 @@
   background-size: cover;
   background-position: center;
   margin-bottom: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
 .post-new{
@@ -1036,6 +1078,10 @@
 @media only screen and (max-width: 500px){
   .carousel-item .page-header-bg{
     height: 30em !important;
+  }
+
+  .col-lg-4.col-md-12.hot-post-right .post .post-img{
+    height: 407px;
   }
 }
 
