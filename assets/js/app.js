@@ -21,32 +21,16 @@ $().ready(function () {
     $(elem).css('-ms-filter', 'blur(' + valor + 'px)');
   }
 
-  $('.post.post-thumb .post-title a').hover(function () {
+  $('.post.post-thumb .post-title a').hover(function () {    
     var result = $(this).parent().parent().parent().find('.post-img');
     filterBlur(result[0], 2);
   });
-
-  $('.post.post-thumb .post-title a').mouseout(function () {
+  
+  $('.post.post-thumb .post-title a').mouseout(function(){
     var result = $(this).parent().parent().parent().find('.post-img');
     filterBlur(result[0], 0);
   });
-
-  $('.owl-carousel').owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      600: {
-        items: 3
-      },
-      1000: {
-        items: 5
-      }
-    }
-  })
+  
 });
 
 function rotateCard(btn) {
