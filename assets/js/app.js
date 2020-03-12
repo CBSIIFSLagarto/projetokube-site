@@ -30,6 +30,23 @@ $().ready(function () {
     var result = $(this).parent().parent().parent().find('.post-img');
     filterBlur(result[0], 0);
   });
+
+  $('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 3
+      },
+      1000: {
+        items: 5
+      }
+    }
+  })
   
 });
 
