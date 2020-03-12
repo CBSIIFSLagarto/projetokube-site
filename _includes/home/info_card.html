@@ -1,0 +1,42 @@
+<section class="info_area p_120">
+  <div class="container">
+    <div class="main_title">
+      <h2>{{ include.title }}</h2>
+      <p>{{ include.subTitle }}</p>
+    </div>
+    <div class="row info_inner">
+      {% if include.itemTitle %}
+      <div class="col-lg-3 col-sm-6">
+        <div class="info_item">
+          <h4>{{ include.itemTitle }}</h4>
+          <p>{{ include.itemDescription }}</p>
+        </div>
+      </div>
+      {% endif %}
+      {% if include.itemTitle2 %}
+      <div class="col-lg-3 col-sm-6">
+        <div class="info_item">
+          <h4>{{ include.itemTitle2 }}</h4>
+          <p>{{ include.itemDescription2 }}</p>
+        </div>
+      </div>
+      {% endif %}
+      {% if include.itemTitle3 %}
+      <div class="col-lg-3 col-sm-6">
+        <div class="info_item">
+          <h4>{{ include.itemTitle3 }}</h4>
+          <p>{{ include.itemDescription3 }}</p>
+        </div>
+      </div>
+      {% endif %}
+      {% if include.itemTitle4 %}
+      <div class="col-lg-3 col-sm-6">
+        <div class="info_item">
+          <h4>{{ include.itemTitle4 }}</h4>
+          <p>{{ include.itemDescription4 }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
