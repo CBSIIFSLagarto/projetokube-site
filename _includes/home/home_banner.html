@@ -1,0 +1,17 @@
+<section class="home-banner-area">
+  <div class="banner-inner">
+    <div class="container">
+      <div class="row banner-content">
+        <div class="col-lg-5">
+          <h2>{{ include.title }}</h2>
+          <p>{{ include.description }}</p>
+        </div>
+        <div class="col-lg-7 d-flex justify-content-center align-items-center">
+          <div class="banner-map-img">
+            <img src="{{ include.image }}" alt="{% if include.imageAlt %}{{ include.imageAlt }}{% else %} imagem ilustrativa {% endif %}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -113,7 +113,7 @@ permalink: /blog/:categories/:year/:title-:month-:day:output_ext
 # PAGINATION
 pagination:
   enabled: true
-  per_page: 6
+  per_page: 9
   offset: 2
   permalink: '/pagina/:num/'
   title: ':title - página :num de :max'
