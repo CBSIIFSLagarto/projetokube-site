@@ -2,7 +2,7 @@
 # SITE CONFIGURATION
 encoding: utf-8
 #baseurl: "projetokube-site"
-locale : ['en',"pt-BR"]
+locale : "pt-BR"
 # set your locale
 lang: "pt-BR"
 default_locale: "en"
