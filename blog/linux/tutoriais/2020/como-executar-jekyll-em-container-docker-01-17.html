@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/projetokube-site/assets/css/main.css">
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="/projetokube-site/assets/favicon.ico" type="image/x-icon">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="Projeto Kube" href="/projetokube-site/atom.xml"/>
+    
+    
+
+    <!-- KaTeX 0.8.3 -->
+    <!-- if you have any issue check https://github.com/KaTeX/KaTeX -->
+    
+    <script src="/projetokube-site/assets/js/vendor/katex.min.js"></script>
+    
+
+    <!-- Google Analytics -->
+     <!-- End Google Analytics -->
+
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Execução do Jekyll em container Docker | Projeto Kube</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Execução do Jekyll em container Docker" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="description" content="Olá pessoal, hoje vamos criar um blog utilizando a ferramenta Jekyll, com o auxílio dos contêineres Docker para gerar e executar o blog localmente. Abra o terminal com as teclas ctlr + alt + t e crie a pasta para o projeto: mkdir jekyll-project Entre na pasta: cd jekyll-project Crie a variável de ambiente com a versão do Jekyll escolhida: export JEKYLL_VERSION=3.8.6 Para definir o horário do contêiner, crie uma variável de ambiente para configurar o fuso horário de acordo com sua localização: export TIMEZONE=America/Sao_Paulo Crie um volume para o bundle: docker volume create banco-de-dados-bundle-jekyll Execute o contêiner para criar o projeto my-blog: docker run --rm -it --volume=&quot;$PWD:/srv/jekyll&quot; --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 jekyll/jekyll:$JEKYLL_VERSION jekyll new my-blog Entre na pasta gerada: cd my-blog Edite o arquivo de configuração _config.yml para definir as características do projeto: # Welcome to Jekyll! # # This config file is meant for settings that affect your whole blog, values # which you are expected to set up once and rarely edit after that. If you find # yourself editing this file very often, consider using Jekyll&#39;s data files # feature for the data you need to update frequently. # # For technical reasons, this file is *NOT* reloaded automatically when you use # &#39;bundle exec jekyll serve&#39;. If you change this file, please restart the server process. # Site settings # These are used to personalize your new site. If you look in the HTML files, # you will see them accessed via Projeto Kube, , and so on. # You can create any custom variable you would like, and they will be accessible # in the templates via . title: Your awesome title email: your-email@example.com description: &gt;- # this means to ignore newlines until &quot;baseurl:&quot; Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description. baseurl: &quot;&quot; # the subpath of your site, e.g. /blog url: &quot;&quot; # the base hostname &amp; protocol for your site, e.g. http://example.com twitter_username: jekyllrb github_username: jekyll # Build settings markdown: kramdown theme: minima plugins: - jekyll-feed # Exclude from processing. # The following items will not be processed, by default. Create a custom list # to override the default setting. # exclude: # - Gemfile # - Gemfile.lock # - node_modules # - vendor/bundle/ # - vendor/cache/ # - vendor/gems/ # - vendor/ruby/ Atualize o site com o comando abaixo: docker run --rm -it --volume=&quot;$PWD:/srv/jekyll&quot; --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 jekyll/jekyll:$JEKYLL_VERSION jekyll build Execute o contêiner para iniciar o servidor na (URL) http://localhost:4000. docker run --rm -it --volume=&quot;$PWD:/srv/jekyll&quot; --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 -p 4000:4000 jekyll/jekyll:$JEKYLL_VERSION jekyll server Outros temas para utilizar com Jekyll pode ser encontrado aqui. Referências Jekyll Docker. GITHUB. Disponível em: https://github.com/envygeeks/jekyll-docker. Acesso em: 30 out. 2019. Quickstart. JEKYLL. Disponível em: https://jekyllrb.com/docs. Acesso em: 31 out. 2019. MATHEUS, Yuri. Criando volumes com Docker. ALURA, 19 set. 2018. Disponível em: https://www.alura.com.br/artigos/criando-volumes-com-docker. Acesso em: 31 out. 2019. Data e Hora do container. ALURA, 29 out. 2017. Disponível em: https://cursos.alura.com.br/forum/topico-data-e-hora-do-container-48707. Acesso em: 19 dez. 2019." />
+<meta property="og:description" content="Olá pessoal, hoje vamos criar um blog utilizando a ferramenta Jekyll, com o auxílio dos contêineres Docker para gerar e executar o blog localmente. Abra o terminal com as teclas ctlr + alt + t e crie a pasta para o projeto: mkdir jekyll-project Entre na pasta: cd jekyll-project Crie a variável de ambiente com a versão do Jekyll escolhida: export JEKYLL_VERSION=3.8.6 Para definir o horário do contêiner, crie uma variável de ambiente para configurar o fuso horário de acordo com sua localização: export TIMEZONE=America/Sao_Paulo Crie um volume para o bundle: docker volume create banco-de-dados-bundle-jekyll Execute o contêiner para criar o projeto my-blog: docker run --rm -it --volume=&quot;$PWD:/srv/jekyll&quot; --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 jekyll/jekyll:$JEKYLL_VERSION jekyll new my-blog Entre na pasta gerada: cd my-blog Edite o arquivo de configuração _config.yml para definir as características do projeto: # Welcome to Jekyll! # # This config file is meant for settings that affect your whole blog, values # which you are expected to set up once and rarely edit after that. If you find # yourself editing this file very often, consider using Jekyll&#39;s data files # feature for the data you need to update frequently. # # For technical reasons, this file is *NOT* reloaded automatically when you use # &#39;bundle exec jekyll serve&#39;. If you change this file, please restart the server process. # Site settings # These are used to personalize your new site. If you look in the HTML files, # you will see them accessed via Projeto Kube, , and so on. # You can create any custom variable you would like, and they will be accessible # in the templates via . title: Your awesome title email: your-email@example.com description: &gt;- # this means to ignore newlines until &quot;baseurl:&quot; Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description. baseurl: &quot;&quot; # the subpath of your site, e.g. /blog url: &quot;&quot; # the base hostname &amp; protocol for your site, e.g. http://example.com twitter_username: jekyllrb github_username: jekyll # Build settings markdown: kramdown theme: minima plugins: - jekyll-feed # Exclude from processing. # The following items will not be processed, by default. Create a custom list # to override the default setting. # exclude: # - Gemfile # - Gemfile.lock # - node_modules # - vendor/bundle/ # - vendor/cache/ # - vendor/gems/ # - vendor/ruby/ Atualize o site com o comando abaixo: docker run --rm -it --volume=&quot;$PWD:/srv/jekyll&quot; --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 jekyll/jekyll:$JEKYLL_VERSION jekyll build Execute o contêiner para iniciar o servidor na (URL) http://localhost:4000. docker run --rm -it --volume=&quot;$PWD:/srv/jekyll&quot; --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 -p 4000:4000 jekyll/jekyll:$JEKYLL_VERSION jekyll server Outros temas para utilizar com Jekyll pode ser encontrado aqui. Referências Jekyll Docker. GITHUB. Disponível em: https://github.com/envygeeks/jekyll-docker. Acesso em: 30 out. 2019. Quickstart. JEKYLL. Disponível em: https://jekyllrb.com/docs. Acesso em: 31 out. 2019. MATHEUS, Yuri. Criando volumes com Docker. ALURA, 19 set. 2018. Disponível em: https://www.alura.com.br/artigos/criando-volumes-com-docker. Acesso em: 31 out. 2019. Data e Hora do container. ALURA, 29 out. 2017. Disponível em: https://cursos.alura.com.br/forum/topico-data-e-hora-do-container-48707. Acesso em: 19 dez. 2019." />
+<meta property="og:site_name" content="Projeto Kube" />
+<meta property="og:image" content="/projetokube-site/assets/img/blog/docker-jekyll.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-01-17T16:44:48+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/projetokube-site/assets/img/blog/docker-jekyll.jpg" />
+<meta property="twitter:title" content="Execução do Jekyll em container Docker" />
+<script type="application/ld+json">
+{"description":"Olá pessoal, hoje vamos criar um blog utilizando a ferramenta Jekyll, com o auxílio dos contêineres Docker para gerar e executar o blog localmente. Abra o terminal com as teclas ctlr + alt + t e crie a pasta para o projeto: mkdir jekyll-project Entre na pasta: cd jekyll-project Crie a variável de ambiente com a versão do Jekyll escolhida: export JEKYLL_VERSION=3.8.6 Para definir o horário do contêiner, crie uma variável de ambiente para configurar o fuso horário de acordo com sua localização: export TIMEZONE=America/Sao_Paulo Crie um volume para o bundle: docker volume create banco-de-dados-bundle-jekyll Execute o contêiner para criar o projeto my-blog: docker run --rm -it --volume=&quot;$PWD:/srv/jekyll&quot; --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 jekyll/jekyll:$JEKYLL_VERSION jekyll new my-blog Entre na pasta gerada: cd my-blog Edite o arquivo de configuração _config.yml para definir as características do projeto: # Welcome to Jekyll! # # This config file is meant for settings that affect your whole blog, values # which you are expected to set up once and rarely edit after that. If you find # yourself editing this file very often, consider using Jekyll&#39;s data files # feature for the data you need to update frequently. # # For technical reasons, this file is *NOT* reloaded automatically when you use # &#39;bundle exec jekyll serve&#39;. If you change this file, please restart the server process. # Site settings # These are used to personalize your new site. If you look in the HTML files, # you will see them accessed via Projeto Kube, , and so on. # You can create any custom variable you would like, and they will be accessible # in the templates via . title: Your awesome title email: your-email@example.com description: &gt;- # this means to ignore newlines until &quot;baseurl:&quot; Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description. baseurl: &quot;&quot; # the subpath of your site, e.g. /blog url: &quot;&quot; # the base hostname &amp; protocol for your site, e.g. http://example.com twitter_username: jekyllrb github_username: jekyll # Build settings markdown: kramdown theme: minima plugins: - jekyll-feed # Exclude from processing. # The following items will not be processed, by default. Create a custom list # to override the default setting. # exclude: # - Gemfile # - Gemfile.lock # - node_modules # - vendor/bundle/ # - vendor/cache/ # - vendor/gems/ # - vendor/ruby/ Atualize o site com o comando abaixo: docker run --rm -it --volume=&quot;$PWD:/srv/jekyll&quot; --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 jekyll/jekyll:$JEKYLL_VERSION jekyll build Execute o contêiner para iniciar o servidor na (URL) http://localhost:4000. docker run --rm -it --volume=&quot;$PWD:/srv/jekyll&quot; --volume=banco-de-dados-bundle-jekyll:/usr/local/bundle -e TZ=$TIMEZONE -e JEKYLL_GID=1000 -e JEKYLL_UID=1000 -p 4000:4000 jekyll/jekyll:$JEKYLL_VERSION jekyll server Outros temas para utilizar com Jekyll pode ser encontrado aqui. Referências Jekyll Docker. GITHUB. Disponível em: https://github.com/envygeeks/jekyll-docker. Acesso em: 30 out. 2019. Quickstart. JEKYLL. Disponível em: https://jekyllrb.com/docs. Acesso em: 31 out. 2019. MATHEUS, Yuri. Criando volumes com Docker. ALURA, 19 set. 2018. Disponível em: https://www.alura.com.br/artigos/criando-volumes-com-docker. Acesso em: 31 out. 2019. Data e Hora do container. ALURA, 29 out. 2017. Disponível em: https://cursos.alura.com.br/forum/topico-data-e-hora-do-container-48707. Acesso em: 19 dez. 2019.","image":"/projetokube-site/assets/img/blog/docker-jekyll.jpg","headline":"Execução do Jekyll em container Docker","dateModified":"2020-02-05T14:21:41+00:00","datePublished":"2020-01-17T16:44:48+00:00","@type":"BlogPosting","url":"/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html","mainEntityOfPage":{"@type":"WebPage","@id":"/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Manual seo tags -->
+    <!--
+    <title>Execução do Jekyll em container Docker | Projeto Kube</title>
+    <meta name="description" content="Olá pessoal, hoje vamos criar um blog utilizando a ferramenta Jekyll, com o auxílio dos contêineres Docker para gerar e executar o blog localmente.Abra o ter...">
+	-->
+	<!-- Jekyll Ideal Image Slider Include -->
+<!-- https://github.com/jekylltools/jekyll-ideal-image-slider-include -->
+<!-- v1.8 -->
+
+</head>
+
+  <body>
+    <header class="site-header border-bottom shadow-sm">
+    <!-- Logo and title -->
+    <div class="branding">
+        
+        <a href="/projetokube-site/">
+            <img alt="logo img" class="avatar" src="/projetokube-site/assets/img/projetokube.png" />
+        </a>
+        
+
+        <h1 class="site-title">
+            <a aria-label="Projeto Kube" href="/projetokube-site/">
+                Projeto Kube
+            </a>
+        </h1>
+    </div>
+
+    <!-- Toggle menu -->
+    <nav class="clear">
+        <a aria-label="pull" id="pull" class="toggle" href="#">
+            <i class="fa fa-bars fa-lg"></i>
+        </a>
+
+        <!-- Menu -->
+        <ul class="hide">
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="blog" title="blog" href="/projetokube-site/blog/">
+                    Blog
+                </a>
+            </li>
+            
+
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Quem Somos" title="Quem Somos"
+                    href="/projetokube-site/equipe/">
+                     Quem Somos 
+                </a>
+            </li>
+            
+            
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Laboratório" title="Laboratório"
+                    href="/projetokube-site/laboratorio/">
+                     Laboratório 
+                </a>
+            </li>
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Projetos" title="Projetos"
+                    href="/projetokube-site/Projetos/">
+                     Projetos 
+                </a>
+            </li>
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Regras" title="Regras"
+                    href="/projetokube-site/regras/">
+                     Regras 
+                </a>
+            </li>
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Encontrar no site" title="Encontrar no site"
+                    href="/projetokube-site/search/">
+                     <i class="fa fa-search" aria-hidden="true"></i>
+                    
+                </a>
+            </li>
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Tags" title="Tags"
+                    href="/projetokube-site/tags/">
+                     <i class="fa fa-tags" aria-hidden="true"></i>
+                    
+                </a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+    </nav>
+</header>
+    <div class="content">
+      <style>.site-header { float: initial !important; }</style>
+<!--  PAGE HEADER  -->
+<div class="page-header">
+    <div class="page-header-bg"style="background-image: url('/projetokube-site/assets/img/blog/docker-jekyll.jpg'); background-position: 0% 0%; background-size: 100% 100%;"data-stellar-background-ratio="0.5"></div>
+    <div class="page-header-bg-o"></div>
+    <div class="container"><div class="row">
+            <div class="col-md-10">
+                <h1>Execução do Jekyll em container Docker</h1>
+                <ul class="post-meta"><li><a href="/projetokube-site/equipe#franciscojsc">franciscojsc</a></li>					
+                    <li>
+                        <time>
+
+Sexta feira
+  
+17 de 
+Janeiro
+  
+ de 2020</time>
+                    </li>
+                    <li>
+                        <time>
+                            
+                            <b>Editado</b> em 05/02/20
+                        </time>
+                    </li></ul>
+                <div class="post-category"><a class="btn btn-primary btn-sm m-2"  href="/projetokube-site/category/linux">linux</a><a class="btn btn-primary btn-sm m-2"  href="/projetokube-site/category/tutoriais">tutoriais</a></div>
+            </div>
+        </div></div>
+</div><div class="section section-blog">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <!-- post share -->
+                <div class="section-row">
+                    <div class="post-share">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html&quote=Execu%C3%A7%C3%A3o+do+Jekyll+em+container+..." class="social-facebook"><i class="fa fa-facebook"></i><span>Compartilhar</span></a>
+                        <a target="_blank" href="https://twitter.com/intent/tweet?source=http:///projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html&text=Execu%C3%A7%C3%A3o+do+Jekyll+em+container+...: http:///projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
+                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http:///projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html&media=&description=%3Cp%3EOl%C3%A1+pessoal%2C+hoje+vamos+criar+um+blog+utilizando+a+ferramenta+%3Cstrong%3EJekyll%3C..." class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a>
+                        <a target="_blank" href="mailto:?subject=Execução do Jekyll em container Docker&body=Olá pessoal, hoje vamos criar um blog utilizando a ferramenta Jekyll, com o auxílio dos contêineres Docker para gerar e executar o blog localmente.
+
+Abra o terminal com as teclas ctlr + alt + t  e crie a pasta para o projeto:
+mkdir jekyll-project
+
+
+Entre na pasta:
+cd jekyll-pr...:http:///projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html"><i class="fa fa-envelope"></i><span>Email</span></a>
+                    </div>
+                </div>
+                <!-- /post share -->				
+                <!-- post content -->
+                <div class="section-row post-content"><p>Olá pessoal, hoje vamos criar um blog utilizando a ferramenta <strong>Jekyll</strong>, com o auxílio dos contêineres <strong>Docker</strong> para gerar e executar o blog localmente.</p>
+
+<p>Abra o terminal com as teclas <code class="language-plaintext highlighter-rouge">ctlr + alt + t</code>  e crie a pasta para o projeto:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>jekyll-project
+</code></pre></div></div>
+
+<p>Entre na pasta:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>jekyll-project
+</code></pre></div></div>
+
+<p>Crie a variável de ambiente com a versão do <strong>Jekyll</strong> escolhida:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">JEKYLL_VERSION</span><span class="o">=</span>3.8.6
+</code></pre></div></div>
+
+<p>Para definir o horário do contêiner, crie uma variável de ambiente para configurar o <a href="https://pt.wikipedia.org/wiki/Fuso_hor%C3%A1rio">fuso horário</a> de acordo com sua localização:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">TIMEZONE</span><span class="o">=</span>America/Sao_Paulo
+</code></pre></div></div>
+
+<p>Crie um volume para o <strong>bundle</strong>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker volume create banco-de-dados-bundle-jekyll
+</code></pre></div></div>
+
+<p>Execute o contêiner para criar o projeto <strong>my-blog</strong>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span>  <span class="nt">-it</span> <span class="nt">--volume</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">:/srv/jekyll"</span> <span class="nt">--volume</span><span class="o">=</span>banco-de-dados-bundle-jekyll:/usr/local/bundle  <span class="nt">-e</span> <span class="nv">TZ</span><span class="o">=</span><span class="nv">$TIMEZONE</span> <span class="nt">-e</span> <span class="nv">JEKYLL_GID</span><span class="o">=</span>1000 <span class="nt">-e</span> <span class="nv">JEKYLL_UID</span><span class="o">=</span>1000 jekyll/jekyll:<span class="nv">$JEKYLL_VERSION</span> jekyll new my-blog
+</code></pre></div></div>
+
+<p>Entre na pasta gerada:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>my-blog
+</code></pre></div></div>
+
+<p>Edite o arquivo de configuração <code class="language-plaintext highlighter-rouge">_config.yml</code> para definir as características do projeto:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Welcome to Jekyll!</span>
+<span class="c1">#</span>
+<span class="c1"># This config file is meant for settings that affect your whole blog, values</span>
+<span class="c1"># which you are expected to set up once and rarely edit after that. If you find</span>
+<span class="c1"># yourself editing this file very often, consider using Jekyll's data files</span>
+<span class="c1"># feature for the data you need to update frequently.</span>
+<span class="c1">#</span>
+<span class="c1"># For technical reasons, this file is *NOT* reloaded automatically when you use</span>
+<span class="c1"># 'bundle exec jekyll serve'. If you change this file, please restart the server process.</span>
+<span class="c1"># Site settings</span>
+<span class="c1"># These are used to personalize your new site. If you look in the HTML files,</span>
+<span class="c1"># you will see them accessed via Projeto Kube, , and so on.</span>
+<span class="c1"># You can create any custom variable you would like, and they will be accessible</span>
+<span class="c1"># in the templates via .</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Your awesome title</span>
+<span class="na">email</span><span class="pi">:</span> <span class="s">your-email@example.com</span>
+<span class="na">description</span><span class="pi">:</span> <span class="pi">&gt;-</span>  <span class="c1"># this means to ignore newlines until "baseurl:"</span>
+<span class="err">W</span><span class="s">rite an awesome description for your new site here. You can edit this</span>
+<span class="err">l</span><span class="s">ine in _config.yml. It will appear in your document head meta (for</span>
+<span class="err">G</span><span class="s">oogle search results) and in your feed.xml site description.</span>
+<span class="err">b</span><span class="s">aseurl: ""  # the subpath of your site, e.g. /blog</span>
+<span class="err">u</span><span class="s">rl: ""  # the base hostname &amp; protocol for your site, e.g. http://example.com</span>
+<span class="err">t</span><span class="s">witter_username: jekyllrb</span>
+<span class="err">g</span><span class="s">ithub_username: jekyll</span>
+
+<span class="err">#</span><span class="s"> Build settings</span>
+<span class="err">m</span><span class="s">arkdown: kramdown</span>
+<span class="err">t</span><span class="s">heme: minima</span>
+<span class="err">p</span><span class="s">lugins:</span>
+  <span class="s">- jekyll-feed</span>
+
+<span class="err">#</span><span class="s"> Exclude from processing.</span>
+<span class="err">#</span><span class="s"> The following items will not be processed, by default. Create a custom list</span>
+<span class="err">#</span><span class="s"> to override the default setting.</span>
+<span class="err">#</span><span class="s"> exclude:</span>
+<span class="err">#</span><span class="s"> - Gemfile</span>
+<span class="err">#</span><span class="s"> - Gemfile.lock</span>
+<span class="err">#</span><span class="s"> - node_modules</span>
+<span class="err">#</span><span class="s"> - vendor/bundle/</span>
+<span class="err">#</span><span class="s"> - vendor/cache/</span>
+<span class="err">#</span><span class="s"> - vendor/gems/</span>
+<span class="err">#</span><span class="s"> - vendor/ruby/</span>
+</code></pre></div></div>
+
+<p>Atualize o <em>site</em> com o comando abaixo:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span>  <span class="nt">-it</span> <span class="nt">--volume</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">:/srv/jekyll"</span> <span class="nt">--volume</span><span class="o">=</span>banco-de-dados-bundle-jekyll:/usr/local/bundle <span class="nt">-e</span> <span class="nv">TZ</span><span class="o">=</span><span class="nv">$TIMEZONE</span> <span class="nt">-e</span> <span class="nv">JEKYLL_GID</span><span class="o">=</span>1000 <span class="nt">-e</span> <span class="nv">JEKYLL_UID</span><span class="o">=</span>1000 jekyll/jekyll:<span class="nv">$JEKYLL_VERSION</span> jekyll build
+</code></pre></div></div>
+
+<p>Execute o contêiner para iniciar o servidor na (URL) <code class="language-plaintext highlighter-rouge">http://localhost:4000</code>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span>  <span class="nt">-it</span> <span class="nt">--volume</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">:/srv/jekyll"</span> <span class="nt">--volume</span><span class="o">=</span>banco-de-dados-bundle-jekyll:/usr/local/bundle <span class="nt">-e</span> <span class="nv">TZ</span><span class="o">=</span><span class="nv">$TIMEZONE</span> <span class="nt">-e</span> <span class="nv">JEKYLL_GID</span><span class="o">=</span>1000 <span class="nt">-e</span> <span class="nv">JEKYLL_UID</span><span class="o">=</span>1000 <span class="nt">-p</span> 4000:4000 jekyll/jekyll:<span class="nv">$JEKYLL_VERSION</span> jekyll server
+</code></pre></div></div>
+
+<p>Outros temas para utilizar com <strong>Jekyll</strong> pode ser encontrado <a href="https://rubygems.org/search?utf8=%E2%9C%93&amp;query=jekyll-theme">aqui</a>.</p>
+
+<h2 id="referências">Referências</h2>
+
+<p>Jekyll Docker. <strong>GITHUB</strong>. Disponível em: <a href="https://github.com/envygeeks/jekyll-docker">https://github.com/envygeeks/jekyll-docker</a>. Acesso em: 30 out. 2019.</p>
+
+<p>Quickstart. <strong>JEKYLL</strong>. Disponível em: <a href="https://jekyllrb.com/docs">https://jekyllrb.com/docs</a>. Acesso em: 31 out. 2019.</p>
+
+<p>MATHEUS, Yuri. Criando volumes com Docker. <strong>ALURA</strong>, 19 set. 2018. Disponível em: <a href="https://www.alura.com.br/artigos/criando-volumes-com-docker">https://www.alura.com.br/artigos/criando-volumes-com-docker</a>.  Acesso em: 31 out. 2019.</p>
+
+<p>Data e Hora do container. <strong>ALURA</strong>, 29 out. 2017. Disponível em: <a href="https://cursos.alura.com.br/forum/topico-data-e-hora-do-container-48707">https://cursos.alura.com.br/forum/topico-data-e-hora-do-container-48707</a>. Acesso em: 19 dez. 2019.</p>
+</div>
+                <!-- /post content -->
+
+                <!-- post tags -->
+                <div class="section-row">
+                    <div class="post-tags">
+                        <!-- Tag list -->
+                        
+                        
+
+
+<footer>
+  <div class="tag-list">
+    
+      <div class="meta">Tags</div>
+    
+
+    
+    <a class="button" href="/projetokube-site/tags#docker">
+      <p><i class="fa fa-tag fa-fw"></i> docker</p>
+    </a>
+    
+    <a class="button" href="/projetokube-site/tags#jekyll">
+      <p><i class="fa fa-tag fa-fw"></i> jekyll</p>
+    </a>
+    
+  </div>
+</footer>
+
+                    </div>
+                </div>
+                <!-- /post tags -->
+
+                <!-- post author --><div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Sobre <a
+                                href="/projetokube-site/equipe#franciscojsc">Francisco Junio Santos Chaves</a>
+                        </h3>
+                    </div>
+                    <div class="author media">
+                        <div class="media-left">
+                            <a href="/projetokube-site/equipe#franciscojsc">
+                                
+                                <img class="author-img media-object"
+                                    src="https://avatars3.githubusercontent.com/franciscojsc?v=3&amp;s=273" />
+                                
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>Estudante cada dia mais apaixonado por tecnologia. Sempre em busca de conhecimento.</p>
+                            <ul class="author-social">
+                                
+                                
+                                <li><a target="_blank" href="http://github.com/franciscojsc"><i class="fa fa-github fa-fw"></i></a></li>
+                                
+                                
+                                <li><a target="_blank" href="https://twitter.com/fr_develop"><i class="fa fa-twitter fa-fw"></i></a></li>
+                                
+                                
+                                <li><a target="_blank" href="https://instagram.com/francisco.jschaves"><i class="fa fa-instagram fa-fw"></i></a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post author --><!-- /related post -->
+                <div>
+                    <div class="section-title">
+                        <h3 class="title">Posts Relacionados</h3>
+                    </div>
+                    <div class="row">
+                        <!-- post -->
+                        <div class="col-md-4"><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/temperatura-no-raspberry-01-19.html">
+        <div class="post-bg" style="background-image: url('/projetokube-site/assets/img/blog/temp-rasp.jpg');"></div>
+    </a>
+    <div class="post-body">
+        <div class="post-category"><span class="badge badge-black">
+                <a href="/projetokube-site/category/linux">linux</a>
+            </span></div>
+        <h3 class="post-title title-sm">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/temperatura-no-raspberry-01-19.html">
+                Coletando a temperatura no Raspberry PI 3 B Plus
+            </a>
+        </h3>
+        <ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#"> </a></li></ul>
+    </div>
+</div><!-- /post --></div>
+                        
+                        <div class="col-md-4"><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/instale-vnc-em-raspberry-pi-01-17.html">
+        <div class="post-bg" style="background-image: url('/projetokube-site/assets/img/blog/install-vnc-raspberry.jpg');"></div>
+    </a>
+    <div class="post-body">
+        <div class="post-category"><span class="badge badge-black">
+                <a href="/projetokube-site/category/linux">linux</a>
+            </span></div>
+        <h3 class="post-title title-sm">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/instale-vnc-em-raspberry-pi-01-17.html">
+                Instalação do VNC Server no Raspberry PI 3
+            </a>
+        </h3>
+        <ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#"> </a></li></ul>
+    </div>
+</div><!-- /post --></div>
+                        
+                        <div class="col-md-4"><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">
+        <div class="post-bg" style="background-image: url('/projetokube-site/assets/img/blog/docker-jekyll.jpg');"></div>
+    </a>
+    <div class="post-body">
+        <div class="post-category"><span class="badge badge-black">
+                <a href="/projetokube-site/category/linux">linux</a>
+            </span></div>
+        <h3 class="post-title title-sm">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">
+                Execução do Jekyll em container Docker
+            </a>
+        </h3>
+        <ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#"> </a></li></ul>
+    </div>
+</div><!-- /post --></div>
+                        
+                        <div class="col-md-4"><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">
+        <div class="post-bg" style="background-image: url('/projetokube-site/assets/img/blog/raspberry.jpg');"></div>
+    </a>
+    <div class="post-body">
+        <div class="post-category"><span class="badge badge-black">
+                <a href="/projetokube-site/category/linux">linux</a>
+            </span></div>
+        <h3 class="post-title title-sm">
+            <a href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">
+                Execução de containers Docker com Raspberry Pi
+            </a>
+        </h3>
+        <ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#"> </a></li></ul>
+    </div>
+</div><!-- /post --></div>
+                        
+                        <!-- /post -->
+                    </div>
+                </div>
+                <!-- /related post -->
+
+                <!-- post comments -->
+                <div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Comentários</h3>
+                    </div>
+                    <div class="post-comments">
+                        <!-- Disqus -->
+                        
+                        <div id="disqus_thread"></div>
+<script type="text/javascript">
+	var disqus_shortname = 'projeto-kube';
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view comments.</noscript>
+
+                        
+                    </div>
+                </div>
+                <!-- /post comments -->
+            </div>
+            <div class="col-lg-4 col-md-12">
+
+
+
+
+
+
+
+
+
+
+<!-- category widget -->
+<div class="aside-widget">
+    <h4 class="p-title"><b>Categorias</b></h4>
+    <div class="category-widget">
+        <ul>			
+						
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/acesso">acesso <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/laboratorio">laboratorio <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/devops">devops <span>3</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/tutoriais">tutoriais <span>10</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/git">git <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/laboratorio">laboratório <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/linux">linux <span>4</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/estudo">estudo <span>1</span></a></li>
+            
+        </ul>
+    </div>
+</div>
+<!-- /category widget -->
+
+<!-- post widget -->
+<div class="aside-widget">
+    <h4 class="p-title"><b>Postagens recentes</b></h4>
+    <!-- post -->
+    <!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/instalacao-raspberry-pi-os-07-17.html">
+        <img src="/projetokube-site/assets/img/blog/logo-instalacao-raspberry-pi-os.png" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/instalacao-raspberry-pi-os-07-17.html">Instalação do Raspberry Pi OS</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-instalacao-automatica-do-ubuntu-server-03-03.html">
+        <img src="/projetokube-site/assets/img/blog/install-ubuntu-instalacoes-autonomas.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-instalacao-automatica-do-ubuntu-server-03-03.html">Como criar uma instalação automática do Ubuntu ou por um servidor PXE</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/como-instalar-nodejs-01-19.html">
+        <img src="/projetokube-site/assets/img/blog/install-nodejs.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/como-instalar-nodejs-01-19.html">Instalação do NodeJS</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-publicacao-no-blog-01-19.html">
+        <img src="/projetokube-site/assets/img/blog/github-projetokube-site.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-publicacao-no-blog-01-19.html">Como criar uma publicação no blog</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/temperatura-no-raspberry-01-19.html">
+        <img src="/projetokube-site/assets/img/blog/temp-rasp.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/temperatura-no-raspberry-01-19.html">Coletando a temperatura no Raspberry PI 3 B Plus</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/instale-vnc-em-raspberry-pi-01-17.html">
+        <img src="/projetokube-site/assets/img/blog/install-vnc-raspberry.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/instale-vnc-em-raspberry-pi-01-17.html">Instalação do VNC Server no Raspberry PI 3</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">
+        <img src="/projetokube-site/assets/img/blog/docker-jekyll.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">Execução do Jekyll em container Docker</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/estudo/devops/2019/conteudo-para-as-ferias-12-18.html">
+        <img src="/projetokube-site/assets/img/blog/trem.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/estudo/devops/2019/conteudo-para-as-ferias-12-18.html">Conteúdo para as férias</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">
+        <img src="/projetokube-site/assets/img/blog/raspberry.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">Execução de containers Docker com Raspberry Pi</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/laborat%C3%B3rio/2019/votoifs-11-27.html">
+        <img src="/projetokube-site/assets/img/lab/1.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/laborat%C3%B3rio/2019/votoifs-11-27.html">Sistema voto IFS</a>
+        </h3>
+    </div>
+</div><!-- /post -->
+</div>
+<!-- /post widget --></div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+    </div>
+    <footer class="site-footer">
+    <p class="text">
+        Powered by <a href="https://jekyllrb.com/">Jekyll</a> com o tema <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+<li>
+	<a href="/projetokube-site/atom.xml" title="Follow RSS feed">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/CBSIIFSLagarto/projetokube-site" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+    <script src="/projetokube-site/assets/js/vendor/jquery-3.4.1.slim.min.js"></script>
+<script src="/projetokube-site/assets/js/vendor/popper.min.js"></script>
+<script src="/projetokube-site/assets/js/vendor/bootstrap.min.js"></script>
+<script src="/projetokube-site/assets/js/vendor/owl.carousel.min.js"></script>
+<script src="/projetokube-site/assets/js/app.js"></script>
+<script src="/projetokube-site/assets/js/main.min.js"></script>
+<!-- Jekyll Ideal Image Slider Include -->
+<!-- https://github.com/jekylltools/jekyll-ideal-image-slider-include -->
+<!-- v1.8 -->
+    <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+  </body>
+</html>

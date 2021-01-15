@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/projetokube-site/assets/css/main.css">
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="/projetokube-site/assets/favicon.ico" type="image/x-icon">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/projetokube-site/blog/git/2019/o-que-e-o-git-11-13.html">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="Projeto Kube" href="/projetokube-site/atom.xml"/>
+    
+    
+
+    <!-- KaTeX 0.8.3 -->
+    <!-- if you have any issue check https://github.com/KaTeX/KaTeX -->
+    
+    <script src="/projetokube-site/assets/js/vendor/katex.min.js"></script>
+    
+
+    <!-- Google Analytics -->
+     <!-- End Google Analytics -->
+
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>O que é o git? | Projeto Kube</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="O que é o git?" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="description" content="O que é Git Git é um sistema open-source de controle de versão utilizado pela grande maioria dos desenvolvedores atualmente ele podemos criar todo o histórico de alterações no codigo dos nossos projeto e facilmente voltar para qualquer ponto para saber como o código estava em determinada data. Além disso o git nos ajudaa muito a controlar o fluxo de novas funcionalidades entre vários desenvolvedores no mesmo projeto com ferramentas para análise e resolução de conflitos quando o mesmo arquivo é editado por mais de uma pessoa em funcionalidades diferentes como utilizar o git Crie um a pasta vazia e abra o git bash e em seguida digite o comando git init com isso voçê cria um repositório git dentro da pasta vazia .Dentro dessa pasta vai ficar todos os arquivos do seu projeto onde sera possível utlilizar o serviço de controle de versão através dos comandos git tanto para voltar para uma versão anterior como para retornar para versões mais recentes comandos basicos do git e suas funcionalidades Git status Git init Git commit Git add Git add* Git log Git checkout Git diff Git pull Git push Git reset head Git status : mostra o status atual do repositório git caso tenha algo para adicionar ao repositório ele mostra. Git init : usado para iniciar um repositório git . Git add : usado para adicionar um arquivo a um repositório git. Git add* : usado para adicionar vários arquivos a um repositório git de uma só vez. Git commit : esse comando serve para apos você fazer um git add comentar algo para quando você estiver em uma outra versão e queira voltar para determinada versão você consegue identificar a versão devido ao comentário. Git log : usado para mostrar todas alterações que foi feitas nos arquivos. Git checkout : utilizado para voltar ou retornar para a versão que voçê quer do seu projeto.Digitanto git log vai listar todas suas versões é só copiar a numeração da versão e colar na frente do comando git checkout e apertar enter para voltar para aquela versão caso queira retornar para a última versão do seu projeto digite git checkout master. Git push : usado para enviar um projeto para um lugar remoto um exemplo seria enviar um projeto para o github Git pull : usado quando tem mais de uma pessoa trabalhando em um mesmo projeto onde após usado para baixar a diferença do seu projeto para o que está em um local remoto para isso usa-se o comando git pullpois todos da equipe tem que está atualizado de como esta o projeto para a partir disso implentar mais coisas" />
+<meta property="og:description" content="O que é Git Git é um sistema open-source de controle de versão utilizado pela grande maioria dos desenvolvedores atualmente ele podemos criar todo o histórico de alterações no codigo dos nossos projeto e facilmente voltar para qualquer ponto para saber como o código estava em determinada data. Além disso o git nos ajudaa muito a controlar o fluxo de novas funcionalidades entre vários desenvolvedores no mesmo projeto com ferramentas para análise e resolução de conflitos quando o mesmo arquivo é editado por mais de uma pessoa em funcionalidades diferentes como utilizar o git Crie um a pasta vazia e abra o git bash e em seguida digite o comando git init com isso voçê cria um repositório git dentro da pasta vazia .Dentro dessa pasta vai ficar todos os arquivos do seu projeto onde sera possível utlilizar o serviço de controle de versão através dos comandos git tanto para voltar para uma versão anterior como para retornar para versões mais recentes comandos basicos do git e suas funcionalidades Git status Git init Git commit Git add Git add* Git log Git checkout Git diff Git pull Git push Git reset head Git status : mostra o status atual do repositório git caso tenha algo para adicionar ao repositório ele mostra. Git init : usado para iniciar um repositório git . Git add : usado para adicionar um arquivo a um repositório git. Git add* : usado para adicionar vários arquivos a um repositório git de uma só vez. Git commit : esse comando serve para apos você fazer um git add comentar algo para quando você estiver em uma outra versão e queira voltar para determinada versão você consegue identificar a versão devido ao comentário. Git log : usado para mostrar todas alterações que foi feitas nos arquivos. Git checkout : utilizado para voltar ou retornar para a versão que voçê quer do seu projeto.Digitanto git log vai listar todas suas versões é só copiar a numeração da versão e colar na frente do comando git checkout e apertar enter para voltar para aquela versão caso queira retornar para a última versão do seu projeto digite git checkout master. Git push : usado para enviar um projeto para um lugar remoto um exemplo seria enviar um projeto para o github Git pull : usado quando tem mais de uma pessoa trabalhando em um mesmo projeto onde após usado para baixar a diferença do seu projeto para o que está em um local remoto para isso usa-se o comando git pullpois todos da equipe tem que está atualizado de como esta o projeto para a partir disso implentar mais coisas" />
+<meta property="og:site_name" content="Projeto Kube" />
+<meta property="og:image" content="/projetokube-site/assets/img/blog/o-que-e-git-print-1.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-13T19:28:39+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/projetokube-site/assets/img/blog/o-que-e-git-print-1.jpg" />
+<meta property="twitter:title" content="O que é o git?" />
+<script type="application/ld+json">
+{"description":"O que é Git Git é um sistema open-source de controle de versão utilizado pela grande maioria dos desenvolvedores atualmente ele podemos criar todo o histórico de alterações no codigo dos nossos projeto e facilmente voltar para qualquer ponto para saber como o código estava em determinada data. Além disso o git nos ajudaa muito a controlar o fluxo de novas funcionalidades entre vários desenvolvedores no mesmo projeto com ferramentas para análise e resolução de conflitos quando o mesmo arquivo é editado por mais de uma pessoa em funcionalidades diferentes como utilizar o git Crie um a pasta vazia e abra o git bash e em seguida digite o comando git init com isso voçê cria um repositório git dentro da pasta vazia .Dentro dessa pasta vai ficar todos os arquivos do seu projeto onde sera possível utlilizar o serviço de controle de versão através dos comandos git tanto para voltar para uma versão anterior como para retornar para versões mais recentes comandos basicos do git e suas funcionalidades Git status Git init Git commit Git add Git add* Git log Git checkout Git diff Git pull Git push Git reset head Git status : mostra o status atual do repositório git caso tenha algo para adicionar ao repositório ele mostra. Git init : usado para iniciar um repositório git . Git add : usado para adicionar um arquivo a um repositório git. Git add* : usado para adicionar vários arquivos a um repositório git de uma só vez. Git commit : esse comando serve para apos você fazer um git add comentar algo para quando você estiver em uma outra versão e queira voltar para determinada versão você consegue identificar a versão devido ao comentário. Git log : usado para mostrar todas alterações que foi feitas nos arquivos. Git checkout : utilizado para voltar ou retornar para a versão que voçê quer do seu projeto.Digitanto git log vai listar todas suas versões é só copiar a numeração da versão e colar na frente do comando git checkout e apertar enter para voltar para aquela versão caso queira retornar para a última versão do seu projeto digite git checkout master. Git push : usado para enviar um projeto para um lugar remoto um exemplo seria enviar um projeto para o github Git pull : usado quando tem mais de uma pessoa trabalhando em um mesmo projeto onde após usado para baixar a diferença do seu projeto para o que está em um local remoto para isso usa-se o comando git pullpois todos da equipe tem que está atualizado de como esta o projeto para a partir disso implentar mais coisas","image":"/projetokube-site/assets/img/blog/o-que-e-git-print-1.jpg","headline":"O que é o git?","dateModified":"2020-02-05T14:21:41+00:00","datePublished":"2019-11-13T19:28:39+00:00","@type":"BlogPosting","url":"/projetokube-site/blog/git/2019/o-que-e-o-git-11-13.html","mainEntityOfPage":{"@type":"WebPage","@id":"/projetokube-site/blog/git/2019/o-que-e-o-git-11-13.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Manual seo tags -->
+    <!--
+    <title>O que é o git? | Projeto Kube</title>
+    <meta name="description" content="O que é GitGit é um sistema open-source de controle de versão utilizado pela grande maioria dos desenvolvedores atualmente ele podemos criar todo o histórico...">
+	-->
+	<!-- Jekyll Ideal Image Slider Include -->
+<!-- https://github.com/jekylltools/jekyll-ideal-image-slider-include -->
+<!-- v1.8 -->
+
+</head>
+
+  <body>
+    <header class="site-header border-bottom shadow-sm">
+    <!-- Logo and title -->
+    <div class="branding">
+        
+        <a href="/projetokube-site/">
+            <img alt="logo img" class="avatar" src="/projetokube-site/assets/img/projetokube.png" />
+        </a>
+        
+
+        <h1 class="site-title">
+            <a aria-label="Projeto Kube" href="/projetokube-site/">
+                Projeto Kube
+            </a>
+        </h1>
+    </div>
+
+    <!-- Toggle menu -->
+    <nav class="clear">
+        <a aria-label="pull" id="pull" class="toggle" href="#">
+            <i class="fa fa-bars fa-lg"></i>
+        </a>
+
+        <!-- Menu -->
+        <ul class="hide">
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="blog" title="blog" href="/projetokube-site/blog/">
+                    Blog
+                </a>
+            </li>
+            
+
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Quem Somos" title="Quem Somos"
+                    href="/projetokube-site/equipe/">
+                     Quem Somos 
+                </a>
+            </li>
+            
+            
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Laboratório" title="Laboratório"
+                    href="/projetokube-site/laboratorio/">
+                     Laboratório 
+                </a>
+            </li>
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Projetos" title="Projetos"
+                    href="/projetokube-site/Projetos/">
+                     Projetos 
+                </a>
+            </li>
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Regras" title="Regras"
+                    href="/projetokube-site/regras/">
+                     Regras 
+                </a>
+            </li>
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Encontrar no site" title="Encontrar no site"
+                    href="/projetokube-site/search/">
+                     <i class="fa fa-search" aria-hidden="true"></i>
+                    
+                </a>
+            </li>
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Tags" title="Tags"
+                    href="/projetokube-site/tags/">
+                     <i class="fa fa-tags" aria-hidden="true"></i>
+                    
+                </a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+    </nav>
+</header>
+    <div class="content">
+      <style>.site-header { float: initial !important; }</style>
+<!--  PAGE HEADER  -->
+<div class="page-header">
+    <div class="page-header-bg"style="background-image: url('/projetokube-site/assets/img/blog/o-que-e-git-print-1.jpg'); background-position: 0% 0%; background-size: 100% 100%;"data-stellar-background-ratio="0.5"></div>
+    <div class="page-header-bg-o"></div>
+    <div class="container"><div class="row">
+            <div class="col-md-10">
+                <h1>O que é o git?</h1>
+                <ul class="post-meta"><li><a href="/projetokube-site/equipe#gabriel">gabriel</a></li>					
+                    <li>
+                        <time>
+
+Quarta feira
+  
+13 de 
+Novembro
+  
+ de 2019</time>
+                    </li>
+                    <li>
+                        <time>
+                            
+                            <b>Editado</b> em 05/02/20
+                        </time>
+                    </li><li>Direitos autorais da imagem de fundo <a href="https://pixabay.com/pt/users/lmonk72-731125/" target="_blank">Lmonk72</a></li></ul>
+                <div class="post-category"><a class="btn btn-primary btn-sm m-2"  href="/projetokube-site/category/git">git</a></div>
+            </div>
+        </div></div>
+</div><div class="section section-blog">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <!-- post share -->
+                <div class="section-row">
+                    <div class="post-share">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/projetokube-site/blog/git/2019/o-que-e-o-git-11-13.html&quote=O+que+%C3%A9+o+git%3F" class="social-facebook"><i class="fa fa-facebook"></i><span>Compartilhar</span></a>
+                        <a target="_blank" href="https://twitter.com/intent/tweet?source=http:///projetokube-site/blog/git/2019/o-que-e-o-git-11-13.html&text=O+que+%C3%A9+o+git%3F: http:///projetokube-site/blog/git/2019/o-que-e-o-git-11-13.html" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
+                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http:///projetokube-site/blog/git/2019/o-que-e-o-git-11-13.html&media=&description=%3Ch2+id%3D%22o-que-%C3%A9-git%22%3EO+que+%C3%A9+Git%3C%2Fh2%3E%0A%0A%3Cp%3EGit+%C3%A9+um+sistema..." class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a>
+                        <a target="_blank" href="mailto:?subject=O que é o git?&body=O que é Git
+
+Git é um sistema open-source de controle de versão utilizado pela grande maioria dos desenvolvedores atualmente ele podemos criar todo o histórico de alterações no codigo dos nossos projeto e facilmente voltar para qualquer ponto para saber como o código estava em...:http:///projetokube-site/blog/git/2019/o-que-e-o-git-11-13.html"><i class="fa fa-envelope"></i><span>Email</span></a>
+                    </div>
+                </div>
+                <!-- /post share -->				
+                <!-- post content -->
+                <div class="section-row post-content"><h2 id="o-que-é-git">O que é Git</h2>
+
+<p>Git é um sistema open-source de controle de versão utilizado pela grande maioria dos desenvolvedores atualmente ele podemos criar todo o histórico de alterações no codigo dos nossos projeto e facilmente voltar para qualquer ponto para saber como o código estava em determinada data.
+Além disso o git nos ajudaa muito a controlar o fluxo de novas funcionalidades entre vários desenvolvedores no mesmo projeto com ferramentas para análise e resolução de conflitos quando o mesmo arquivo é editado por mais de uma pessoa em funcionalidades diferentes</p>
+
+<h2 id="como-utilizar-o-git">como utilizar o git</h2>
+<p>Crie um a pasta vazia e abra o git bash e em seguida digite o comando <code class="language-plaintext highlighter-rouge">git init</code> com isso voçê cria um repositório git dentro da pasta vazia .Dentro dessa pasta vai ficar todos os arquivos do seu projeto onde sera possível utlilizar o serviço de controle de versão através dos <code class="language-plaintext highlighter-rouge">comandos git</code> tanto para voltar para uma versão anterior como para retornar para versões mais recentes</p>
+
+<h2 id="comandos-basicos-do-git-e-suas-funcionalidades">comandos basicos do git e suas funcionalidades</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Git status</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Git init</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Git commit</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Git add</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Git add*</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Git log</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Git checkout </code></li>
+  <li><code class="language-plaintext highlighter-rouge">Git diff</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Git pull</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Git push</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Git reset head</code></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">Git status</code> : mostra o status atual do repositório git caso tenha algo para adicionar ao repositório ele mostra.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Git init</code> : usado para iniciar um repositório git .</p>
+
+<p><code class="language-plaintext highlighter-rouge">Git add</code> :  usado para adicionar um arquivo a um repositório git.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Git add*</code> : usado para adicionar vários arquivos a um repositório git de uma só vez.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Git commit</code> : esse comando serve para  apos você fazer um <code class="language-plaintext highlighter-rouge">git add</code> comentar algo para quando você estiver em uma outra versão e queira voltar para determinada versão você consegue identificar a versão devido ao comentário.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Git log</code> : usado para mostrar todas alterações que foi feitas nos arquivos.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Git checkout</code> : utilizado para voltar ou retornar para a versão que voçê quer do seu projeto.Digitanto <code class="language-plaintext highlighter-rouge">git log </code> vai listar todas suas versões é só copiar a numeração da versão e colar na frente do comando <code class="language-plaintext highlighter-rouge">git checkout</code> e apertar enter para voltar para aquela versão caso queira retornar para a última versão do seu projeto digite <code class="language-plaintext highlighter-rouge">git checkout master</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Git push</code> : usado para enviar um projeto para um lugar remoto um exemplo seria enviar um projeto para o <code class="language-plaintext highlighter-rouge">github</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">Git pull</code> : usado quando tem mais de uma pessoa trabalhando em um mesmo projeto onde após  usado para baixar a diferença do seu projeto para o que está em um local remoto para isso usa-se o comando <code class="language-plaintext highlighter-rouge">git pull</code>pois todos da equipe tem que está atualizado de como esta o projeto para a partir  disso implentar mais coisas</p>
+
+</div>
+                <!-- /post content -->
+
+                <!-- post tags -->
+                <div class="section-row">
+                    <div class="post-tags">
+                        <!-- Tag list -->
+                        
+                        
+
+
+<footer>
+  <div class="tag-list">
+    
+      <div class="meta">Tags</div>
+    
+
+    
+    <a class="button" href="/projetokube-site/tags#git">
+      <p><i class="fa fa-tag fa-fw"></i> git</p>
+    </a>
+    
+    <a class="button" href="/projetokube-site/tags#github">
+      <p><i class="fa fa-tag fa-fw"></i> github</p>
+    </a>
+    
+  </div>
+</footer>
+
+                    </div>
+                </div>
+                <!-- /post tags -->
+
+                <!-- post author --><div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Sobre <a
+                                href="/projetokube-site/equipe#gabriel">José Gabriel da Costa Santos</a>
+                        </h3>
+                    </div>
+                    <div class="author media">
+                        <div class="media-left">
+                            <a href="/projetokube-site/equipe#gabriel">
+                                
+                                <img class="author-img media-object"
+                                    src="https://avatars3.githubusercontent.com/jgcs?v=3&amp;s=273" />
+                                
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>estudante de BSI cada dia mais apaixonado pelo mundo das tecnologias uma das principais coisas que chamou a minha atenção foi o mundo dos jogos</p>
+                            <ul class="author-social">
+                                
+                                <li><a target="_blank" href="http://fb.com/scbiel"><i class="fa fa-facebook fa-fw"></i></a></li>
+                                
+                                
+                                <li><a target="_blank" href="http://github.com/jgcs"><i class="fa fa-github fa-fw"></i></a></li>
+                                
+                                
+                                
+                                <li><a target="_blank" href="https://instagram.com/gabrielcs4412"><i class="fa fa-instagram fa-fw"></i></a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post author --><!-- /related post -->
+                <div>
+                    <div class="section-title">
+                        <h3 class="title">Posts Relacionados</h3>
+                    </div>
+                    <div class="row">
+                        <!-- post -->
+                        <div class="col-md-4"><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/git/2019/o-que-e-o-git-11-13.html">
+        <div class="post-bg" style="background-image: url('/projetokube-site/assets/img/blog/o-que-e-git-print-1.jpg');"></div>
+    </a>
+    <div class="post-body">
+        <div class="post-category"><span class="badge badge-black">
+                <a href="/projetokube-site/category/git">git</a>
+            </span></div>
+        <h3 class="post-title title-sm">
+            <a href="/projetokube-site/blog/git/2019/o-que-e-o-git-11-13.html">
+                O que é o git?
+            </a>
+        </h3>
+        <ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#"> </a></li></ul>
+    </div>
+</div><!-- /post --></div>
+                        
+                        <!-- /post -->
+                    </div>
+                </div>
+                <!-- /related post -->
+
+                <!-- post comments -->
+                <div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Comentários</h3>
+                    </div>
+                    <div class="post-comments">
+                        <!-- Disqus -->
+                        
+                        <div id="disqus_thread"></div>
+<script type="text/javascript">
+	var disqus_shortname = 'projeto-kube';
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view comments.</noscript>
+
+                        
+                    </div>
+                </div>
+                <!-- /post comments -->
+            </div>
+            <div class="col-lg-4 col-md-12">
+
+
+
+
+
+
+
+
+
+
+<!-- category widget -->
+<div class="aside-widget">
+    <h4 class="p-title"><b>Categorias</b></h4>
+    <div class="category-widget">
+        <ul>			
+						
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/acesso">acesso <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/laboratorio">laboratorio <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/devops">devops <span>3</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/tutoriais">tutoriais <span>10</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/git">git <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/laboratorio">laboratório <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/linux">linux <span>4</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/estudo">estudo <span>1</span></a></li>
+            
+        </ul>
+    </div>
+</div>
+<!-- /category widget -->
+
+<!-- post widget -->
+<div class="aside-widget">
+    <h4 class="p-title"><b>Postagens recentes</b></h4>
+    <!-- post -->
+    <!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/instalacao-raspberry-pi-os-07-17.html">
+        <img src="/projetokube-site/assets/img/blog/logo-instalacao-raspberry-pi-os.png" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/instalacao-raspberry-pi-os-07-17.html">Instalação do Raspberry Pi OS</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-instalacao-automatica-do-ubuntu-server-03-03.html">
+        <img src="/projetokube-site/assets/img/blog/install-ubuntu-instalacoes-autonomas.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-instalacao-automatica-do-ubuntu-server-03-03.html">Como criar uma instalação automática do Ubuntu ou por um servidor PXE</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/como-instalar-nodejs-01-19.html">
+        <img src="/projetokube-site/assets/img/blog/install-nodejs.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/como-instalar-nodejs-01-19.html">Instalação do NodeJS</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-publicacao-no-blog-01-19.html">
+        <img src="/projetokube-site/assets/img/blog/github-projetokube-site.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-publicacao-no-blog-01-19.html">Como criar uma publicação no blog</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/temperatura-no-raspberry-01-19.html">
+        <img src="/projetokube-site/assets/img/blog/temp-rasp.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/temperatura-no-raspberry-01-19.html">Coletando a temperatura no Raspberry PI 3 B Plus</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/instale-vnc-em-raspberry-pi-01-17.html">
+        <img src="/projetokube-site/assets/img/blog/install-vnc-raspberry.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/instale-vnc-em-raspberry-pi-01-17.html">Instalação do VNC Server no Raspberry PI 3</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">
+        <img src="/projetokube-site/assets/img/blog/docker-jekyll.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">Execução do Jekyll em container Docker</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/estudo/devops/2019/conteudo-para-as-ferias-12-18.html">
+        <img src="/projetokube-site/assets/img/blog/trem.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/estudo/devops/2019/conteudo-para-as-ferias-12-18.html">Conteúdo para as férias</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">
+        <img src="/projetokube-site/assets/img/blog/raspberry.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">Execução de containers Docker com Raspberry Pi</a>
+        </h3>
+    </div>
+</div><!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/laborat%C3%B3rio/2019/votoifs-11-27.html">
+        <img src="/projetokube-site/assets/img/lab/1.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/laborat%C3%B3rio/2019/votoifs-11-27.html">Sistema voto IFS</a>
+        </h3>
+    </div>
+</div><!-- /post -->
+</div>
+<!-- /post widget --></div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+    </div>
+    <footer class="site-footer">
+    <p class="text">
+        Powered by <a href="https://jekyllrb.com/">Jekyll</a> com o tema <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+<li>
+	<a href="/projetokube-site/atom.xml" title="Follow RSS feed">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/CBSIIFSLagarto/projetokube-site" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+    <script src="/projetokube-site/assets/js/vendor/jquery-3.4.1.slim.min.js"></script>
+<script src="/projetokube-site/assets/js/vendor/popper.min.js"></script>
+<script src="/projetokube-site/assets/js/vendor/bootstrap.min.js"></script>
+<script src="/projetokube-site/assets/js/vendor/owl.carousel.min.js"></script>
+<script src="/projetokube-site/assets/js/app.js"></script>
+<script src="/projetokube-site/assets/js/main.min.js"></script>
+<!-- Jekyll Ideal Image Slider Include -->
+<!-- https://github.com/jekylltools/jekyll-ideal-image-slider-include -->
+<!-- v1.8 -->
+    <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+  </body>
+</html>

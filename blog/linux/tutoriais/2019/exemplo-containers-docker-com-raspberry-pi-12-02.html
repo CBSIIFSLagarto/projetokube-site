@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/projetokube-site/assets/css/main.css">
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="/projetokube-site/assets/favicon.ico" type="image/x-icon">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="Projeto Kube" href="/projetokube-site/atom.xml"/>
+    
+    
+
+    <!-- KaTeX 0.8.3 -->
+    <!-- if you have any issue check https://github.com/KaTeX/KaTeX -->
+    
+    <script src="/projetokube-site/assets/js/vendor/katex.min.js"></script>
+    
+
+    <!-- Google Analytics -->
+     <!-- End Google Analytics -->
+
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Execução de containers Docker com Raspberry Pi | Projeto Kube</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Execução de containers Docker com Raspberry Pi" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="description" content="Docker em plataformas ARM Com a parceria estratégica entre a Docker e Arm, para levar a tecnologia de contêineres para dispositivos de IoT, a Docker realizou a simplificação na forma de desenvolvimento de aplicativos em plataformas com arquiteturas ARM, aumentando a portabilidade e a implantação de softwares embarcados [1]. Para criar uma image para plataforma ARM é necessário está em um sistema com essa arquitetura, entretanto com a ferramenta buildx pode-se criar várias imagens com arquiteturas diferentes a partir de único host. Em um ambiente Linux, realize a instalação do buildx, o repositório da ferramenta está disponível na plataforma de versionamento distribuído GitHub, pode-se baixar a ferramenta de acordo com a versão do Sistema Operacional. Será utilizado para criar as imagens uma máquina com arquitetura amd64 e Sistema Operacional Xubuntu 18.04, mas os procedimentos podem ser realizados em um Raspberry PI. Realize o download da ferramenta com o comando abaixo: curl -OL https://github.com/docker/buildx/releases/download/v0.3.1/buildx-v0.3.1.linux-amd64 Após o download da ferramenta buildx, crie o diretório cli-plugins e copie o binário: mkdir ~/.docker/cli-plugins/ &amp;&amp; chmod +x buildx-v0.3.1.linux-amd64 &amp;&amp; cp buildx-v0.3.1.linux-amd64 ~/.docker/cli-plugins/docker-buildx Visualize se a instalação foi realizada com sucesso: docker buildx --help Instale o pacote qemu-user-static que é um emulador de processador muito eficiente, que suporta vários tipos de processadores [2]. sudo apt-get install qemu-user-static Crie uma instância de construção de arquitetura múltipla: docker buildx create --name frbuilder &amp;&amp; docker buildx use frbuilder &amp;&amp; docker buildx inspect --bootstrap Para verificar quais arquiteturas a imagem Docker permitir execução: docker buildx imagetools inspect nginx:alpine Utilize os arquivos Dockerfile e index.html para gera as imagens: FROM nginx:alpine LABEL &quot;author&quot;=&quot;Francisco Chaves&quot; COPY ./index.html /usr/share/nginx/html/index.html &lt;!DOCTYPE html&gt; &lt;html lang=&quot;en&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;title&gt;My site&lt;/title&gt; &lt;link href=&quot;https://fonts.googleapis.com/css?family=Roboto&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt; &lt;style&gt; * { box-sizing: border-box; margin: 0; padding: 0; } .container { background-color: rgb(101, 47, 252); height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; } .item { font-size: 2rem; font-family: &#39;Roboto&#39;, sans-serif; } .animation-target { animation: animation 1000ms linear infinite both; } /* Generated with Bounce.js. Edit at http://bouncejs.com#%7Bl%3A1%2Cs%3A%5B%7BT%3A%22c%22%2Ce%3A%22s%22%2Cd%3A1000%2CD%3A0%2Cf%3A%7Bx%3A1%2Cy%3A1%7D%2Ct%3A%7Bx%3A3%2Cy%3A3%7D%2Cs%3A3%2Cb%3A4%7D%5D%7D */ @keyframes animation { 0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 3.2% { transform: matrix3d(1.53, 0, 0, 0, 0, 1.53, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 6.41% { transform: matrix3d(1.661, 0, 0, 0, 0, 1.661, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 12.71% { transform: matrix3d(1.425, 0, 0, 0, 0, 1.425, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 18.92% { transform: matrix3d(1.138, 0, 0, 0, 0, 1.138, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 25.23% { transform: matrix3d(0.997, 0, 0, 0, 0, 0.997, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 31.43% { transform: matrix3d(0.969, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 56.46% { transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 81.48% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } } &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;div class=&quot;container&quot;&gt; &lt;div class=&quot;item&quot;&gt; &lt;h1 class=&quot;animation-target&quot;&gt;My site&lt;/h1&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt; Construa as imagens e envie para o Docker Hub (necessário login): docker buildx build --platform linux/arm,linux/arm64,linux/amd64 -t franciscojsc/my-site . --push As images criadas no Docker Hub: Execute o container: docker run --name my-site -it --rm -p 8080:80 franciscojsc/my-site Acesse a URL localhost:8080 e visualize o resultado: Valeu pessoal :smiley::v: Referências TSAI, Tim. Getting started with Docker for Arm on Linux. DOCKER INC. 7 jun. 2019. Disponível em: https://engineering.docker.com/2019/06/getting-started-with-docker-for-arm-on-linux/. Acesso em: 27 nov. 2019. Pacote: qemu-user-static (1: 4.1-2 e outros). DEBIAN. Disponível em: https://packages.debian.org/pt-br/sid/qemu-user-static. Acesso em: 28 nov. 2019." />
+<meta property="og:description" content="Docker em plataformas ARM Com a parceria estratégica entre a Docker e Arm, para levar a tecnologia de contêineres para dispositivos de IoT, a Docker realizou a simplificação na forma de desenvolvimento de aplicativos em plataformas com arquiteturas ARM, aumentando a portabilidade e a implantação de softwares embarcados [1]. Para criar uma image para plataforma ARM é necessário está em um sistema com essa arquitetura, entretanto com a ferramenta buildx pode-se criar várias imagens com arquiteturas diferentes a partir de único host. Em um ambiente Linux, realize a instalação do buildx, o repositório da ferramenta está disponível na plataforma de versionamento distribuído GitHub, pode-se baixar a ferramenta de acordo com a versão do Sistema Operacional. Será utilizado para criar as imagens uma máquina com arquitetura amd64 e Sistema Operacional Xubuntu 18.04, mas os procedimentos podem ser realizados em um Raspberry PI. Realize o download da ferramenta com o comando abaixo: curl -OL https://github.com/docker/buildx/releases/download/v0.3.1/buildx-v0.3.1.linux-amd64 Após o download da ferramenta buildx, crie o diretório cli-plugins e copie o binário: mkdir ~/.docker/cli-plugins/ &amp;&amp; chmod +x buildx-v0.3.1.linux-amd64 &amp;&amp; cp buildx-v0.3.1.linux-amd64 ~/.docker/cli-plugins/docker-buildx Visualize se a instalação foi realizada com sucesso: docker buildx --help Instale o pacote qemu-user-static que é um emulador de processador muito eficiente, que suporta vários tipos de processadores [2]. sudo apt-get install qemu-user-static Crie uma instância de construção de arquitetura múltipla: docker buildx create --name frbuilder &amp;&amp; docker buildx use frbuilder &amp;&amp; docker buildx inspect --bootstrap Para verificar quais arquiteturas a imagem Docker permitir execução: docker buildx imagetools inspect nginx:alpine Utilize os arquivos Dockerfile e index.html para gera as imagens: FROM nginx:alpine LABEL &quot;author&quot;=&quot;Francisco Chaves&quot; COPY ./index.html /usr/share/nginx/html/index.html &lt;!DOCTYPE html&gt; &lt;html lang=&quot;en&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;title&gt;My site&lt;/title&gt; &lt;link href=&quot;https://fonts.googleapis.com/css?family=Roboto&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt; &lt;style&gt; * { box-sizing: border-box; margin: 0; padding: 0; } .container { background-color: rgb(101, 47, 252); height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; } .item { font-size: 2rem; font-family: &#39;Roboto&#39;, sans-serif; } .animation-target { animation: animation 1000ms linear infinite both; } /* Generated with Bounce.js. Edit at http://bouncejs.com#%7Bl%3A1%2Cs%3A%5B%7BT%3A%22c%22%2Ce%3A%22s%22%2Cd%3A1000%2CD%3A0%2Cf%3A%7Bx%3A1%2Cy%3A1%7D%2Ct%3A%7Bx%3A3%2Cy%3A3%7D%2Cs%3A3%2Cb%3A4%7D%5D%7D */ @keyframes animation { 0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 3.2% { transform: matrix3d(1.53, 0, 0, 0, 0, 1.53, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 6.41% { transform: matrix3d(1.661, 0, 0, 0, 0, 1.661, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 12.71% { transform: matrix3d(1.425, 0, 0, 0, 0, 1.425, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 18.92% { transform: matrix3d(1.138, 0, 0, 0, 0, 1.138, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 25.23% { transform: matrix3d(0.997, 0, 0, 0, 0, 0.997, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 31.43% { transform: matrix3d(0.969, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 56.46% { transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 81.48% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } } &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;div class=&quot;container&quot;&gt; &lt;div class=&quot;item&quot;&gt; &lt;h1 class=&quot;animation-target&quot;&gt;My site&lt;/h1&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt; Construa as imagens e envie para o Docker Hub (necessário login): docker buildx build --platform linux/arm,linux/arm64,linux/amd64 -t franciscojsc/my-site . --push As images criadas no Docker Hub: Execute o container: docker run --name my-site -it --rm -p 8080:80 franciscojsc/my-site Acesse a URL localhost:8080 e visualize o resultado: Valeu pessoal :smiley::v: Referências TSAI, Tim. Getting started with Docker for Arm on Linux. DOCKER INC. 7 jun. 2019. Disponível em: https://engineering.docker.com/2019/06/getting-started-with-docker-for-arm-on-linux/. Acesso em: 27 nov. 2019. Pacote: qemu-user-static (1: 4.1-2 e outros). DEBIAN. Disponível em: https://packages.debian.org/pt-br/sid/qemu-user-static. Acesso em: 28 nov. 2019." />
+<meta property="og:site_name" content="Projeto Kube" />
+<meta property="og:image" content="/projetokube-site/assets/img/blog/raspberry.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-02T17:25:12+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/projetokube-site/assets/img/blog/raspberry.jpg" />
+<meta property="twitter:title" content="Execução de containers Docker com Raspberry Pi" />
+<script type="application/ld+json">
+{"description":"Docker em plataformas ARM Com a parceria estratégica entre a Docker e Arm, para levar a tecnologia de contêineres para dispositivos de IoT, a Docker realizou a simplificação na forma de desenvolvimento de aplicativos em plataformas com arquiteturas ARM, aumentando a portabilidade e a implantação de softwares embarcados [1]. Para criar uma image para plataforma ARM é necessário está em um sistema com essa arquitetura, entretanto com a ferramenta buildx pode-se criar várias imagens com arquiteturas diferentes a partir de único host. Em um ambiente Linux, realize a instalação do buildx, o repositório da ferramenta está disponível na plataforma de versionamento distribuído GitHub, pode-se baixar a ferramenta de acordo com a versão do Sistema Operacional. Será utilizado para criar as imagens uma máquina com arquitetura amd64 e Sistema Operacional Xubuntu 18.04, mas os procedimentos podem ser realizados em um Raspberry PI. Realize o download da ferramenta com o comando abaixo: curl -OL https://github.com/docker/buildx/releases/download/v0.3.1/buildx-v0.3.1.linux-amd64 Após o download da ferramenta buildx, crie o diretório cli-plugins e copie o binário: mkdir ~/.docker/cli-plugins/ &amp;&amp; chmod +x buildx-v0.3.1.linux-amd64 &amp;&amp; cp buildx-v0.3.1.linux-amd64 ~/.docker/cli-plugins/docker-buildx Visualize se a instalação foi realizada com sucesso: docker buildx --help Instale o pacote qemu-user-static que é um emulador de processador muito eficiente, que suporta vários tipos de processadores [2]. sudo apt-get install qemu-user-static Crie uma instância de construção de arquitetura múltipla: docker buildx create --name frbuilder &amp;&amp; docker buildx use frbuilder &amp;&amp; docker buildx inspect --bootstrap Para verificar quais arquiteturas a imagem Docker permitir execução: docker buildx imagetools inspect nginx:alpine Utilize os arquivos Dockerfile e index.html para gera as imagens: FROM nginx:alpine LABEL &quot;author&quot;=&quot;Francisco Chaves&quot; COPY ./index.html /usr/share/nginx/html/index.html &lt;!DOCTYPE html&gt; &lt;html lang=&quot;en&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;title&gt;My site&lt;/title&gt; &lt;link href=&quot;https://fonts.googleapis.com/css?family=Roboto&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt; &lt;style&gt; * { box-sizing: border-box; margin: 0; padding: 0; } .container { background-color: rgb(101, 47, 252); height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; } .item { font-size: 2rem; font-family: &#39;Roboto&#39;, sans-serif; } .animation-target { animation: animation 1000ms linear infinite both; } /* Generated with Bounce.js. Edit at http://bouncejs.com#%7Bl%3A1%2Cs%3A%5B%7BT%3A%22c%22%2Ce%3A%22s%22%2Cd%3A1000%2CD%3A0%2Cf%3A%7Bx%3A1%2Cy%3A1%7D%2Ct%3A%7Bx%3A3%2Cy%3A3%7D%2Cs%3A3%2Cb%3A4%7D%5D%7D */ @keyframes animation { 0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 3.2% { transform: matrix3d(1.53, 0, 0, 0, 0, 1.53, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 6.41% { transform: matrix3d(1.661, 0, 0, 0, 0, 1.661, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 12.71% { transform: matrix3d(1.425, 0, 0, 0, 0, 1.425, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 18.92% { transform: matrix3d(1.138, 0, 0, 0, 0, 1.138, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 25.23% { transform: matrix3d(0.997, 0, 0, 0, 0, 0.997, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 31.43% { transform: matrix3d(0.969, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 56.46% { transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 81.48% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } } &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;div class=&quot;container&quot;&gt; &lt;div class=&quot;item&quot;&gt; &lt;h1 class=&quot;animation-target&quot;&gt;My site&lt;/h1&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt; Construa as imagens e envie para o Docker Hub (necessário login): docker buildx build --platform linux/arm,linux/arm64,linux/amd64 -t franciscojsc/my-site . --push As images criadas no Docker Hub: Execute o container: docker run --name my-site -it --rm -p 8080:80 franciscojsc/my-site Acesse a URL localhost:8080 e visualize o resultado: Valeu pessoal :smiley::v: Referências TSAI, Tim. Getting started with Docker for Arm on Linux. DOCKER INC. 7 jun. 2019. Disponível em: https://engineering.docker.com/2019/06/getting-started-with-docker-for-arm-on-linux/. Acesso em: 27 nov. 2019. Pacote: qemu-user-static (1: 4.1-2 e outros). DEBIAN. Disponível em: https://packages.debian.org/pt-br/sid/qemu-user-static. Acesso em: 28 nov. 2019.","image":"/projetokube-site/assets/img/blog/raspberry.jpg","headline":"Execução de containers Docker com Raspberry Pi","dateModified":"2020-02-05T14:21:41+00:00","datePublished":"2019-12-02T17:25:12+00:00","@type":"BlogPosting","url":"/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html","mainEntityOfPage":{"@type":"WebPage","@id":"/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Manual seo tags -->
+    <!--
+    <title>Execução de containers Docker com Raspberry Pi | Projeto Kube</title>
+    <meta name="description" content="Docker em plataformas ARMCom a parceria estratégica entre a Docker e Arm, para levar a tecnologia de contêineres para dispositivos de IoT, a Docker realizou ...">
+	-->
+	<!-- Jekyll Ideal Image Slider Include -->
+<!-- https://github.com/jekylltools/jekyll-ideal-image-slider-include -->
+<!-- v1.8 -->
+
+</head>
+
+  <body>
+    <header class="site-header border-bottom shadow-sm">
+    <!-- Logo and title -->
+    <div class="branding">
+        
+        <a href="/projetokube-site/">
+            <img alt="logo img" class="avatar" src="/projetokube-site/assets/img/projetokube.png">
+        </a>
+        
+
+        <h1 class="site-title">
+            <a aria-label="Projeto Kube" href="/projetokube-site/">
+                Projeto Kube
+            </a>
+        </h1>
+    </div>
+
+    <!-- Toggle menu -->
+    <nav class="clear">
+        <a aria-label="pull" id="pull" class="toggle" href="#">
+            <i class="fa fa-bars fa-lg"></i>
+        </a>
+
+        <!-- Menu -->
+        <ul class="hide">
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="blog" title="blog" href="/projetokube-site/blog/">
+                    Blog
+                </a>
+            </li>
+            
+
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Quem Somos" title="Quem Somos" href="/projetokube-site/equipe/">
+                     Quem Somos 
+                </a>
+            </li>
+            
+            
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Laboratório" title="Laboratório" href="/projetokube-site/laboratorio/">
+                     Laboratório 
+                </a>
+            </li>
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Projetos" title="Projetos" href="/projetokube-site/Projetos/">
+                     Projetos 
+                </a>
+            </li>
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Regras" title="Regras" href="/projetokube-site/regras/">
+                     Regras 
+                </a>
+            </li>
+            
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Encontrar no site" title="Encontrar no site" href="/projetokube-site/search/">
+                     <i class="fa fa-search" aria-hidden="true"></i>
+                    
+                </a>
+            </li>
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" aria-label="Tags" title="Tags" href="/projetokube-site/tags/">
+                     <i class="fa fa-tags" aria-hidden="true"></i>
+                    
+                </a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+    </nav>
+</header>
+    <div class="content">
+      <style>.site-header { float: initial !important; }</style>
+<!--  PAGE HEADER  -->
+<div class="page-header">
+    <div class="page-header-bg" style="background-image: url('/projetokube-site/assets/img/blog/raspberry.jpg'); background-position: 0% 0%; background-size: 100% 100%;" data-stellar-background-ratio="0.5"></div>
+    <div class="page-header-bg-o"></div>
+    <div class="container"><div class="row">
+            <div class="col-md-10">
+                <h1>Execução de containers Docker com Raspberry Pi</h1>
+                <ul class="post-meta">
+<li><a href="/projetokube-site/equipe#franciscojsc">franciscojsc</a></li>					
+                    <li>
+                        <time>
+
+Segunda feira
+  
+2 de 
+Dezembro
+
+ de 2019</time>
+                    </li>
+                    <li>
+                        <time>
+                            
+                            <b>Editado</b> em 05/02/20
+                        </time>
+                    </li>
+</ul>
+                <div class="post-category">
+<a class="btn btn-primary btn-sm m-2" href="/projetokube-site/category/linux">linux</a><a class="btn btn-primary btn-sm m-2" href="/projetokube-site/category/tutoriais">tutoriais</a>
+</div>
+            </div>
+        </div></div>
+</div>
+<div class="section section-blog">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <!-- post share -->
+                <div class="section-row">
+                    <div class="post-share">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html&amp;quote=Execu%C3%A7%C3%A3o+de+containers+Docker+co..." class="social-facebook"><i class="fa fa-facebook"></i><span>Compartilhar</span></a>
+                        <a target="_blank" href="https://twitter.com/intent/tweet?source=http:///projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html&amp;text=Execu%C3%A7%C3%A3o+de+containers+Docker+co...:%20http:///projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
+                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http:///projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html&amp;media=&amp;description=%3Ch1+id%3D%22docker-em-plataformas-arm%22%3EDocker+em+plataformas+ARM%3C%2Fh1%3E%0A%0A%3Cp%3ECom..." class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a>
+                        <a target="_blank" href="mailto:?subject=Execu%C3%A7%C3%A3o%20de%20containers%20Docker%20com%20Raspberr...&amp;body=Docker%20em%20plataformas%20ARM%0A%0ACom%20a%20parceria%20estrat%C3%A9gica%20entre%20a%20Docker%20e%20Arm,%20para%20levar%20a%20tecnologia%20de%20cont%C3%AAineres%20para%20dispositivos%20de%20IoT,%20a%20Docker%20realizou%20a%20simplifica%C3%A7%C3%A3o%20na%20forma%20de%20desenvolvimento%20de%20aplicativos%20em%20plataformas%20com%20arquiteturas%20ARM,%20aumentando%20a%20portabili...:http:///projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html"><i class="fa fa-envelope"></i><span>Email</span></a>
+                    </div>
+                </div>
+                <!-- /post share -->				
+                <!-- post content -->
+                <div class="section-row post-content">
+<h1 id="docker-em-plataformas-arm">Docker em plataformas ARM</h1>
+
+<p>Com a parceria estratégica entre a Docker e Arm, para levar a tecnologia de contêineres para dispositivos de IoT, a Docker realizou a simplificação na forma de desenvolvimento de aplicativos em plataformas com arquiteturas <a href="https://canaltech.com.br/hardware/O-que-e-um-processador-ARM/">ARM</a>, aumentando a portabilidade e a implantação de <em>softwares</em> embarcados [1]. Para criar uma <em>image</em> para plataforma ARM é necessário está em um sistema com essa arquitetura, entretanto com a ferramenta <strong>buildx</strong> pode-se criar várias imagens com arquiteturas diferentes a partir de único <em>host</em>.</p>
+
+<p>Em um ambiente Linux, realize a instalação do <strong>buildx</strong>, o <a href="https://github.com/docker/buildx/releases">repositório</a> da ferramenta está disponível na plataforma de versionamento distribuído <a href="https://github.com/">GitHub</a>, pode-se baixar  a ferramenta de acordo com a versão do Sistema Operacional. Será utilizado para criar as imagens uma máquina com arquitetura amd64 e Sistema Operacional <a href="https://xubuntu.org/">Xubuntu</a> 18.04, mas os procedimentos podem ser realizados em um <a href="https://www.raspberrypi.org/">Raspberry PI</a>.</p>
+
+<p>Realize o download da ferramenta com o comando abaixo:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-OL</span> https://github.com/docker/buildx/releases/download/v0.3.1/buildx-v0.3.1.linux-amd64
+</code></pre></div></div>
+
+<p>Após o <em>download</em> da ferramenta <strong>buildx</strong>, crie o diretório <code class="language-plaintext highlighter-rouge">cli-plugins</code> e copie o binário:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> ~/.docker/cli-plugins/ <span class="o">&amp;&amp;</span>
+<span class="nb">chmod</span> +x buildx-v0.3.1.linux-amd64 <span class="o">&amp;&amp;</span>
+<span class="nb">cp </span>buildx-v0.3.1.linux-amd64 ~/.docker/cli-plugins/docker-buildx
+</code></pre></div></div>
+
+<p>Visualize se a instalação foi realizada com sucesso:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker buildx <span class="nt">--help</span>
+</code></pre></div></div>
+
+<p>Instale o pacote  <code class="language-plaintext highlighter-rouge">qemu-user-static</code> que  é um emulador de processador muito eficiente, que  suporta  vários tipos de processadores [2].</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>qemu-user-static
+</code></pre></div></div>
+
+<p>Crie uma instância de construção de arquitetura múltipla:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker buildx create <span class="nt">--name</span> frbuilder <span class="o">&amp;&amp;</span>
+docker buildx use frbuilder <span class="o">&amp;&amp;</span>
+docker buildx inspect <span class="nt">--bootstrap</span>
+</code></pre></div></div>
+<p>Para verificar quais arquiteturas a imagem <strong>Docker</strong> permitir execução:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker buildx imagetools inspect nginx:alpine
+</code></pre></div></div>
+<p>Utilize os arquivos <code class="language-plaintext highlighter-rouge">Dockerfile</code>  e <code class="language-plaintext highlighter-rouge">index.html</code> para gera as imagens:</p>
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> nginx:alpine</span>
+
+<span class="k">LABEL</span><span class="s"> "author"="Francisco Chaves"</span>
+
+<span class="k">COPY</span><span class="s"> ./index.html  /usr/share/nginx/html/index.html</span>
+</code></pre></div></div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My site<span class="nt">&lt;/title&gt;</span>
+
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css?family=Roboto&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+        <span class="o">*</span> <span class="p">{</span>
+            <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+            <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+            <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nc">.container</span> <span class="p">{</span>
+            <span class="nl">background-color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">101</span><span class="p">,</span> <span class="m">47</span><span class="p">,</span> <span class="m">252</span><span class="p">);</span>
+            <span class="nl">height</span><span class="p">:</span> <span class="m">100vh</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+            <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+            <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+            <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+            <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nc">.item</span> <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span> <span class="m">2rem</span><span class="p">;</span>
+            <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Roboto'</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nc">.animation-target</span> <span class="p">{</span>
+            <span class="nl">animation</span><span class="p">:</span> <span class="n">animation</span> <span class="m">1000ms</span> <span class="n">linear</span> <span class="n">infinite</span> <span class="nb">both</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c">/* Generated with Bounce.js. Edit at http://bouncejs.com#%7Bl%3A1%2Cs%3A%5B%7BT%3A%22c%22%2Ce%3A%22s%22%2Cd%3A1000%2CD%3A0%2Cf%3A%7Bx%3A1%2Cy%3A1%7D%2Ct%3A%7Bx%3A3%2Cy%3A3%7D%2Cs%3A3%2Cb%3A4%7D%5D%7D */</span>
+
+        <span class="k">@keyframes</span> <span class="n">animation</span> <span class="p">{</span>
+            <span class="err">0</span><span class="o">%</span> <span class="p">{</span>
+                <span class="nl">transform</span><span class="p">:</span> <span class="n">matrix3d</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="err">3</span><span class="o">.</span><span class="err">2</span><span class="o">%</span> <span class="p">{</span>
+                <span class="nl">transform</span><span class="p">:</span> <span class="n">matrix3d</span><span class="p">(</span><span class="m">1.53</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1.53</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="err">6</span><span class="o">.</span><span class="err">41</span><span class="o">%</span> <span class="p">{</span>
+                <span class="nl">transform</span><span class="p">:</span> <span class="n">matrix3d</span><span class="p">(</span><span class="m">1.661</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1.661</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="err">12</span><span class="o">.</span><span class="err">71</span><span class="o">%</span> <span class="p">{</span>
+                <span class="nl">transform</span><span class="p">:</span> <span class="n">matrix3d</span><span class="p">(</span><span class="m">1.425</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1.425</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="err">18</span><span class="o">.</span><span class="err">92</span><span class="o">%</span> <span class="p">{</span>
+                <span class="nl">transform</span><span class="p">:</span> <span class="n">matrix3d</span><span class="p">(</span><span class="m">1.138</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1.138</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="err">25</span><span class="o">.</span><span class="err">23</span><span class="o">%</span> <span class="p">{</span>
+                <span class="nl">transform</span><span class="p">:</span> <span class="n">matrix3d</span><span class="p">(</span><span class="m">0.997</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.997</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="err">31</span><span class="o">.</span><span class="err">43</span><span class="o">%</span> <span class="p">{</span>
+                <span class="nl">transform</span><span class="p">:</span> <span class="n">matrix3d</span><span class="p">(</span><span class="m">0.969</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.969</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="err">56</span><span class="o">.</span><span class="err">46</span><span class="o">%</span> <span class="p">{</span>
+                <span class="nl">transform</span><span class="p">:</span> <span class="n">matrix3d</span><span class="p">(</span><span class="m">1.001</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1.001</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="err">81</span><span class="o">.</span><span class="err">48</span><span class="o">%</span> <span class="p">{</span>
+                <span class="nl">transform</span><span class="p">:</span> <span class="n">matrix3d</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="err">100</span><span class="o">%</span> <span class="p">{</span>
+                <span class="nl">transform</span><span class="p">:</span> <span class="n">matrix3d</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"animation-target"</span><span class="nt">&gt;</span>My site<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p>Construa as imagens e envie para o <em>Docker Hub</em> (necessário <em>login</em>):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker buildx build <span class="nt">--platform</span> linux/arm,linux/arm64,linux/amd64 <span class="nt">-t</span> franciscojsc/my-site <span class="nb">.</span> <span class="nt">--push</span>
+</code></pre></div></div>
+<p>As <em>images</em> criadas no Docker Hub:</p>
+
+<p><img src="/projetokube-site/assets/img/blog/tags-docker-my-site.jpg" alt="Imagens criadas no Docker Hub" title="Imagens criadas no Docker Hub "></p>
+
+<p>Execute o container:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--name</span> my-site <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">-p</span> 8080:80 franciscojsc/my-site
+</code></pre></div></div>
+<p>Acesse a URL <code class="language-plaintext highlighter-rouge">localhost:8080</code> e visualize o resultado:</p>
+
+<p><img src="/projetokube-site/assets/img/blog/my-site.gif" alt="Site em execução no container" title="Site em execução no container"></p>
+
+<p>Valeu pessoal <img class="emoji" title=":smiley:" alt=":smiley:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f603.png" height="20" width="20"><img class="emoji" title=":v:" alt=":v:" src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png" height="20" width="20"></p>
+
+<h2 id="referências">Referências</h2>
+
+<ol>
+  <li>
+    <p>TSAI, Tim. Getting started with Docker for Arm on Linux. <strong>DOCKER INC</strong>. 7 jun. 2019. Disponível em: <a href="https://engineering.docker.com/2019/06/getting-started-with-docker-for-arm-on-linux/">https://engineering.docker.com/2019/06/getting-started-with-docker-for-arm-on-linux/</a>. Acesso em: 27 nov. 2019.</p>
+  </li>
+  <li>
+    <p>Pacote: qemu-user-static (1: 4.1-2 e outros). <strong>DEBIAN</strong>. Disponível em:  <a href="https://packages.debian.org/pt-br/sid/qemu-user-static">https://packages.debian.org/pt-br/sid/qemu-user-static</a>. Acesso em: 28 nov. 2019.</p>
+  </li>
+</ol>
+</div>
+                <!-- /post content -->
+
+                <!-- post tags -->
+                <div class="section-row">
+                    <div class="post-tags">
+                        <!-- Tag list -->
+                        
+                        
+
+
+<footer>
+  <div class="tag-list">
+    
+      <div class="meta">Tags</div>
+    
+
+    
+    <a class="button" href="/projetokube-site/tags#docker">
+      <p><i class="fa fa-tag fa-fw"></i> docker</p>
+    </a>
+    
+    <a class="button" href="/projetokube-site/tags#raspberry">
+      <p><i class="fa fa-tag fa-fw"></i> raspberry</p>
+    </a>
+    
+  </div>
+</footer>
+
+                    </div>
+                </div>
+                <!-- /post tags -->
+
+                <!-- post author --><div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Sobre <a href="/projetokube-site/equipe#franciscojsc">Francisco Junio Santos Chaves</a>
+                        </h3>
+                    </div>
+                    <div class="author media">
+                        <div class="media-left">
+                            <a href="/projetokube-site/equipe#franciscojsc">
+                                
+                                <img class="author-img media-object" src="https://avatars3.githubusercontent.com/franciscojsc?v=3&amp;s=273">
+                                
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>Estudante cada dia mais apaixonado por tecnologia. Sempre em busca de conhecimento.</p>
+                            <ul class="author-social">
+                                
+                                
+                                <li><a target="_blank" href="http://github.com/franciscojsc"><i class="fa fa-github fa-fw"></i></a></li>
+                                
+                                
+                                <li><a target="_blank" href="https://twitter.com/fr_develop"><i class="fa fa-twitter fa-fw"></i></a></li>
+                                
+                                
+                                <li><a target="_blank" href="https://instagram.com/francisco.jschaves"><i class="fa fa-instagram fa-fw"></i></a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post author --><!-- /related post -->
+                <div>
+                    <div class="section-title">
+                        <h3 class="title">Posts Relacionados</h3>
+                    </div>
+                    <div class="row">
+                        <!-- post -->
+                        <div class="col-md-4">
+<!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/temperatura-no-raspberry-01-19.html">
+        <div class="post-bg" style="background-image: url('/projetokube-site/assets/img/blog/temp-rasp.jpg');"></div>
+    </a>
+    <div class="post-body">
+        <div class="post-category"><span class="badge badge-black">
+                <a href="/projetokube-site/category/linux">linux</a>
+            </span></div>
+        <h3 class="post-title title-sm">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/temperatura-no-raspberry-01-19.html">
+                Coletando a temperatura no Raspberry PI 3 B Plus
+            </a>
+        </h3>
+        <ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#"> </a>
+</li>
+</ul>
+    </div>
+</div>
+<!-- /post -->
+</div>
+                        
+                        <div class="col-md-4">
+<!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/instale-vnc-em-raspberry-pi-01-17.html">
+        <div class="post-bg" style="background-image: url('/projetokube-site/assets/img/blog/install-vnc-raspberry.jpg');"></div>
+    </a>
+    <div class="post-body">
+        <div class="post-category"><span class="badge badge-black">
+                <a href="/projetokube-site/category/linux">linux</a>
+            </span></div>
+        <h3 class="post-title title-sm">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/instale-vnc-em-raspberry-pi-01-17.html">
+                Instalação do VNC Server no Raspberry PI 3
+            </a>
+        </h3>
+        <ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#"> </a>
+</li>
+</ul>
+    </div>
+</div>
+<!-- /post -->
+</div>
+                        
+                        <div class="col-md-4">
+<!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">
+        <div class="post-bg" style="background-image: url('/projetokube-site/assets/img/blog/docker-jekyll.jpg');"></div>
+    </a>
+    <div class="post-body">
+        <div class="post-category"><span class="badge badge-black">
+                <a href="/projetokube-site/category/linux">linux</a>
+            </span></div>
+        <h3 class="post-title title-sm">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">
+                Execução do Jekyll em container Docker
+            </a>
+        </h3>
+        <ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#"> </a>
+</li>
+</ul>
+    </div>
+</div>
+<!-- /post -->
+</div>
+                        
+                        <div class="col-md-4">
+<!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">
+        <div class="post-bg" style="background-image: url('/projetokube-site/assets/img/blog/raspberry.jpg');"></div>
+    </a>
+    <div class="post-body">
+        <div class="post-category"><span class="badge badge-black">
+                <a href="/projetokube-site/category/linux">linux</a>
+            </span></div>
+        <h3 class="post-title title-sm">
+            <a href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">
+                Execução de containers Docker com Raspberry Pi
+            </a>
+        </h3>
+        <ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#"> </a>
+</li>
+</ul>
+    </div>
+</div>
+<!-- /post -->
+</div>
+                        
+                        <!-- /post -->
+                    </div>
+                </div>
+                <!-- /related post -->
+
+                <!-- post comments -->
+                <div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Comentários</h3>
+                    </div>
+                    <div class="post-comments">
+                        <!-- Disqus -->
+                        
+                        <div id="disqus_thread"></div>
+<script type="text/javascript">
+	var disqus_shortname = 'projeto-kube';
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view comments.</noscript>
+
+                        
+                    </div>
+                </div>
+                <!-- /post comments -->
+            </div>
+            <div class="col-lg-4 col-md-12">
+
+
+
+
+
+
+
+
+
+
+<!-- category widget -->
+<div class="aside-widget">
+    <h4 class="p-title"><b>Categorias</b></h4>
+    <div class="category-widget">
+        <ul>			
+						
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/acesso">acesso <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/laboratorio">laboratorio <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/devops">devops <span>3</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/tutoriais">tutoriais <span>10</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/git">git <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/laboratorio">laboratório <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/linux">linux <span>4</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/blog/categoria/estudo">estudo <span>1</span></a></li>
+            
+        </ul>
+    </div>
+</div>
+<!-- /category widget -->
+
+<!-- post widget -->
+<div class="aside-widget">
+    <h4 class="p-title"><b>Postagens recentes</b></h4>
+    <!-- post -->
+    <!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/instalacao-raspberry-pi-os-07-17.html">
+        <img src="/projetokube-site/assets/img/blog/logo-instalacao-raspberry-pi-os.png" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/instalacao-raspberry-pi-os-07-17.html">Instalação do Raspberry Pi OS</a>
+        </h3>
+    </div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-instalacao-automatica-do-ubuntu-server-03-03.html">
+        <img src="/projetokube-site/assets/img/blog/install-ubuntu-instalacoes-autonomas.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-instalacao-automatica-do-ubuntu-server-03-03.html">Como criar uma instalação automática do Ubuntu ou por um servidor PXE</a>
+        </h3>
+    </div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/como-instalar-nodejs-01-19.html">
+        <img src="/projetokube-site/assets/img/blog/install-nodejs.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/como-instalar-nodejs-01-19.html">Instalação do NodeJS</a>
+        </h3>
+    </div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-publicacao-no-blog-01-19.html">
+        <img src="/projetokube-site/assets/img/blog/github-projetokube-site.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/tutoriais/2020/como-criar-uma-publicacao-no-blog-01-19.html">Como criar uma publicação no blog</a>
+        </h3>
+    </div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/temperatura-no-raspberry-01-19.html">
+        <img src="/projetokube-site/assets/img/blog/temp-rasp.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/temperatura-no-raspberry-01-19.html">Coletando a temperatura no Raspberry PI 3 B Plus</a>
+        </h3>
+    </div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/instale-vnc-em-raspberry-pi-01-17.html">
+        <img src="/projetokube-site/assets/img/blog/install-vnc-raspberry.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/instale-vnc-em-raspberry-pi-01-17.html">Instalação do VNC Server no Raspberry PI 3</a>
+        </h3>
+    </div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">
+        <img src="/projetokube-site/assets/img/blog/docker-jekyll.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2020/como-executar-jekyll-em-container-docker-01-17.html">Execução do Jekyll em container Docker</a>
+        </h3>
+    </div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/estudo/devops/2019/conteudo-para-as-ferias-12-18.html">
+        <img src="/projetokube-site/assets/img/blog/trem.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/estudo/devops/2019/conteudo-para-as-ferias-12-18.html">Conteúdo para as férias</a>
+        </h3>
+    </div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">
+        <img src="/projetokube-site/assets/img/blog/raspberry.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/linux/tutoriais/2019/exemplo-containers-docker-com-raspberry-pi-12-02.html">Execução de containers Docker com Raspberry Pi</a>
+        </h3>
+    </div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post --><div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/laborat%C3%B3rio/2019/votoifs-11-27.html">
+        <img src="/projetokube-site/assets/img/lab/1.jpg" alt="foto do post">
+    </a>
+    <div class="post-body">
+        <h3 class="post-title">
+            <a href="/projetokube-site/blog/laborat%C3%B3rio/2019/votoifs-11-27.html">Sistema voto IFS</a>
+        </h3>
+    </div>
+</div>
+<!-- /post -->
+</div>
+<!-- /post widget -->
+</div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+    </div>
+    <footer class="site-footer">
+    <p class="text">
+        Powered by <a href="https://jekyllrb.com/">Jekyll</a> com o tema <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+<li>
+	<a href="/projetokube-site/atom.xml" title="Follow RSS feed">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/CBSIIFSLagarto/projetokube-site" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+    <script src="/projetokube-site/assets/js/vendor/jquery-3.4.1.slim.min.js"></script>
+<script src="/projetokube-site/assets/js/vendor/popper.min.js"></script>
+<script src="/projetokube-site/assets/js/vendor/bootstrap.min.js"></script>
+<script src="/projetokube-site/assets/js/vendor/owl.carousel.min.js"></script>
+<script src="/projetokube-site/assets/js/app.js"></script>
+<script src="/projetokube-site/assets/js/main.min.js"></script>
+<!-- Jekyll Ideal Image Slider Include -->
+<!-- https://github.com/jekylltools/jekyll-ideal-image-slider-include -->
+<!-- v1.8 -->
+    <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+  </body>
+</html>
